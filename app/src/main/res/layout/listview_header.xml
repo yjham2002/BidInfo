@@ -14,14 +14,6 @@
         android:padding="5dp"
         >
 
-        <ImageView
-            android:layout_width="@dimen/iconSize"
-            android:layout_height="@dimen/iconSize"
-            android:id="@+id/favicon"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="@dimen/week_padding"
-            android:src="@drawable/smile" />
-
         <LinearLayout
             android:orientation="vertical"
             android:padding="@dimen/default_margin"
@@ -35,23 +27,23 @@
                 android:text="TextView"
                 android:id="@+id/subject"
                 android:textColor="@color/jet"
+                android:textSize="@dimen/default_text_large" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/week_padding"
+                android:text="Header Field 01\nHeader Information field"
+                android:id="@+id/detail"
+                android:textColor="@color/monsoon"
                 android:textSize="@dimen/default_text_mid" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/week_padding"
-                android:text="Here is the field for showing detail information"
-                android:id="@+id/detail"
-                android:textColor="@color/monsoon"
-                android:textSize="@dimen/default_text" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/week_padding"
-                android:text="1970-01-01"
+                android:layout_marginTop="@dimen/default_margin"
+                android:text="Header Info"
                 android:id="@+id/rawdate"
                 android:textColor="@color/jet"
-                android:textSize="@dimen/default_text" />
+                android:textSize="@dimen/default_text_mid" />
         </LinearLayout>
 
     </LinearLayout>

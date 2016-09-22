@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">BidInfo</string>
+    <string name="reg_msg">아직 회원이 아니신가요?</string>
+    <string name="share_using">이 페이지를 공유</string>
 </resources>

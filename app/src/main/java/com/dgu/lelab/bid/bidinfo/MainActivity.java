@@ -1,6 +1,9 @@
 package com.dgu.lelab.bid.bidinfo;
 
+import android.content.Intent;
 import android.content.res.Configuration;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.widget.DrawerLayout;
@@ -10,6 +13,7 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -20,7 +24,7 @@ import com.github.florent37.materialviewpager.header.HeaderDesign;
 
 public class MainActivity extends ActionBarActivity implements View.OnClickListener{
 
-    private Button _test;
+    private Button _menuBtn01, _menuBtn02, _menuBtn03;
     private MaterialViewPager mViewPager;
     private Toolbar toolbar;
     private DrawerLayout mDrawer;
@@ -29,8 +33,18 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     @Override
     public void onClick(View v){
         switch (v.getId()){
-            case R.id.button:
-                Toast.makeText(getApplicationContext(), "Clicked", Toast.LENGTH_LONG).show();
+            case R.id.menu01:
+                startActivity(new Intent(this, MypageActivity.class));
+                break;
+            case R.id.menu02:
+                startActivity(new Intent(this, SettingsActivity.class));
+                break;
+            case R.id.menu03:
+                startActivity(new Intent(this, LoginActivity.class));
+                finish();
+                break;
+            default:
+                break;
         }
     }
 
@@ -39,8 +53,14 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setTitle("");
-        _test = (Button)findViewById(R.id.button);
-        _test.setOnClickListener(this);
+
+        _menuBtn01 = (Button)findViewById(R.id.menu01);
+        _menuBtn01.setOnClickListener(this);
+        _menuBtn02 = (Button)findViewById(R.id.menu02);
+        _menuBtn02.setOnClickListener(this);
+        _menuBtn03 = (Button)findViewById(R.id.menu03);
+        _menuBtn03.setOnClickListener(this);
+
         mViewPager = (MaterialViewPager) findViewById(R.id.materialViewPager);
         toolbar = mViewPager.getToolbar();
 
@@ -71,9 +91,9 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
             public CharSequence getPageTitle(int position) {
                 switch (position % 4) {
                     case 0:
-                        return "구매입찰";
+                        return "물품입찰";
                     case 1:
-                        return "매각입찰";
+                        return "공사입찰";
                     case 2:
                         return "용역입찰";
                     case 3:
@@ -90,15 +110,15 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
                 switch (page) {
                     case 0:
                         return HeaderDesign.fromColorResAndUrl(
-                                R.color.blue,
+                                R.color.oil,
                                 "http://cdn1.tnwcdn.com/wp-content/blogs.dir/1/files/2014/06/wallpaper_51.jpg");
                     case 1:
                         return HeaderDesign.fromColorResAndUrl(
-                                R.color.green,
+                                R.color.green_teal,
                                 "http://cdn1.tnwcdn.com/wp-content/blogs.dir/1/files/2014/06/wallpaper_53.jpg");
                     case 2:
                         return HeaderDesign.fromColorResAndUrl(
-                                R.color.cyan,
+                                R.color.purple,
                                 "http://www.droid-life.com/wp-content/uploads/2014/10/lollipop-wallpapers10.jpg");
                     case 3:
                         return HeaderDesign.fromColorResAndUrl(
@@ -120,7 +140,9 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
                 @Override
                 public void onClick(View v) {
                     mViewPager.notifyHeaderChanged();
-                    Toast.makeText(getApplicationContext(), "Yes, the title is clickable", Toast.LENGTH_SHORT).show();
+                    Intent i = new Intent(MainActivity.this, SearchActivity.class);
+                    startActivity(i);
+                    overridePendingTransition(R.anim.push_in, R.anim.push_out);
                 }
             });
         }
@@ -154,6 +176,12 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     }
 
     @Override
+    public void onResume(){
+        super.onResume();
+        mDrawerToggle.syncState();
+    }
+
+    @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
         mDrawerToggle.onConfigurationChanged(newConfig);
@@ -164,4 +192,31 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         return mDrawerToggle.onOptionsItemSelected(item) ||
                 super.onOptionsItemSelected(item);
     }
+
+    public boolean mFlag;
+
+    Handler mHandler = new Handler(){
+        @Override
+        public void handleMessage(Message msg){
+            if(msg.what == 0){
+                mFlag=false;
+            }
+        }
+    };
+
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if ((keyCode == KeyEvent.KEYCODE_BACK)){
+            if(!mFlag) {
+                Toast.makeText(getApplicationContext(), "뒤로 버튼을 한번 더 누르시면 종료됩니다.", Toast.LENGTH_SHORT).show();
+                mFlag = true;
+                mHandler.sendEmptyMessageDelayed(0, 2000);
+                return false;
+            } else {
+                finish();
+                System.exit(0);
+            }
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
 }

@@ -5,13 +5,119 @@
     android:orientation="vertical"
     android:layout_height="match_parent"
     android:layout_gravity="start"
-    android:background="@android:color/white"
+    android:background="@color/colorPrimaryDark"
     >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:orientation="vertical"
+        android:gravity="center_vertical"
+        >
 
-    <Button
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:src="@drawable/smile"
+            android:layout_marginTop="@dimen/default_margin"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="User"
+            android:id="@+id/sName"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="@dimen/default_margin"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@color/white"
+            android:textSize="@dimen/default_text_large"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="User Account"
+            android:id="@+id/sID"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="@dimen/week_padding"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@color/white"
+            android:textSize="@dimen/default_text"
+            />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/oil"
+        android:layout_margin="5dp"
+        />
+
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="New Button"
-        android:id="@+id/button" />
+        android:id="@+id/scrollView2" >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <LinearLayout android:layout_height="wrap_content"
+                android:layout_width="match_parent">
+                <ImageView
+                    android:layout_width="@dimen/iconSize"
+                    android:layout_height="@dimen/iconSize"
+                    android:src="@drawable/icon_person"
+                    android:layout_gravity="center"
+                    android:padding="@dimen/default_refresh" />
+                <android.support.v7.widget.AppCompatButton
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="마이페이지"
+                    android:textColor="@color/white"
+                    android:id="@+id/menu01"
+                    android:gravity="left|center"
+                    android:padding="10dp" />
+            </LinearLayout>
+
+            <LinearLayout android:layout_height="wrap_content"
+                android:layout_width="match_parent">
+                <ImageView
+                    android:layout_width="@dimen/iconSize"
+                    android:layout_height="@dimen/iconSize"
+                    android:src="@drawable/icon_gear"
+                    android:layout_gravity="center"
+                    android:padding="@dimen/default_refresh" />
+                <android.support.v7.widget.AppCompatButton
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="설정"
+                    android:textColor="@color/white"
+                    android:id="@+id/menu02"
+                    android:gravity="left|center"
+                    android:padding="10dp" />
+            </LinearLayout>
+            <LinearLayout android:layout_height="wrap_content"
+                android:layout_width="match_parent">
+                <ImageView
+                    android:layout_width="@dimen/iconSize"
+                    android:layout_height="@dimen/iconSize"
+                    android:src="@drawable/icon_logout"
+                    android:layout_gravity="center"
+                    android:padding="@dimen/default_refresh" />
+                <android.support.v7.widget.AppCompatButton
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="로그아웃"
+                    android:textColor="@color/white"
+                    android:id="@+id/menu03"
+                    android:gravity="left|center"
+                    android:padding="10dp" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+
 </LinearLayout>
 

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.dgu.lelab.bid.bidinfo.WebviewActivity">
+
+    <WebView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/webView"
+        android:layout_gravity="center_horizontal" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|top">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/bottom_side"
+            android:layout_gravity="top"
+            android:background="@color/transparent_gray"
+            android:gravity="right">
+
+            <ImageView
+                android:layout_width="@dimen/bottom_side"
+                android:layout_height="@dimen/bottom_side"
+                android:id="@+id/bt_share"
+                android:clickable="true"
+                android:background="?selectableItemBackgroundBorderless"
+                android:src="@drawable/icon_share"
+                android:padding="@dimen/default_margin" />
+
+            <ImageView
+                android:layout_width="@dimen/bottom_side"
+                android:layout_height="@dimen/bottom_side"
+                android:id="@+id/bt_close"
+                android:clickable="true"
+                android:background="?selectableItemBackgroundBorderless"
+                android:src="@drawable/icon_close"
+                android:padding="@dimen/default_margin" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Details"
+            android:id="@+id/textView"
+            android:layout_gravity="left|top"
+            android:gravity="center_vertical"
+            android:textColor="@color/white"
+            android:textSize="@dimen/default_text"
+            android:layout_marginLeft="@dimen/default_margin" />
+    </FrameLayout>
+
+</FrameLayout>

@@ -2,6 +2,7 @@ package com.dgu.lelab.bid.bidinfo;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -13,6 +14,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ListViewAdapter extends RecyclerView.Adapter<ListViewAdapter.ViewHolder> {
+
+    public static final int HEADER = 3, DEFAULT = 0;
 
     public Context mContext = null;
     public List<BidInfo> mListData = new ArrayList<>();
@@ -32,8 +35,25 @@ public class ListViewAdapter extends RecyclerView.Adapter<ListViewAdapter.ViewHo
     }
 
     @Override
+    public int getItemViewType(int position){
+        if(position == 0) return HEADER;
+        else return DEFAULT;
+    }
+
+    @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.listview_bid, parent, false);
+        View v;
+        switch(viewType){
+            case DEFAULT:
+                v = LayoutInflater.from(parent.getContext()).inflate(R.layout.listview_bid, parent, false);
+                break;
+//            case HEADER:
+  //              v = LayoutInflater.from(parent.getContext()).inflate(R.layout.listview_header, parent, false);
+    //            break;
+            default:
+                v = LayoutInflater.from(parent.getContext()).inflate(R.layout.listview_bid, parent, false);
+                break;
+        }
         return new ViewHolder(v);
     }
 
@@ -41,10 +61,14 @@ public class ListViewAdapter extends RecyclerView.Adapter<ListViewAdapter.ViewHo
     public void onBindViewHolder(ViewHolder holder, final int position) {
         BidInfo mData = mListData.get(position);
         holder._subject.setText(mData.text);
+        holder._detail.setText(mData.URL);
         holder.cardview.setOnClickListener(new CardView.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //final AssignInfo mData = staticInfo.mAdapter.mListData.get(position);
+                final BidInfo mData = mListData.get(position);
+                Intent i = new Intent(mContext, WebviewActivity.class);
+                i.putExtra("URL", mData.URL);
+                mContext.startActivity(i);
             }
         });
     }
@@ -56,12 +80,13 @@ public class ListViewAdapter extends RecyclerView.Adapter<ListViewAdapter.ViewHo
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public TextView _subject;
-        public TextView _date;
+        public TextView _detail;
         public CardView cardview;
 
         public ViewHolder(View itemView) {
             super(itemView);
             _subject = (TextView)itemView.findViewById(R.id.subject);
+            _detail = (TextView)itemView.findViewById(R.id.detail);
             cardview = (CardView)itemView.findViewById(R.id.cardview);
         }
     }
@@ -74,6 +99,7 @@ public class ListViewAdapter extends RecyclerView.Adapter<ListViewAdapter.ViewHo
     public void addItem(BidInfo addInfo){
         BidInfo newAssign = new BidInfo();
         newAssign.text = addInfo.text;
+        newAssign.URL = addInfo.URL;
         mListData.add(newAssign);
     }
 
