@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.dgu.lelab.bid.bidinfo.PickerActivity"
+    android:background="@color/mint"
+    android:gravity="center">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pick your favorites"
+        android:id="@+id/textView2"
+        android:textColor="@color/white"
+        android:textSize="35dp"
+        android:layout_marginTop="@dimen/default_margin" />
+
+    <GridView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/gridView"
+        android:numColumns="2"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/iconSize"
+        android:layout_marginBottom="@dimen/iconSize"
+        android:layout_marginLeft="@dimen/default_margin"
+        android:layout_marginRight="@dimen/default_margin" />
+</LinearLayout>

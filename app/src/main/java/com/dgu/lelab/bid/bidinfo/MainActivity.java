@@ -68,15 +68,13 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 
             @Override
             public Fragment getItem(int position) {
-                switch (position % 4) {
+                switch (position % 3) {
                     case 0:
                         return new fm_1();
                     case 1:
                         return new fm_1();
                     case 2:
                         return new fm_1();
-                    case 3:
-                        return new fm_4();
                     default:
                         return null;
                 }
@@ -84,20 +82,18 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 
             @Override
             public int getCount() {
-                return 4;
+                return 3;
             }
 
             @Override
             public CharSequence getPageTitle(int position) {
-                switch (position % 4) {
+                switch (position % 3) {
                     case 0:
                         return "물품입찰";
                     case 1:
                         return "공사입찰";
                     case 2:
                         return "용역입찰";
-                    case 3:
-                        return "내 정보";
                 }
                 return "";
             }
@@ -115,15 +111,11 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
                     case 1:
                         return HeaderDesign.fromColorResAndUrl(
                                 R.color.green_teal,
-                                "http://cdn1.tnwcdn.com/wp-content/blogs.dir/1/files/2014/06/wallpaper_53.jpg");
+                                "http://www.tothemobile.com/wp-content/uploads/2014/07/original.jpg");
                     case 2:
                         return HeaderDesign.fromColorResAndUrl(
-                                R.color.purple,
-                                "http://www.droid-life.com/wp-content/uploads/2014/10/lollipop-wallpapers10.jpg");
-                    case 3:
-                        return HeaderDesign.fromColorResAndUrl(
                                 R.color.red,
-                                "http://www.tothemobile.com/wp-content/uploads/2014/07/original.jpg");
+                                "http://www.droid-life.com/wp-content/uploads/2014/10/lollipop-wallpapers10.jpg");
                 }
 
                 //execute others actions if needed (ex : modify your header logo)

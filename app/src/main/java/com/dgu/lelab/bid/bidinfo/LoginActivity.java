@@ -11,8 +11,7 @@ import android.widget.EditText;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private Button _login;
-    private EditText _id, _pw;
+    private Button _login, _signup;
 
     @Override
     public void onClick(View v){
@@ -23,21 +22,24 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 finish(); // Should be deleted
                 //signIn();
                 break;
+            case R.id.bt_signup:
+                startActivity(new Intent(this, PickerActivity.class));
+                break;
             default: break;
         }
     }
 
     public void signIn(){
-        _id.setError(null);
-        _pw.setError(null);
-        if(_id.getText().length() <= 0 || _id.getText().length() > 20){
-            _id.setError("유효한 정보를 입력하세요");
-            return;
-        }
-        if(_pw.getText().length() < 5){
-            _pw.setError("유효한 패스워드를 입력하세요");
-            return;
-        }
+//        _id.setError(null);
+  //      _pw.setError(null);
+    //    if(_id.getText().length() <= 0 || _id.getText().length() > 20){
+      //      _id.setError("유효한 정보를 입력하세요");
+        //    return;
+        //}
+       // if(_pw.getText().length() < 5){
+         //   _pw.setError("유효한 패스워드를 입력하세요");
+           // return;
+        //}
         final ProgressDialog pdial = new ProgressDialog(this, R.style.AppTheme_Dark_Dialog);
         pdial.setMessage("계정 정보를 불러오는 중...");
         pdial.setCancelable(false);
@@ -51,9 +53,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.activity_login);
 
         _login = (Button)findViewById(R.id.bt_signin);
-        _id = (EditText)findViewById(R.id.idp);
-        _pw = (EditText)findViewById(R.id.pwp);
         _login.setOnClickListener(this);
+        _signup = (Button)findViewById(R.id.bt_signup);
+        _signup.setOnClickListener(this);
     }
 
 }
