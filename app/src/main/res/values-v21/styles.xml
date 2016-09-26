@@ -72,6 +72,16 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
+
+    <style name="BlueButton" parent="Theme.AppCompat.Light">
+        <item name="android:colorButtonNormal">@color/cool</item>
+        <item name="android:colorControlHighlight">@color/white</item>
+    </style>
+    <style name="WhiteButton" parent="Theme.AppCompat.Light">
+        <item name="android:colorButtonNormal">@color/white</item>
+        <item name="android:colorControlHighlight">@color/cool</item>
+    </style>
+
     <style name="SimpleBlack" parent="AppBaseTheme">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>

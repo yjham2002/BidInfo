@@ -7,7 +7,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="#Testing Obj"
+        android:textColor="@color/monsoon"
+        android:textStyle="bold"
         android:id="@+id/grid"
-        android:textSize="@dimen/default_text_large"
-        android:layout_margin="@dimen/default_margin" />
+        android:textSize="@dimen/default_text_mid"
+        android:layout_margin="@dimen/default_margin"
+        />
 </LinearLayout>

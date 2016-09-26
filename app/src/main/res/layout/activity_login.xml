@@ -18,25 +18,85 @@
         android:layout_margin="@dimen/default_margin">
 
         <android.support.v7.widget.AppCompatButton
-            style="@style/Widget.AppCompat.Button.Colored"
-            android:id="@+id/bt_signin"
+            android:theme="@style/BlueButton"
+            android:id="@+id/bt_signup_gen"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
-            android:text="로그인"
+            android:text="일반회원가입"
             android:layout_gravity="center_horizontal|bottom" />
 
         <android.support.v7.widget.AppCompatButton
-            style="@style/Widget.AppCompat.Button.Borderless"
-            android:id="@+id/bt_signup"
+            android:theme="@style/WhiteButton"
+            android:id="@+id/bt_signup_ent"
             android:layout_width="match_parent"
-            android:layout_margin="@dimen/default_margin"
             android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            android:textSize="@dimen/default_text"
-            android:text="@string/reg_msg"
-            />
+            android:textColor="@color/cool"
+            android:text="기업회원가입"
+            android:layout_gravity="center_horizontal|bottom" />
 
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_margin"
+            android:layout_marginBottom="@dimen/default_margin"
+            android:layout_marginLeft="65dp"
+            android:layout_marginRight="65dp"
+            android:layout_gravity="center_horizontal">
+
+            <android.support.v7.widget.AppCompatButton
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:id="@+id/bt_signin"
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:textColor="@color/monsoon"
+                android:textSize="@dimen/default_text"
+                android:text="로그인"
+                />
+            <android.support.v7.widget.AppCompatButton
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:id="@+id/bt_seeing"
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:textColor="@color/monsoon"
+                android:textSize="@dimen/default_text"
+                android:text="둘러보기"
+                />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|center_horizontal"
+        android:gravity="center_horizontal"
+        android:paddingTop="90dp"
+        android:orientation="vertical">
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_margin="20dp"
+            android:background="@color/monsoon"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/monsoon"
+            android:gravity="center_horizontal"
+            android:textSize="@dimen/default_text"
+            android:text="@string/title_string"
+             />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/monsoon"
+            android:gravity="center_horizontal"
+            android:textSize="@dimen/default_text_large"
+            android:text="@string/app_name"
+             />
 
     </LinearLayout>
 
