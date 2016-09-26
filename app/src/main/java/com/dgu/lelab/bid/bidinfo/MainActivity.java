@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Handler;
 import android.os.Message;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.widget.DrawerLayout;
@@ -25,6 +26,7 @@ import com.github.florent37.materialviewpager.header.HeaderDesign;
 public class MainActivity extends ActionBarActivity implements View.OnClickListener{
 
     private Button _menuBtn01, _menuBtn02, _menuBtn03;
+    private FloatingActionButton _addButton;
     private MaterialViewPager mViewPager;
     private Toolbar toolbar;
     private DrawerLayout mDrawer;
@@ -33,6 +35,9 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     @Override
     public void onClick(View v){
         switch (v.getId()){
+            case R.id.add:
+                Toast.makeText(getApplicationContext(), "FAB", Toast.LENGTH_LONG).show();
+                break;
             case R.id.menu01:
                 startActivity(new Intent(this, MypageActivity.class));
                 break;
@@ -60,6 +65,8 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         _menuBtn02.setOnClickListener(this);
         _menuBtn03 = (Button)findViewById(R.id.menu03);
         _menuBtn03.setOnClickListener(this);
+        _addButton = (FloatingActionButton)findViewById(R.id.add);
+        _addButton.setOnClickListener(this);
 
         mViewPager = (MaterialViewPager) findViewById(R.id.materialViewPager);
         toolbar = mViewPager.getToolbar();
