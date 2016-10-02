@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.dgu.lelab.bid.bidinfo" >
+    package="com.dgu.lelab.bid.bidinfo">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -9,30 +9,54 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme" >
-        <activity android:name=".IntroActivity" android:screenOrientation="portrait">
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".IntroActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".LoginActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".LoginActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".WebviewActivity"
-            android:theme="@style/Simple" android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:theme="@style/Simple" />
         <activity
             android:name=".SearchActivity"
-            android:theme="@style/Simple" android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:theme="@style/Simple" />
         <activity
             android:name=".SettingsActivity"
-            android:theme="@style/SimpleBlack" android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:theme="@style/SimpleBlack" />
         <activity
             android:name=".MypageActivity"
-            android:theme="@style/SimpleBlack" android:screenOrientation="portrait"/>
-        <activity android:name=".DetailActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".PickerActivity" android:screenOrientation="portrait">
-        </activity>
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Transparent" />
+        <activity
+            android:name=".DetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".PickerActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".PrivateActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".RegisterActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ApplyActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".ExpireActivity" android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>

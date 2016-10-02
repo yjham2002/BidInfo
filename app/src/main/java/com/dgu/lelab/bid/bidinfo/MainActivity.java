@@ -36,7 +36,8 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     public void onClick(View v){
         switch (v.getId()){
             case R.id.add:
-                Toast.makeText(getApplicationContext(), "FAB", Toast.LENGTH_LONG).show();
+                Intent i = new Intent(this, RegisterActivity.class);
+                startActivity(i);
                 break;
             case R.id.menu01:
                 startActivity(new Intent(this, MypageActivity.class));

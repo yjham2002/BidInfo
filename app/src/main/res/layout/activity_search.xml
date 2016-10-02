@@ -4,36 +4,82 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.dgu.lelab.bid.bidinfo.SearchActivity"
-    android:orientation="vertical">
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimaryDark"
-        android:orientation="horizontal">
+    android:orientation="vertical"
+    android:background="@color/colorPrimaryDark">
+
     <util.ClearableEditText
         android:layout_width="match_parent"
-        android:layout_weight="10"
         android:layout_height="wrap_content"
         android:textColor="@color/white"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
         android:singleLine="true"
-        android:layout_marginLeft="@dimen/week_padding"
         />
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_weight="0"
-            android:layout_height="wrap_content"
-            android:background="@color/monsoon"
-            >
-            <android.support.v7.widget.AppCompatButton
-                style="@style/Widget.AppCompat.Button.Borderless"
-                android:id="@+id/bt_search"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:textColor="@color/white"
-                android:textSize="@dimen/default_text"
-                android:text="검색"
-                />
-        </LinearLayout>
+    <android.support.v7.widget.AppCompatButton
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:id="@+id/bt_search"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:textSize="@dimen/default_text"
+        android:text="검색"
+        />
 
-    </LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:text="추천검색어"
+        android:textSize="@dimen/default_text"
+        android:layout_marginTop="30dp"
+        android:layout_gravity="center_horizontal" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:text="#ABCDE"
+        android:textSize="@dimen/default_text_large"
+        android:layout_margin="@dimen/default_margin"
+        android:id="@+id/recommend1"
+        android:layout_gravity="center_horizontal" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:text="#ABCDE_FGH"
+        android:textSize="@dimen/default_text_large"
+        android:layout_margin="@dimen/default_margin"
+        android:id="@+id/recommend2"
+        android:layout_gravity="center_horizontal" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:text="#ABC_DE"
+        android:textSize="@dimen/default_text_large"
+        android:layout_margin="@dimen/default_margin"
+        android:id="@+id/recommend3"
+        android:layout_gravity="center_horizontal" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:text="#ZZ_ABC_DE"
+        android:textSize="@dimen/default_text_large"
+        android:layout_margin="@dimen/default_margin"
+        android:id="@+id/recommend4"
+        android:layout_gravity="center_horizontal" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:text="#ZZZ_ABC_DE"
+        android:textSize="@dimen/default_text_large"
+        android:layout_margin="@dimen/default_margin"
+        android:id="@+id/recommend5"
+        android:layout_gravity="center_horizontal" />
 </LinearLayout>

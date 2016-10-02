@@ -19,20 +19,11 @@
 
         <android.support.v7.widget.AppCompatButton
             android:theme="@style/BlueButton"
-            android:id="@+id/bt_signup_gen"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            android:text="일반회원가입"
-            android:layout_gravity="center_horizontal|bottom" />
-
-        <android.support.v7.widget.AppCompatButton
-            android:theme="@style/WhiteButton"
             android:id="@+id/bt_signup_ent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/cool"
-            android:text="기업회원가입"
+            android:textColor="@color/white"
+            android:text="회원가입"
             android:layout_gravity="center_horizontal|bottom" />
 
         <LinearLayout

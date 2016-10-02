@@ -61,13 +61,13 @@ public class ListViewAdapter extends RecyclerView.Adapter<ListViewAdapter.ViewHo
     public void onBindViewHolder(ViewHolder holder, final int position) {
         BidInfo mData = mListData.get(position);
         holder._subject.setText(mData.text);
-        holder._detail.setText(mData.URL);
+        holder._detail.setText(mData.Url);
         holder.cardview.setOnClickListener(new CardView.OnClickListener() {
             @Override
             public void onClick(View v) {
                 final BidInfo mData = mListData.get(position);
                 Intent i = new Intent(mContext, WebviewActivity.class);
-                i.putExtra("URL", mData.URL);
+                i.putExtra("URL", mData.Url);
                 mContext.startActivity(i);
             }
         });
@@ -99,7 +99,7 @@ public class ListViewAdapter extends RecyclerView.Adapter<ListViewAdapter.ViewHo
     public void addItem(BidInfo addInfo){
         BidInfo newAssign = new BidInfo();
         newAssign.text = addInfo.text;
-        newAssign.URL = addInfo.URL;
+        newAssign.Url = addInfo.Url;
         mListData.add(newAssign);
     }
 
