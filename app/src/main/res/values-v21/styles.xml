@@ -77,6 +77,10 @@
         <item name="android:colorButtonNormal">@color/cool</item>
         <item name="android:colorControlHighlight">@color/white</item>
     </style>
+    <style name="RedButton" parent="Theme.AppCompat.Light">
+        <item name="colorButtonNormal">@color/red</item>
+        <item name="colorControlHighlight">@color/white</item>
+    </style>
     <style name="WhiteButton" parent="Theme.AppCompat.Light">
         <item name="android:colorButtonNormal">@color/white</item>
         <item name="android:colorControlHighlight">@color/cool</item>

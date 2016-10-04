@@ -1,12 +1,145 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.dgu.lelab.bid.bidinfo.PrivateActivity">
+    android:focusableInTouchMode="true"
+    android:orientation="vertical"
 
-</RelativeLayout>
+    android:background="@color/transparent_window"
+    tools:context="com.dgu.lelab.bid.bidinfo.PrivateActivity">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_margin="@dimen/default_margin"
+            >
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="35dp"></View>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="30dp"
+                android:layout_marginBottom="@dimen/default_margin"
+                android:text="민간공고"
+                />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/default_text_mid"
+                android:text="제목"
+                android:textColor="@color/white"
+                />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/monsoon"
+                android:layout_marginBottom="@dimen/default_margin"
+                android:background="@drawable/bg_edittext"
+                android:singleLine="true"
+                android:hint="제목"
+                android:id="@+id/private_title" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/default_text_mid"
+                android:text="분류"
+                android:textColor="@color/white"
+                />
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <RadioButton
+                    android:id="@+id/pr_goods"
+                    android:text="물품"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/default_text_mid"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <RadioButton
+                    android:id="@+id/pr_const"
+                    android:text="공사"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/default_text_mid"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <RadioButton
+                    android:id="@+id/pr_service"
+                    android:text="용역"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/default_text_mid"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </RadioGroup>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/default_text_mid"
+                android:text="내용"
+                android:textColor="@color/white"
+                />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/monsoon"
+                android:layout_marginBottom="@dimen/default_margin"
+                android:background="@drawable/bg_edittext"
+                android:singleLine="true"
+                android:hint="내용"
+                android:id="@+id/private_content" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="@dimen/default_text_mid"
+                android:text="키워드"
+                />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/monsoon"
+                android:singleLine="true"
+                android:layout_marginBottom="@dimen/default_margin"
+                android:background="@drawable/bg_edittext"
+                android:id="@+id/private_key" />
+
+            <android.support.v7.widget.AppCompatButton
+                android:theme="@style/BlueButton"
+                android:id="@+id/private_submit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/default_margin"
+                android:textColor="@color/white"
+                android:text="등록"
+                android:layout_gravity="center_horizontal|bottom" />
+            <android.support.v7.widget.AppCompatButton
+                android:theme="@style/RedButton"
+                android:id="@+id/private_cancel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/default_margin"
+                android:textColor="@color/white"
+                android:text="취소"
+                android:layout_gravity="center_horizontal|bottom" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="35dp"></View>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

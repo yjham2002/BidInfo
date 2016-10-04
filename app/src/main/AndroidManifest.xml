@@ -49,14 +49,20 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".PrivateActivity"
+            android:theme="@style/Theme.Transparent"
             android:screenOrientation="portrait" />
         <activity
             android:name=".RegisterActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:theme="@style/Simple" />
         <activity
             android:name=".ApplyActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Transparent" />
+        <activity
+            android:name=".ExpireActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".ExpireActivity" android:screenOrientation="portrait"></activity>
+        <activity android:name=".LoginFormActivity" android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>

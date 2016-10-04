@@ -18,6 +18,7 @@ import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.github.florent37.materialviewpager.MaterialViewPager;
@@ -26,6 +27,7 @@ import com.github.florent37.materialviewpager.header.HeaderDesign;
 public class MainActivity extends ActionBarActivity implements View.OnClickListener{
 
     private Button _menuBtn01, _menuBtn02, _menuBtn03;
+    private TextView _username, _useraccount, _noticetext;
     private FloatingActionButton _addButton;
     private MaterialViewPager mViewPager;
     private Toolbar toolbar;
@@ -36,7 +38,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     public void onClick(View v){
         switch (v.getId()){
             case R.id.add:
-                Intent i = new Intent(this, RegisterActivity.class);
+                Intent i = new Intent(this, PrivateActivity.class);
                 startActivity(i);
                 break;
             case R.id.menu01:
@@ -68,9 +70,27 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         _menuBtn03.setOnClickListener(this);
         _addButton = (FloatingActionButton)findViewById(R.id.add);
         _addButton.setOnClickListener(this);
+        _username = (TextView)findViewById(R.id.sName);
+        _useraccount = (TextView)findViewById(R.id.sID);
+        _noticetext = (TextView)findViewById(R.id.notice_text);
 
         mViewPager = (MaterialViewPager) findViewById(R.id.materialViewPager);
         toolbar = mViewPager.getToolbar();
+
+        Intent cmd = getIntent();
+        Bundle cmdMsg = cmd.getExtras();
+        if(cmdMsg == null) {
+            // when the intent is null
+            _useraccount.setText("error");
+        }
+        else {
+            // when the intent is not null
+            if(cmdMsg.getString("user_account").equals("")){ // when the length of user account is zero
+                _useraccount.setText("Testing mode or Error");
+            }else {
+                _useraccount.setText(cmdMsg.getString("user_account"));
+            }
+        }
 
         mViewPager.getViewPager().setAdapter(new FragmentStatePagerAdapter(getSupportFragmentManager()) {
 

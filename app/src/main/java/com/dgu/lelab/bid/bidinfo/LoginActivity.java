@@ -17,14 +17,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     public void onClick(View v){
         switch(v.getId()){
             case R.id.bt_signin:
-                Intent i = new Intent(this, MainActivity.class);
+                Intent i = new Intent(this, LoginFormActivity.class);
                 startActivity(i);
                 finish(); // Should be deleted
                 //signIn();
                 break;
             case R.id.bt_signup_ent:
-                startActivity(new Intent(this, RegisterActivity.class));
-                finish(); // Should be deleted
+                startActivity(new Intent(this, ApplyActivity.class));
                 break;
             default: break;
         }
@@ -57,6 +56,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         _signup = (Button)findViewById(R.id.bt_signup_ent);
         _login.setOnClickListener(this);
         _signup.setOnClickListener(this);
+        startActivity(new Intent(this, ExpireActivity.class));
     }
 
 }
