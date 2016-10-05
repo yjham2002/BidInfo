@@ -26,7 +26,7 @@ import com.github.florent37.materialviewpager.header.HeaderDesign;
 
 public class MainActivity extends ActionBarActivity implements View.OnClickListener{
 
-    private Button _menuBtn01, _menuBtn02, _menuBtn03;
+    private Button _menuBtn01, _menuBtn02, _menuBtn03, _noticemore;
     private TextView _username, _useraccount, _noticetext;
     private FloatingActionButton _addButton;
     private MaterialViewPager mViewPager;
@@ -37,6 +37,9 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     @Override
     public void onClick(View v){
         switch (v.getId()){
+            case R.id.notice_more:
+                startActivity(new Intent(this, NoticeActivity.class));
+                break;
             case R.id.add:
                 Intent i = new Intent(this, PrivateActivity.class);
                 startActivity(i);
@@ -70,6 +73,8 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         _menuBtn03.setOnClickListener(this);
         _addButton = (FloatingActionButton)findViewById(R.id.add);
         _addButton.setOnClickListener(this);
+        _noticemore = (Button)findViewById(R.id.notice_more);
+        _noticemore.setOnClickListener(this);
         _username = (TextView)findViewById(R.id.sName);
         _useraccount = (TextView)findViewById(R.id.sID);
         _noticetext = (TextView)findViewById(R.id.notice_text);
@@ -135,15 +140,15 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
                     case 0:
                         return HeaderDesign.fromColorResAndUrl(
                                 R.color.oil,
-                                "http://cdn1.tnwcdn.com/wp-content/blogs.dir/1/files/2014/06/wallpaper_51.jpg");
+                                "http://fusible.com/wp-content/uploads/2011/09/groupon-goods.jpg");
                     case 1:
                         return HeaderDesign.fromColorResAndUrl(
                                 R.color.green_teal,
-                                "http://www.tothemobile.com/wp-content/uploads/2014/07/original.jpg");
+                                "https://upload.wikimedia.org/wikipedia/commons/c/cf/Construction_workers_not_wearing_fall_protection_equipment.jpg");
                     case 2:
                         return HeaderDesign.fromColorResAndUrl(
                                 R.color.red,
-                                "http://www.droid-life.com/wp-content/uploads/2014/10/lollipop-wallpapers10.jpg");
+                                "http://www.incimages.com/uploaded_files/image/970x450/handshake-pano_19966.jpg");
                 }
 
                 //execute others actions if needed (ex : modify your header logo)

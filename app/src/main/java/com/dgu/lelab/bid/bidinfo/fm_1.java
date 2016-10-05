@@ -16,7 +16,6 @@ import com.github.florent37.materialviewpager.adapter.RecyclerViewMaterialAdapte
 public class fm_1 extends Fragment implements View.OnClickListener{
 
     public RecyclerView mRecyclerView;
-
     public ListViewAdapter testAdapter;
 
     @Override

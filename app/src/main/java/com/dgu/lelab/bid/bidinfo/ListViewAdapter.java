@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -60,14 +61,18 @@ public class ListViewAdapter extends RecyclerView.Adapter<ListViewAdapter.ViewHo
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
         BidInfo mData = mListData.get(position);
-        holder._subject.setText(mData.text);
+        holder._favicon.setImageDrawable(mContext.getResources().getDrawable(R.drawable.div_01));
+        holder._subject.setText(mData.Title);
         holder._detail.setText(mData.Url);
+        holder._like.setText(Integer.toString(mData.like));
+        holder._comment.setText(Integer.toString(mData.comment));
         holder.cardview.setOnClickListener(new CardView.OnClickListener() {
             @Override
             public void onClick(View v) {
                 final BidInfo mData = mListData.get(position);
-                Intent i = new Intent(mContext, WebviewActivity.class);
+                Intent i = new Intent(mContext, DetailActivity.class);
                 i.putExtra("URL", mData.Url);
+                i.putExtra("id", 0);
                 mContext.startActivity(i);
             }
         });
@@ -79,14 +84,20 @@ public class ListViewAdapter extends RecyclerView.Adapter<ListViewAdapter.ViewHo
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
+        public ImageView _favicon;
         public TextView _subject;
         public TextView _detail;
+        public TextView _like;
+        public TextView _comment;
         public CardView cardview;
 
         public ViewHolder(View itemView) {
             super(itemView);
+            _favicon = (ImageView)itemView.findViewById(R.id.favicon);
             _subject = (TextView)itemView.findViewById(R.id.subject);
             _detail = (TextView)itemView.findViewById(R.id.detail);
+            _like = (TextView)itemView.findViewById(R.id.indicate_like);
+            _comment = (TextView)itemView.findViewById(R.id.indicate_comment);
             cardview = (CardView)itemView.findViewById(R.id.cardview);
         }
     }
@@ -98,8 +109,10 @@ public class ListViewAdapter extends RecyclerView.Adapter<ListViewAdapter.ViewHo
 
     public void addItem(BidInfo addInfo){
         BidInfo newAssign = new BidInfo();
-        newAssign.text = addInfo.text;
+        newAssign.Title = addInfo.Title;
         newAssign.Url = addInfo.Url;
+        newAssign.like = addInfo.like;
+        newAssign.comment = addInfo.comment;
         mListData.add(newAssign);
     }
 

@@ -43,14 +43,15 @@
             android:theme="@style/Theme.Transparent" />
         <activity
             android:name=".DetailActivity"
+            android:theme="@style/SimpleBlack"
             android:screenOrientation="portrait" />
         <activity
             android:name=".PickerActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".PrivateActivity"
-            android:theme="@style/Theme.Transparent"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Transparent" />
         <activity
             android:name=".RegisterActivity"
             android:screenOrientation="portrait"
@@ -62,7 +63,13 @@
         <activity
             android:name=".ExpireActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".LoginFormActivity" android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".LoginFormActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".NoticeActivity"
+            android:theme="@style/SimpleBlack"
+            android:screenOrientation="portrait"
+            ></activity>
     </application>
 
 </manifest>

@@ -1,9 +1,12 @@
 package com.dgu.lelab.bid.bidinfo;
 
 public class BidInfo {
-    public String text = "테스팅 내용";
-
     /**
+     * <입찰종류 컨벤션>
+     - 입찰정보(물품0/공사1/용역2/미분류3)
+     - 계약정보(물품4/공사5/용역6/미분류7)
+     * Bidinfo_bidlist 입찰종류에 들어갈 분류 번호이니 크롤러 코딩 시 필수참조바랍니다.
+     *
      * @Info
      * id : The primary key as DB tuple
      * Type : Bid Type
@@ -17,11 +20,12 @@ public class BidInfo {
      * Charge : The name of person who is in charge of bid
      * Date : Created Date
      */
-
+    public int like = 3;
+    public int comment = 11;
     public int id = -1;
     public int Type = -1;
-    public String Url = "http://www.pps.go.kr/kor/index.do";
-    public String Title = "";
+    public String Url = "http://www.naver.com/";
+    public String Title = "SW) 모바일 애플리케이션 개발 공고";
     public String Refer = "";
     public String BidNo = "";
     public String Bstart = "";
