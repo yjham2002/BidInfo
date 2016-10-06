@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "550191558110",
+    "firebase_url": "https://lunar-brace-135205.firebaseio.com",
+    "project_id": "lunar-brace-135205",
+    "storage_bucket": "lunar-brace-135205.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:550191558110:android:39015934cbe1e162",
+        "android_client_info": {
+          "package_name": "com.dgu.lelab.bid.bidinfo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "550191558110-lcumcagp98ol6jarkptp5qat9c4modf0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.dgu.lelab.bid.bidinfo",
+            "certificate_hash": "F4D9BE17D263126B2C7094770E25C665C39F51F3"
+          }
+        },
+        {
+          "client_id": "550191558110-ri2t4d00eot6n0cjfuo6ff281ipg7vqm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA9JoUEL9djNZWkSLh0ywjZLQvl65OgaXI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "550191558110-ri2t4d00eot6n0cjfuo6ff281ipg7vqm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
