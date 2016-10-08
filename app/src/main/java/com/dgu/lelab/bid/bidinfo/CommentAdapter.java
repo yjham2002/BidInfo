@@ -32,7 +32,7 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
         CommentData mData = mListData.get(position);
-        holder._title.setText(mData.userId);
+        holder._title.setText(mData.userName);
         holder._date.setText(mData.date);
         holder._content.setText(mData.content);
         holder.cardview.setOnClickListener(new CardView.OnClickListener() {
@@ -69,8 +69,7 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
     }
 
     public void addItem(CommentData addInfo){
-        CommentData newAssign = new CommentData(addInfo.id, addInfo.userId, addInfo.content, addInfo.date, addInfo.amount);
-        mListData.add(newAssign);
+        mListData.add(addInfo.clone());
     }
 
     public void dataChange(){

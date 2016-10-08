@@ -12,7 +12,7 @@ import android.widget.Toast;
 
 public class ApplyActivity extends AppCompatActivity implements View.OnClickListener, DatePickerDialog.OnDateSetListener{
 
-    private Button _birth, _submit;
+    private Button _birth, _submit, _company, _picker, _exit;
     private DatePickerDialog datePicker;
 
     @Override
@@ -22,6 +22,13 @@ public class ApplyActivity extends AppCompatActivity implements View.OnClickList
                 datePicker.show();
                 break;
             case R.id.app_submit:
+                break;
+            case R.id.app_company:
+                break;
+            case R.id.app_keyword:
+                break;
+            case R.id.cancel:
+                finish();
                 break;
             default: break;
         }
@@ -37,10 +44,16 @@ public class ApplyActivity extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_apply);
 
+        _company = (Button)findViewById(R.id.app_company);
+        _picker = (Button)findViewById(R.id.app_keyword);
+        _exit = (Button)findViewById(R.id.cancel);
         _birth = (Button)findViewById(R.id.app_birth);
         _submit = (Button)findViewById(R.id.app_submit);
         _birth.setOnClickListener(this);
         _submit.setOnClickListener(this);
+        _company.setOnClickListener(this);
+        _picker.setOnClickListener(this);
+        _exit.setOnClickListener(this);
 
         datePicker = new DatePickerDialog(this, AlertDialog.THEME_DEVICE_DEFAULT_DARK, this, 1990, 1, 1);
 

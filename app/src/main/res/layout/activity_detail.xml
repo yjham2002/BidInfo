@@ -70,8 +70,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="TextView"
-                        android:id="@+id/subject"
+                        android:text="Title"
+                        android:id="@+id/Title"
                         android:layout_gravity="left"
                         android:textColor="@color/jet"
                         android:textSize="@dimen/default_text_mid" />
@@ -81,38 +81,6 @@
                         android:layout_gravity="right"
                         android:orientation="horizontal"
                         >
-                        <ImageView
-                            android:layout_width="@dimen/default_text"
-                            android:layout_height="@dimen/default_text"
-                            android:src="@drawable/icon_like"
-                            android:layout_gravity="center_vertical"
-                            />
-                        <TextView
-                            android:id="@+id/indicate_like"
-                            android:layout_width="wrap_content"
-                            android:text="0"
-                            android:textColor="@color/monsoon"
-                            android:textSize="@dimen/default_text"
-                            android:layout_margin="2dp"
-                            android:layout_gravity="center_vertical"
-                            android:layout_height="wrap_content" />
-                        <ImageView
-                            android:layout_marginLeft="5dp"
-                            android:layout_width="@dimen/default_text"
-                            android:layout_height="@dimen/default_text"
-                            android:layout_gravity="center_vertical"
-                            android:src="@drawable/icon_comment"
-                            />
-                        <TextView
-                            android:id="@+id/indicate_comment"
-                            android:layout_width="wrap_content"
-                            android:text="0"
-                            android:textColor="@color/monsoon"
-                            android:textSize="@dimen/default_text"
-                            android:layout_margin="2dp"
-                            android:layout_gravity="center_vertical"
-                            android:layout_height="wrap_content" />
-
                     </LinearLayout>
 
                 </FrameLayout>
@@ -121,7 +89,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/week_padding"
                     android:text="Here is the field for showing detail information"
-                    android:id="@+id/detail"
+                    android:id="@+id/Url"
                     android:textColor="@color/monsoon"
                     android:textSize="@dimen/default_text" />
                 <TextView
@@ -129,7 +97,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/week_padding"
                     android:text="1970-01-01"
-                    android:id="@+id/rawdate"
+                    android:id="@+id/PDate"
                     android:textColor="@color/jet"
                     android:textSize="@dimen/default_text" />
             </LinearLayout>
@@ -138,37 +106,59 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/default_margin"
+            android:text="Department Information"
+            android:id="@+id/Dept"
+            android:textColor="@color/jet"
+            android:textSize="13dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_margin="@dimen/default_margin"
-            android:text="첫번째 상세정보 란 : 가나다라마"
-            android:id="@+id/test1"
+            android:text="Reference And BidNo"
+            android:id="@+id/Refer"
+            android:textColor="@color/jet"
+            android:textSize="15dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/default_margin"
+            android:text="Department Information"
+            android:id="@+id/Charge"
+            android:textColor="@color/monsoon"
+            android:textSize="12dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/default_margin"
+            android:text="시작일자"
+            android:id="@+id/Bstart"
             android:textColor="@color/jet"
             android:textSize="@dimen/default_text" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/default_margin"
-            android:text="1. 정보 표시란"
-            android:id="@+id/test2"
-            android:textColor="@color/jet"
-            android:textSize="@dimen/default_text" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/default_margin"
-            android:text="2. 정보 표시란"
-            android:id="@+id/test3"
-            android:textColor="@color/jet"
-            android:textSize="@dimen/default_text" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/default_margin"
-            android:text="3. 정보 표시란"
-            android:id="@+id/test4"
+            android:layout_marginLeft="@dimen/default_margin"
+            android:text="만료일자"
+            android:id="@+id/Bexpire"
             android:textColor="@color/jet"
             android:textSize="@dimen/default_text" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_margin"
+            android:layout_marginLeft="@dimen/default_margin"
+            android:text="#Keywords"
+            android:id="@+id/hid"
+            android:textColor="@color/monsoon"
+            android:textSize="@dimen/default_text" />
+
         <LinearLayout
+            android:layout_marginTop="@dimen/default_margin"
             android:layout_width="match_parent"
             android:background="@color/transparent_gray"
             android:orientation="horizontal"

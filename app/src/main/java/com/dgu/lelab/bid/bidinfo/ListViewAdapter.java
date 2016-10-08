@@ -61,9 +61,20 @@ public class ListViewAdapter extends RecyclerView.Adapter<ListViewAdapter.ViewHo
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
         BidInfo mData = mListData.get(position);
-        holder._favicon.setImageDrawable(mContext.getResources().getDrawable(R.drawable.div_01));
+        switch (mData.Type){
+            case 0:case 1:case 2:case 3:
+                holder._favicon.setImageDrawable(mContext.getResources().getDrawable(R.drawable.div_01));
+                break;
+            case 4:case 5:case 6:case 7:
+                holder._favicon.setImageDrawable(mContext.getResources().getDrawable(R.drawable.div_03));
+                break;
+            default:
+                holder._favicon.setImageDrawable(mContext.getResources().getDrawable(R.drawable.div_02));
+                break;
+        }
         holder._subject.setText(mData.Title);
         holder._detail.setText(mData.Url);
+        holder._date.setText(mData.PDate);
         holder._like.setText(Integer.toString(mData.like));
         holder._comment.setText(Integer.toString(mData.comment));
         holder.cardview.setOnClickListener(new CardView.OnClickListener() {
@@ -72,7 +83,7 @@ public class ListViewAdapter extends RecyclerView.Adapter<ListViewAdapter.ViewHo
                 final BidInfo mData = mListData.get(position);
                 Intent i = new Intent(mContext, DetailActivity.class);
                 i.putExtra("URL", mData.Url);
-                i.putExtra("id", 0);
+                i.putExtra("id", mData.id);
                 mContext.startActivity(i);
             }
         });
@@ -89,10 +100,12 @@ public class ListViewAdapter extends RecyclerView.Adapter<ListViewAdapter.ViewHo
         public TextView _detail;
         public TextView _like;
         public TextView _comment;
+        public TextView _date;
         public CardView cardview;
 
         public ViewHolder(View itemView) {
             super(itemView);
+            _date = (TextView)itemView.findViewById(R.id.rawdate);
             _favicon = (ImageView)itemView.findViewById(R.id.favicon);
             _subject = (TextView)itemView.findViewById(R.id.subject);
             _detail = (TextView)itemView.findViewById(R.id.detail);
@@ -108,12 +121,7 @@ public class ListViewAdapter extends RecyclerView.Adapter<ListViewAdapter.ViewHo
     }
 
     public void addItem(BidInfo addInfo){
-        BidInfo newAssign = new BidInfo();
-        newAssign.Title = addInfo.Title;
-        newAssign.Url = addInfo.Url;
-        newAssign.like = addInfo.like;
-        newAssign.comment = addInfo.comment;
-        mListData.add(newAssign);
+        mListData.add(addInfo.clone());
     }
 
     public void dataChange(){

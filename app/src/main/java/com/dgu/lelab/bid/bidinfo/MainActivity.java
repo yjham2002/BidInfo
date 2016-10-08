@@ -24,6 +24,13 @@ import android.widget.Toast;
 import com.github.florent37.materialviewpager.MaterialViewPager;
 import com.github.florent37.materialviewpager.header.HeaderDesign;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import util.Communicator;
+import util.URL;
+
 public class MainActivity extends ActionBarActivity implements View.OnClickListener{
 
     private Button _menuBtn01, _menuBtn02, _menuBtn03, _noticemore;
@@ -82,6 +89,23 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         mViewPager = (MaterialViewPager) findViewById(R.id.materialViewPager);
         toolbar = mViewPager.getToolbar();
 
+        Communicator.getHttp(URL.MAIN + URL.REST_NOTICE_RECENT, new Handler(){
+            @Override
+            public void handleMessage(Message msg){
+                String jsonString = msg.getData().getString("jsonString");
+                try {
+                    JSONArray json_arr = new JSONArray(jsonString);
+                    JSONObject json_list = json_arr.getJSONObject(0);
+                    String notice = json_list.getString("Content");
+                    if(notice.length() > 30) notice = notice.substring(0, 25) + "...";
+                    _noticetext.setText(notice);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        });
+
         Intent cmd = getIntent();
         Bundle cmdMsg = cmd.getExtras();
         if(cmdMsg == null) {
@@ -94,6 +118,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
                 _useraccount.setText("Testing mode or Error");
             }else {
                 _useraccount.setText(cmdMsg.getString("user_account"));
+                _username.setText(cmdMsg.getString("user_name"));
             }
         }
 
@@ -105,9 +130,9 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
                     case 0:
                         return new fm_1();
                     case 1:
-                        return new fm_1();
+                        return new fm_2();
                     case 2:
-                        return new fm_1();
+                        return new fm_3();
                     default:
                         return null;
                 }
@@ -122,11 +147,11 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
             public CharSequence getPageTitle(int position) {
                 switch (position % 3) {
                     case 0:
-                        return "물품입찰";
+                        return "물품정보";
                     case 1:
-                        return "공사입찰";
+                        return "공사정보";
                     case 2:
-                        return "용역입찰";
+                        return "용역정보";
                 }
                 return "";
             }

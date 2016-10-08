@@ -2,6 +2,8 @@ package com.dgu.lelab.bid.bidinfo;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -11,6 +13,13 @@ import android.widget.Button;
 
 import com.github.florent37.materialviewpager.MaterialViewPagerHelper;
 import com.github.florent37.materialviewpager.adapter.RecyclerViewMaterialAdapter;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import util.Communicator;
+import util.URL;
 
 public class NoticeActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -41,30 +50,24 @@ public class NoticeActivity extends AppCompatActivity implements View.OnClickLis
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
 
-        noticeAdapter.addItem(new NoticeData(0, "테스팅 제목", "테스트1 내용입니다!", "2014-11-20"));
-        noticeAdapter.addItem(new NoticeData(0, "테스팅 제목", "테스트2 내용입니다!", "2014-11-20"));
-        noticeAdapter.addItem(new NoticeData(0, "테스팅 제목", "테스트3 내용입니다!", "2014-11-20"));
-        noticeAdapter.addItem(new NoticeData(0, "테스팅 제목", "테스트4 내용입니다!", "2014-11-20"));
-        noticeAdapter.addItem(new NoticeData(0, "테스팅 제목", "테스트5 내용입니다!", "2014-11-20"));
-        noticeAdapter.addItem(new NoticeData(0, "테스팅 제목", "테스트6 내용입니다!", "2014-11-20"));
-        noticeAdapter.addItem(new NoticeData(0, "테스팅 제목", "테스트7 내용입니다!", "2014-11-20"));
-        noticeAdapter.addItem(new NoticeData(0, "테스팅 제목", "테스트8 내용입니다!", "2014-11-20"));
-        noticeAdapter.addItem(new NoticeData(0, "테스팅 제목", "테스트9 내용입니다!", "2014-11-20"));
-        noticeAdapter.addItem(new NoticeData(0, "테스팅 제목", "테스트 22내용입니다!", "2014-11-20"));
-        noticeAdapter.addItem(new NoticeData(0, "테스팅 제목", "테스트2222 내용입니다!", "2014-11-20"));
-        noticeAdapter.addItem(new NoticeData(0, "테스팅 제목", "테스트3123 내용입니다!", "2014-11-20"));
-        noticeAdapter.addItem(new NoticeData(0, "테스팅 제목", "테스트 123내용입니다!", "2014-11-20"));
-        noticeAdapter.addItem(new NoticeData(0, "테스2팅 제목", "테스트 내용입니다!", "2014-11-20"));
-        noticeAdapter.addItem(new NoticeData(0, "테스2팅 제목", "테스트 내용입니다!", "2014-11-20"));
-        noticeAdapter.addItem(new NoticeData(0, "테스팅 2제목", "테스트 내용입니다!", "2014-11-20"));
-        noticeAdapter.addItem(new NoticeData(0, "테스팅 2제목", "테스트 내용입니다!", "2014-11-20"));
-        noticeAdapter.addItem(new NoticeData(0, "테스2팅2 제목", "테스트 내용입니다!", "2014-11-20"));
-        noticeAdapter.addItem(new NoticeData(0, "테스2팅 제목", "테스트 내용입니다!", "2014-11-20"));
-        noticeAdapter.addItem(new NoticeData(0, "테스팅 제목", "테스트 내용입니다!", "2014-11-20"));
-        noticeAdapter.addItem(new NoticeData(0, "테스2팅 제목", "테스트 내용입니다!", "2014-11-20"));
-        noticeAdapter.addItem(new NoticeData(0, "테스2팅 제목", "테스트 내용입니다!", "2014-11-20"));
-        noticeAdapter.addItem(new NoticeData(0, "테12스팅 제목", "테스트 내용입니다!", "2014-11-20"));
-        noticeAdapter.dataChange();
+        Communicator.getHttp(URL.MAIN + URL.REST_NOTICE_ALL, new Handler(){
+            @Override
+            public void handleMessage(Message msg){
+                String jsonString = msg.getData().getString("jsonString");
+                try {
+                    JSONArray json_arr = new JSONArray(jsonString);
+                    for(int i = 0; i < json_arr.length(); i++) {
+                        JSONObject json_list = json_arr.getJSONObject(i);
+                        noticeAdapter.addItem(new NoticeData(json_list.getInt("id"), json_list.getString("Title"), json_list.getString("Content"), json_list.getString("Date")));
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }finally {
+                    noticeAdapter.dataChange();
+                }
+
+            }
+        });
 
     }
 }
