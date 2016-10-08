@@ -156,7 +156,17 @@
             android:id="@+id/hid"
             android:textColor="@color/monsoon"
             android:textSize="@dimen/default_text" />
-
+        <CheckBox
+            android:id="@+id/like"
+            android:checked="false"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginTop="@dimen/default_margin"
+            android:layout_marginRight="@dimen/default_margin"
+            android:text="관심 정보로 지정"
+            android:textColor="@color/jet"
+            />
         <LinearLayout
             android:layout_marginTop="@dimen/default_margin"
             android:layout_width="match_parent"

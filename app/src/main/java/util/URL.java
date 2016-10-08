@@ -10,5 +10,8 @@ public class URL {
     public static final String REST_NOTICE_ONE = "/notice/";
     public static final String REST_NOTICE_RECENT = "/notice/recent";
     public static final String REST_USER_LOGIN = "/users/login";
+    public static final String REST_LIKE = "/board/like";
+    public static final String REST_UNLIKE = "/board/unlike";
+    public static final String REST_CHECK = "/board/check";
 
 }

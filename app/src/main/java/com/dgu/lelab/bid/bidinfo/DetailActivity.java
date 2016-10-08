@@ -3,6 +3,7 @@ package com.dgu.lelab.bid.bidinfo;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -13,6 +14,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,13 +23,19 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.HashMap;
+
 import util.Communicator;
 import util.URL;
 
 public class DetailActivity extends AppCompatActivity implements View.OnClickListener {
 
+    private SharedPreferences pref;
+    private SharedPreferences.Editor prefEditor;
+
     private Bundle cmdMsg;
 
+    private CheckBox _like;
     private TextView _Url, _Title, _PDate, _ReferAndBNum, _hid, _Bstart, _Bexpire, _Dept, _Charge;
     private ImageView _Type;
 
@@ -36,9 +44,24 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
     private String URL = "";
     private Button _redirect, _exit;
 
+    public void toggleLike(){
+        String URL = util.URL.MAIN;
+        if(!_like.isChecked()) // unlike
+            URL = URL + util.URL.REST_UNLIKE;
+        else // like
+            URL = URL + util.URL.REST_LIKE;
+        HashMap<String, String> data = new HashMap<>();
+        data.put("mid", Integer.toString(pref.getInt("id", 0)));
+        data.put("bid", Integer.toString(cmdMsg.getInt("id")));
+        new Communicator().postHttp(URL, data, new Handler(){});
+    }
+
     @Override
     public void onClick(View v){
         switch (v.getId()){
+            case R.id.like:
+                toggleLike();
+                break;
             case R.id.redirect:
                 if(URL.length() <= 7) {
                     Toast.makeText(getApplicationContext(), "주소 정보가 없습니다.", Toast.LENGTH_LONG).show();
@@ -60,10 +83,16 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
+        pref = getSharedPreferences("BIDINFO", MODE_PRIVATE);
+        prefEditor = pref.edit();
+
         _redirect = (Button)findViewById(R.id.redirect);
         _redirect.setOnClickListener(this);
         _exit = (Button)findViewById(R.id.bt_exit);
         _exit.setOnClickListener(this);
+
+        _like = (CheckBox)findViewById(R.id.like);
+        _like.setOnClickListener(this);
 
         mRecyclerView = (RecyclerView)findViewById(R.id.recyclerView);
         commentAdapter = new CommentAdapter(this, R.layout.listview_comment);
@@ -97,6 +126,24 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
         progressDialog.setIndeterminate(true);
         progressDialog.setMessage("상세정보를 불러오는 중...");
         progressDialog.show();
+
+        HashMap<String, String> data = new HashMap<>();
+        data.put("mid", Integer.toString(pref.getInt("id", 0)));
+        data.put("bid", Integer.toString(cmdMsg.getInt("id")));
+        new Communicator().postHttp(util.URL.MAIN + util.URL.REST_CHECK, data, new Handler(){
+            @Override
+            public void handleMessage(Message msg){
+                String jsonString = msg.getData().getString("jsonString");
+                try{
+                    JSONArray json_arr = new JSONArray(jsonString);
+                    JSONObject json_list = json_arr.getJSONObject(0);
+                    if(json_list.getInt("check")==0) _like.setChecked(false);
+                    else _like.setChecked(true);
+                }catch(JSONException e){
+                    e.printStackTrace();
+                }
+            }
+            });
 
         Communicator.getHttp(util.URL.MAIN + util.URL.REST_BOARD_ONE + cmdMsg.getInt("id"), new Handler(){
             @Override

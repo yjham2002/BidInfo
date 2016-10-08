@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.Notification;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -24,6 +25,8 @@ import util.URL;
 
 public class LoginFormActivity extends AppCompatActivity implements View.OnClickListener {
 
+    private SharedPreferences pref;
+    private SharedPreferences.Editor prefEditor;
     private Button _login, _notyet;
     private EditText _account, _password;
 
@@ -85,6 +88,12 @@ public class LoginFormActivity extends AppCompatActivity implements View.OnClick
                     Intent mainCall = new Intent(LoginFormActivity.this, MainActivity.class);
                     mainCall.putExtra("user_account", json_list.getString("Uid"));
                     mainCall.putExtra("user_name", json_list.getString("Name"));
+
+                    prefEditor.putString("Uid", json_list.getString("Uid"));
+                    prefEditor.putString("Name", json_list.getString("Name"));
+                    prefEditor.putInt("id", json_list.getInt("id"));
+                    prefEditor.commit();
+
                     progressDialog.dismiss();
                     _login.setEnabled(true);
                     startActivity(mainCall);
@@ -103,6 +112,9 @@ public class LoginFormActivity extends AppCompatActivity implements View.OnClick
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_form);
+
+        pref = getSharedPreferences("BIDINFO", MODE_PRIVATE);
+        prefEditor = pref.edit();
 
         _login = (Button)findViewById(R.id.bt_sign_f);
         _login.setOnClickListener(this);

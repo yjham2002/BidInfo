@@ -30,9 +30,6 @@ public class SettingsActivity extends PreferenceActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		addPreferencesFromResource(R.xml.pref_settings);
-		setOnPreferenceChange(findPreference("userName"));
-		setOnPreferenceChange(findPreference("userNameOpen"));
-		setOnPreferenceChange(findPreference("autoUpdate_ringtone"));
 		Preference pref1 = findPreference( "version" );
 		try {
 			pref1.setSummary(appVersion());
