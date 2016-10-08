@@ -3,6 +3,7 @@ package com.dgu.lelab.bid.bidinfo;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -12,6 +13,8 @@ import android.widget.Toast;
 
 public class ApplyActivity extends AppCompatActivity implements View.OnClickListener, DatePickerDialog.OnDateSetListener{
 
+    public static int cid = -1;
+    public static String cName = "";
     private Button _birth, _submit, _company, _picker, _exit;
     private DatePickerDialog datePicker;
 
@@ -24,6 +27,7 @@ public class ApplyActivity extends AppCompatActivity implements View.OnClickList
             case R.id.app_submit:
                 break;
             case R.id.app_company:
+                startActivity(new Intent(this, CompanyPickerActivity.class));
                 break;
             case R.id.app_keyword:
                 break;

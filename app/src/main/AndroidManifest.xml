@@ -3,6 +3,7 @@
     package="com.dgu.lelab.bid.bidinfo">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
         android:allowBackup="true"
@@ -10,16 +11,14 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <service
-            android:name=".MyFirebaseMessagingService">
+        <service android:name=".MyFirebaseMessagingService">
             <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
-        <service
-            android:name=".MyFirebaseInstanceIDService">
+        <service android:name=".MyFirebaseInstanceIDService">
             <intent-filter>
-                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
         </service>
 
@@ -56,8 +55,8 @@
             android:theme="@style/Theme.Transparent" />
         <activity
             android:name=".DetailActivity"
-            android:theme="@style/SimpleBlack"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:theme="@style/SimpleBlack" />
         <activity
             android:name=".PickerActivity"
             android:screenOrientation="portrait" />
@@ -79,9 +78,17 @@
         <activity
             android:name=".LoginFormActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".NoticeActivity"
-            android:theme="@style/SimpleBlack"
+        <activity
+            android:name=".NoticeActivity"
             android:screenOrientation="portrait"
+            android:theme="@style/SimpleBlack" />
+        <activity
+            android:name=".CompanyActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/SimpleBlack" />
+        <activity android:name=".CompanyPickerActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/SimpleBlack"
             ></activity>
     </application>
 
