@@ -4,7 +4,7 @@
     <PreferenceCategory android:title="알림" >
         <SwitchPreference
             android:defaultValue="true"
-            android:key="notification"
+            android:key="notification_push"
             android:summary="알림을 사용합니다"
             android:switchTextOff="OFF"
             android:switchTextOn="ON"
@@ -12,8 +12,8 @@
 
         <CheckBoxPreference
             android:defaultValue="true"
-            android:dependency="notification"
-            android:key="keyword"
+            android:dependency="notification_push"
+            android:key="keyword_push"
             android:summary="키워드가 포함된 정보 등록 알림"
             android:title="키워드 알림" />
 

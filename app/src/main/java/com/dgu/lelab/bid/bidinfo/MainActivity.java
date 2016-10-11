@@ -1,6 +1,7 @@
 package com.dgu.lelab.bid.bidinfo;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Handler;
 import android.os.Message;
@@ -28,10 +29,15 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.HashMap;
+
 import util.Communicator;
 import util.URL;
 
 public class MainActivity extends ActionBarActivity implements View.OnClickListener{
+
+    private SharedPreferences pref;
+    private SharedPreferences.Editor prefEditor;
 
     private Button _menuBtn01, _menuBtn02, _menuBtn03, _noticemore;
     private TextView _username, _useraccount, _noticetext;
@@ -71,6 +77,9 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setTitle("");
+
+        pref = getSharedPreferences("BIDINFO", MODE_PRIVATE);
+        prefEditor = pref.edit();
 
         _menuBtn01 = (Button)findViewById(R.id.menu01);
         _menuBtn01.setOnClickListener(this);
@@ -229,6 +238,11 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     public void onResume(){
         super.onResume();
         mDrawerToggle.syncState();
+
+        HashMap<String, String> data = new HashMap<>();
+        data.put("Token", pref.getString("Token", "#"));
+        data.put("mid", Integer.toString(pref.getInt("id", 0)));
+        new Communicator().postHttp(URL.MAIN + URL.REST_GCM_NEW, data, new Handler(){});
     }
 
     @Override

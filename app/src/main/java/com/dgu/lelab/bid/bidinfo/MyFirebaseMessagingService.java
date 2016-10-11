@@ -5,16 +5,23 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.BitmapFactory;
+import android.preference.PreferenceManager;
 import android.util.Log;
 
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
+    private SharedPreferences pref, prefSet;
+    private SharedPreferences.Editor prefEditor;
     private static final int NOTICECODE = 2014112021;
 
     @Override
@@ -24,8 +31,35 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         String title = data.get("title");
         String msg = data.get("message");
 
+        pref = getSharedPreferences("BIDINFO", MODE_PRIVATE);
+        prefEditor = pref.edit();
+
+        prefSet = PreferenceManager.getDefaultSharedPreferences(this);
+
+        /**
+         *  Manager have to send title(#keyword) and msg(keyword set with delimeter \\|) when the manager want to send keyword notification.
+         * */
         Log.e("FCM Message", from + "/" + title + " : " + msg);
-        notifyReg(title, msg);
+        if(prefSet.getBoolean("notification_push", true) && title != null) {
+            if(title.equals("#keyword")){
+                if(prefSet.getBoolean("keyword_push", true) && isKeyword(msg)) {
+                    notifyReg("키워드가 포함된 공고 게시됨", "#" + msg.trim().replaceAll("\\|", " #"));
+                }
+            }else{
+                notifyReg(title, msg);
+            }
+        }
+
+    }
+
+    public boolean isKeyword(String msg){
+        String rawHash = pref.getString("hid", "#");
+        if(rawHash.equals("#")) return false;
+        else {
+            List<String> list = new ArrayList<String>(Arrays.asList(msg.trim().split("\\|")));
+            for(String token : list) if(rawHash.contains(token)) return true;
+            return false;
+        }
     }
 
     public void notifyReg(String title, String msg){
@@ -43,6 +77,5 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         NotificationManager nm = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         nm.notify(NOTICECODE, builder.build());
     }
-
 
 }

@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -91,9 +92,10 @@ public class LoginFormActivity extends AppCompatActivity implements View.OnClick
 
                     prefEditor.putString("Uid", json_list.getString("Uid"));
                     prefEditor.putString("Name", json_list.getString("Name"));
+                    prefEditor.putString("hid", json_list.getString("hid"));
                     prefEditor.putInt("id", json_list.getInt("id"));
                     prefEditor.commit();
-
+                    Log.e("hid", pref.getString("hid", "#"));
                     progressDialog.dismiss();
                     _login.setEnabled(true);
                     startActivity(mainCall);

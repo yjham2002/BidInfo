@@ -187,7 +187,7 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
                     else _Charge.setText(json_list.getString("Charge"));
                     if(json_list.getString("hid").equals("null")) _hid.setVisibility(View.GONE);
                     else {
-                        _hid.setText("#" + json_list.getString("hid").replaceAll(",", " #"));
+                        _hid.setText("#" + json_list.getString("hid").replaceAll("\\|", " #"));
                     }
 
                     URL = json_list.getString("Url");

@@ -1,5 +1,6 @@
 package com.dgu.lelab.bid.bidinfo;
 
+import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.media.Ringtone;
@@ -17,6 +18,7 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 public class SettingsActivity extends PreferenceActivity {
 
@@ -41,18 +43,12 @@ public class SettingsActivity extends PreferenceActivity {
 
 	private void setOnPreferenceChange(Preference mPreference) {
 		mPreference.setOnPreferenceChangeListener(onPreferenceChangeListener);
-
-		onPreferenceChangeListener.onPreferenceChange(
-				mPreference,
-				PreferenceManager.getDefaultSharedPreferences(
-						mPreference.getContext()).getString(
-						mPreference.getKey(), ""));
+		onPreferenceChangeListener.onPreferenceChange(mPreference, PreferenceManager.getDefaultSharedPreferences(mPreference.getContext()).getString(mPreference.getKey(), ""));
 	}
 
 	@Override
 	protected void onPostCreate(Bundle savedInstanceState) {
 		super.onPostCreate(savedInstanceState);
-
 		LinearLayout root = (LinearLayout)findViewById(android.R.id.list).getParent().getParent().getParent();
 		Toolbar bar = (Toolbar) LayoutInflater.from(this).inflate(R.layout.settings_toolbar, root, false);
 		root.addView(bar, 0); // insert at top
@@ -69,40 +65,26 @@ public class SettingsActivity extends PreferenceActivity {
 		@Override
 		public boolean onPreferenceChange(Preference preference, Object newValue) {
 			String stringValue = newValue.toString();
-
 			if (preference instanceof EditTextPreference) {
 				preference.setSummary(stringValue);
-
 			} else if (preference instanceof ListPreference) {
-
 				ListPreference listPreference = (ListPreference) preference;
 				int index = listPreference.findIndexOfValue(stringValue);
-
-				preference
-						.setSummary(index >= 0 ? listPreference.getEntries()[index]
-								: null);
-
+				preference.setSummary(index >= 0 ? listPreference.getEntries()[index] : null);
 			} else if (preference instanceof RingtonePreference) {
 				if (TextUtils.isEmpty(stringValue)) {
 					// Empty values correspond to 'silent' (no ringtone).
 					preference.setSummary("Summary");
-
 				} else {
-					Ringtone ringtone = RingtoneManager.getRingtone(
-							preference.getContext(), Uri.parse(stringValue));
-
+					Ringtone ringtone = RingtoneManager.getRingtone(preference.getContext(), Uri.parse(stringValue));
 					if (ringtone == null) {
-						// Clear the summary if there was a lookup error.
 						preference.setSummary(null);
-
 					} else {
-						String name = ringtone
-								.getTitle(preference.getContext());
+						String name = ringtone.getTitle(preference.getContext());
 						preference.setSummary(name);
 					}
 				}
 			}
-
 			return true;
 		}
 
