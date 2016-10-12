@@ -1,5 +1,6 @@
 package com.dgu.lelab.bid.bidinfo;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
@@ -8,6 +9,7 @@ import android.os.Message;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.content.LocalBroadcastManager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
@@ -19,6 +21,8 @@ import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,6 +40,12 @@ import util.URL;
 
 public class MainActivity extends ActionBarActivity implements View.OnClickListener{
 
+    private Context context;
+
+    private TextView pbar;
+    private ImageView black;
+
+    public static ListViewAdapter bids;
     private SharedPreferences pref;
     private SharedPreferences.Editor prefEditor;
 
@@ -78,9 +88,15 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         setTitle("");
 
+        context = this;
+
         pref = getSharedPreferences("BIDINFO", MODE_PRIVATE);
         prefEditor = pref.edit();
 
+        bids = new ListViewAdapter(this, R.layout.listview_bid);
+
+        pbar = (TextView)findViewById(R.id.pbar);
+        black = (ImageView)findViewById(R.id.black);
         _menuBtn01 = (Button)findViewById(R.id.menu01);
         _menuBtn01.setOnClickListener(this);
         _menuBtn02 = (Button)findViewById(R.id.menu02);
@@ -238,7 +254,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     public void onResume(){
         super.onResume();
         mDrawerToggle.syncState();
-
+        loadList();
         HashMap<String, String> data = new HashMap<>();
         data.put("Token", pref.getString("Token", "#"));
         data.put("mid", Integer.toString(pref.getInt("id", 0)));
@@ -281,6 +297,46 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
             }
         }
         return super.onKeyDown(keyCode, event);
+    }
+
+    private static final String UPDATE_INTENT = "UPDATE_INTENT_FROM_ACTIVITY";
+
+    public void setLoadScrren(boolean flag){
+        if(flag){
+            pbar.setVisibility(View.VISIBLE);
+            black.setVisibility(View.VISIBLE);
+        }else{
+            pbar.setVisibility(View.INVISIBLE);
+            black.setVisibility(View.INVISIBLE);
+        }
+    }
+
+    public void loadList(){
+        setLoadScrren(true);
+        Communicator.getHttp(URL.MAIN + URL.REST_BOARD_ALL, new Handler(){
+            @Override
+            public void handleMessage(Message msg){
+                String jsonString = msg.getData().getString("jsonString");
+                bids.mListData.clear();
+                try {
+                    JSONArray json_arr = new JSONArray(jsonString);
+                    for(int i = 0; i < json_arr.length(); i++){
+                        JSONObject json_list = json_arr.getJSONObject(i);
+                        Log.e("Data Received", json_list.toString());
+                        bids.addItem(new BidInfo(json_list.getInt("likecount"), json_list.getInt("commentcount"), json_list.getInt("id"), json_list.getInt("Type")
+                                , json_list.getString("Url"), json_list.getString("Title"), json_list.getString("Refer"), json_list.getString("BidNo"), json_list.getString("Bstart")
+                                , json_list.getString("Bexpire"), json_list.getString("PDate"), json_list.getString("Dept"), json_list.getString("Charge"), json_list.getString("Date")));
+                    }
+                } catch (JSONException e) {
+                    Toast.makeText(getApplicationContext(), "정보를 불러오는 중 오류가 발생하였습니다.", Toast.LENGTH_LONG).show();
+                    e.printStackTrace();
+                }finally {
+                    Intent intent = new Intent(UPDATE_INTENT);
+                    LocalBroadcastManager.getInstance(context).sendBroadcast(intent);
+                    setLoadScrren(false);
+                }
+            }
+        });
     }
 
 }

@@ -49,6 +49,22 @@
             android:src="@drawable/ic_edit"
             android:layout_margin="@dimen/default_margin"
             />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/black"
+            android:layout_gravity="center"
+            android:background="@color/transparent_gray" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Loading..."
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            android:id="@+id/pbar"
+            android:layout_gravity="center" />
     </FrameLayout>
 
     <include layout="@layout/drawer" />

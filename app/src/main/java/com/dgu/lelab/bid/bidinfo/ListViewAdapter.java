@@ -121,7 +121,7 @@ public class ListViewAdapter extends RecyclerView.Adapter<ListViewAdapter.ViewHo
     }
 
     public void addItem(BidInfo addInfo){
-        mListData.add(addInfo.clone());
+        mListData.add(addInfo);
     }
 
     public void dataChange(){

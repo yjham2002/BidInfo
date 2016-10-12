@@ -24,11 +24,10 @@ import util.URL;
 
 public class IntroActivity extends AppCompatActivity {
 
-    public static ListViewAdapter bids;
     private SharedPreferences prefs;
     private SharedPreferences.Editor prefEditor;
     private Handler h;
-    private int delayTime = 2500;
+    private int delayTime = 2500, delayTime2 = 1000;
     private ImageView iv;
 
     @Override
@@ -38,13 +37,11 @@ public class IntroActivity extends AppCompatActivity {
         prefs = getSharedPreferences("UnivTable", MODE_PRIVATE);
         prefEditor = prefs.edit();
 
-        bids = new ListViewAdapter(this, R.layout.listview_bid);
-
         iv = (ImageView)findViewById(R.id.imageView);
         iv.setDrawingCacheEnabled(true);
         h = new Handler();
-
-        Communicator.getHttp(URL.MAIN + URL.REST_BOARD_ALL, new Handler(){
+        h.postDelayed(intro, delayTime2);
+/*        Communicator.getHttp(URL.MAIN + URL.REST_BOARD_ALL, new Handler(){
             @Override
             public void handleMessage(Message msg){
                 String jsonString = msg.getData().getString("jsonString");
@@ -64,7 +61,7 @@ public class IntroActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
             }
-        });
+        });*/
 
         //AnimationSet animset = new AnimationSet(false);
         //Animation anim2 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.alpha_anim);
