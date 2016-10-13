@@ -7,6 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import java.util.HashMap;
 
@@ -17,11 +19,13 @@ public class PrivateActivity extends AppCompatActivity implements View.OnClickLi
 
     private Button _exit, _submit;
     private EditText _title, _content, _keyword;
+    private RadioGroup radioGroup;
 
     @Override
     public void onClick(View v){
         switch(v.getId()){
             case R.id.private_submit:
+                Toast.makeText(getApplicationContext(), Integer.toString(radioGroup.getCheckedRadioButtonId()), Toast.LENGTH_LONG).show();
                 postArticle(_title.getText().toString(), _content.getText().toString(), _keyword.getText().toString());
                 break;
             case R.id.private_cancel:
@@ -68,7 +72,7 @@ public class PrivateActivity extends AppCompatActivity implements View.OnClickLi
         _submit = (Button)findViewById(R.id.private_submit);
         _exit.setOnClickListener(this);
         _submit.setOnClickListener(this);
-
+        radioGroup = (RadioGroup)findViewById(R.id.radioGroup);
         _title = (EditText)findViewById(R.id.private_title);
         _content = (EditText)findViewById(R.id.private_content);
         _keyword = (EditText)findViewById(R.id.private_key);
