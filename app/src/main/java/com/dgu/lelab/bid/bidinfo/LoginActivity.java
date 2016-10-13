@@ -56,7 +56,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         _signup = (Button)findViewById(R.id.bt_signup_ent);
         _login.setOnClickListener(this);
         _signup.setOnClickListener(this);
-        startActivity(new Intent(this, ExpireActivity.class));
+
     }
 
 }

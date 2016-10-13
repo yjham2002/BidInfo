@@ -19,7 +19,11 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.TimeZone;
 
 import util.Communicator;
 import util.URL;
@@ -43,6 +47,23 @@ public class LoginFormActivity extends AppCompatActivity implements View.OnClick
                 break;
             default: break;
         }
+    }
+
+    public boolean isExpired(String date){
+        Date convertTime = new Date();
+        Date currentTime = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.sss'Z'");
+
+        sdf.setTimeZone(TimeZone.getTimeZone("GMT"));
+        try {
+            convertTime = sdf.parse(date);
+        }catch (Exception e){
+            e.printStackTrace();
+            Toast.makeText(getApplicationContext(), "계정 유효성 검사에 실패하였습니다.\n관리자에게 문의하세요.", Toast.LENGTH_LONG).show();
+            return true;
+        }
+        if(convertTime.after(currentTime)) return false;
+        else return true;
     }
 
     public void verifyLogin(String email, String password){
@@ -98,7 +119,8 @@ public class LoginFormActivity extends AppCompatActivity implements View.OnClick
                     Log.e("hid", pref.getString("hid", "#"));
                     progressDialog.dismiss();
                     _login.setEnabled(true);
-                    startActivity(mainCall);
+                    if(!isExpired(json_list.getString("ExpDate"))) startActivity(mainCall);
+                    else startActivity(new Intent(LoginFormActivity.this, ExpireActivity.class));
                     finish();
                 }catch (JSONException e){
                     Toast.makeText(getApplicationContext(), "로그인에 실패하였습니다.", Toast.LENGTH_LONG).show();

@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -34,6 +35,8 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
         CommentData mData = mListData.get(position);
         holder._title.setText(mData.userName);
         holder._date.setText(mData.date);
+        if(mData.amount.equals("null")) holder._amount.setVisibility(View.GONE);
+        else holder._amount.setText("제시금액 : " + mData.amount + " 천원");
         holder._content.setText(mData.content);
         holder.cardview.setOnClickListener(new CardView.OnClickListener() {
             @Override
@@ -52,14 +55,16 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
         public TextView _title;
         public TextView _date;
         public TextView _content;
-        public CardView cardview;
+        public TextView _amount;
+        public LinearLayout cardview;
 
         public ViewHolder(View itemView) {
             super(itemView);
             _title = (TextView)itemView.findViewById(R.id.title);
             _date = (TextView)itemView.findViewById(R.id.date);
             _content = (TextView)itemView.findViewById(R.id.content);
-            cardview = (CardView)itemView.findViewById(R.id.cardview);
+            cardview = (LinearLayout) itemView.findViewById(R.id.cardview);
+            _amount = (TextView)itemView.findViewById(R.id.amount);
         }
     }
 

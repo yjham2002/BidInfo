@@ -7,220 +7,265 @@
     android:orientation="horizontal"
     tools:context="com.dgu.lelab.bid.bidinfo.DetailActivity">
 
+
     <LinearLayout
+        android:id="@+id/footer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:orientation="vertical"
-        android:id="@+id/linearLayout2">
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/colorPrimaryDark"
-            android:id="@+id/frameLayout">
-
-            <android.support.v7.widget.AppCompatButton
-                style="@style/Widget.AppCompat.Button.Borderless"
-                android:id="@+id/bt_exit"
-                android:layout_gravity="right"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/white"
-                android:textSize="@dimen/default_text"
-                android:text="닫기"
-                />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="상세보기"
-                android:id="@+id/titleText"
-                android:layout_gravity="center"
-                android:textColor="@color/white" />
-
-        </FrameLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:id="@+id/linearLayout">
-            <ImageView
-                android:layout_width="@dimen/iconSize"
-                android:layout_height="@dimen/iconSize"
-                android:id="@+id/favicon"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="@dimen/week_padding"
-                android:src="@drawable/div_01" />
-
-            <LinearLayout
-                android:orientation="vertical"
-                android:padding="@dimen/default_margin"
-                android:layout_weight="7"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <FrameLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Title"
-                        android:id="@+id/Title"
-                        android:layout_gravity="left"
-                        android:textColor="@color/jet"
-                        android:textSize="@dimen/default_text_mid" />
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="right"
-                        android:orientation="horizontal"
-                        >
-                    </LinearLayout>
-
-                </FrameLayout>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/week_padding"
-                    android:text="Here is the field for showing detail information"
-                    android:id="@+id/Url"
-                    android:textColor="@color/monsoon"
-                    android:textSize="@dimen/default_text" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/week_padding"
-                    android:text="1970-01-01"
-                    android:id="@+id/PDate"
-                    android:textColor="@color/jet"
-                    android:textSize="@dimen/default_text" />
-            </LinearLayout>
-
-        </LinearLayout>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/default_margin"
-            android:text="Department Information"
-            android:id="@+id/Dept"
-            android:textColor="@color/jet"
-            android:textSize="13dp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/default_margin"
-            android:text="Reference And BidNo"
-            android:id="@+id/Refer"
-            android:textColor="@color/jet"
-            android:textSize="15dp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/default_margin"
-            android:text="Department Information"
-            android:id="@+id/Charge"
-            android:textColor="@color/monsoon"
-            android:textSize="12dp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/default_margin"
-            android:text="시작일자"
-            android:id="@+id/Bstart"
-            android:textColor="@color/jet"
-            android:textSize="@dimen/default_text" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/default_margin"
-            android:text="만료일자"
-            android:id="@+id/Bexpire"
-            android:textColor="@color/jet"
-            android:textSize="@dimen/default_text" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/default_margin"
-            android:layout_marginLeft="@dimen/default_margin"
-            android:text="#Keywords"
-            android:id="@+id/hid"
-            android:textColor="@color/monsoon"
-            android:textSize="@dimen/default_text" />
-        <CheckBox
-            android:id="@+id/like"
-            android:checked="false"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:layout_marginTop="@dimen/default_margin"
-            android:layout_marginRight="@dimen/default_margin"
-            android:text="관심 정보로 지정"
-            android:textColor="@color/jet"
-            />
-        <LinearLayout
-            android:layout_marginTop="@dimen/default_margin"
-            android:layout_width="match_parent"
-            android:background="@color/transparent_gray"
-            android:orientation="horizontal"
-            android:padding="@dimen/week_padding"
-            android:layout_height="wrap_content">
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_weight="12"
-                android:layout_height="wrap_content"
-                android:textColor="@color/monsoon"
-                android:hint="댓글"
-                android:background="@drawable/bg_edittext"
-                android:singleLine="true"
-                android:id="@+id/detail_comment" />
-            <android.support.v7.widget.AppCompatButton
-                style="@style/Widget.AppCompat.Button.Borderless"
-                android:id="@+id/detail_submit"
-                android:layout_weight="0"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/white"
-                android:textSize="@dimen/default_text"
-                android:text="등록"
-                />
-        </LinearLayout>
-
-    </LinearLayout>
-
-
-
-    <android.support.v7.widget.AppCompatButton
-        android:theme="@style/BlueButton"
-        android:id="@+id/redirect"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@color/white"
-        android:text="원본 페이지 링크 연결"
-        android:layout_gravity="center_horizontal|bottom"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-
-    <android.support.v7.widget.RecyclerView
-        android:layout_above="@+id/redirect"
-        android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:id="@+id/recyclerView"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+            <View android:layout_width="match_parent"
+                android:layout_marginBottom="5dp"
+                android:background="@color/transparent_gray"
+                android:layout_height="1dp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_weight="12"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="7dp"
+                    android:background="@color/white"
+                    android:textColor="@color/monsoon"
+                    android:hint="댓글"
+                    android:textColorHint="@color/monsoon"
+                    android:singleLine="true"
+                    android:id="@+id/detail_comment" />
+                <android.support.v7.widget.AppCompatButton
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:id="@+id/detail_submit"
+                    android:layout_weight="0"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/monsoon"
+                    android:textSize="@dimen/default_text"
+                    android:text="등록"
+                    />
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+    <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/linearLayout2" />
+        android:layout_below="@+id/frameLayout"
+        android:layout_above="@+id/footer" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:orientation="vertical"
+            android:id="@+id/linearLayout2"
+            android:layout_below="@+id/frameLayout">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:id="@+id/linearLayout">
+                <ImageView
+                    android:layout_width="@dimen/iconSize"
+                    android:layout_height="@dimen/iconSize"
+                    android:id="@+id/favicon"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/week_padding"
+                    android:src="@drawable/div_01" />
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:padding="@dimen/default_margin"
+                    android:layout_weight="7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Title"
+                            android:id="@+id/Title"
+                            android:layout_gravity="left"
+                            android:textColor="@color/jet"
+                            android:textSize="@dimen/default_text_mid" />
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="right"
+                            android:orientation="horizontal"
+                            >
+                        </LinearLayout>
+
+                    </FrameLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/week_padding"
+                        android:text="Here is the field for showing detail information"
+                        android:id="@+id/Url"
+                        android:textColor="@color/monsoon"
+                        android:textSize="@dimen/default_text" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/week_padding"
+                        android:text="1970-01-01"
+                        android:id="@+id/PDate"
+                        android:textColor="@color/jet"
+                        android:textSize="@dimen/default_text" />
+                </LinearLayout>
+
+            </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:gravity="center_horizontal"
+                android:background="@drawable/bg_textview"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/default_margin"
+                android:layout_marginRight="@dimen/default_margin"
+                android:text="Department Information"
+                android:id="@+id/Dept"
+                android:textColor="@color/jet"
+                android:textSize="15dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/default_margin"
+                android:background="@drawable/bg_textview"
+                android:text="Reference And BidNo"
+                android:id="@+id/Refer"
+                android:textColor="@color/jet"
+                android:textSize="15dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/default_margin"
+                android:layout_marginRight="@dimen/default_margin"
+                android:layout_marginBottom="@dimen/default_margin"
+                android:text="Department Information"
+                android:id="@+id/Charge"
+                android:background="@drawable/bg_textview"
+                android:textColor="@color/monsoon"
+                android:textSize="12dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/bg_textview"
+                android:layout_marginLeft="@dimen/default_margin"
+                android:layout_marginRight="@dimen/default_margin"
+
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="시작일자"
+                    android:id="@+id/Bstart"
+                    android:textColor="@color/jet"
+                    android:textSize="@dimen/default_text" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/default_margin"
+                    android:text="만료일자"
+                    android:id="@+id/Bexpire"
+                    android:textColor="@color/jet"
+                    android:textSize="@dimen/default_text" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/default_margin"
+                android:layout_marginLeft="@dimen/default_margin"
+                android:text="#Keywords"
+                android:id="@+id/hid"
+                android:textColor="@color/monsoon"
+                android:textSize="@dimen/default_text" />
+            <CheckBox
+                android:id="@+id/like"
+                android:checked="false"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginTop="@dimen/default_margin"
+                android:layout_marginRight="@dimen/default_margin"
+                android:text="관심 정보로 지정"
+                android:textColor="@color/jet"
+                />
+            <android.support.v7.widget.AppCompatButton
+                android:theme="@style/BlueButton"
+                android:id="@+id/redirect"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:text="원본 페이지 링크 연결"
+                android:layout_gravity="center_horizontal|bottom"
+                />
+            <View android:layout_width="match_parent"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/transparent_gray"
+                android:layout_height="1dp"/>
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/linearLayout2" />
+
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryDark"
+        android:id="@+id/frameLayout"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <android.support.v7.widget.AppCompatButton
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:id="@+id/bt_exit"
+            android:layout_gravity="right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="@dimen/default_text"
+            android:text="닫기"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="상세보기"
+            android:id="@+id/titleText"
+            android:layout_gravity="center"
+            android:textColor="@color/white" />
+
+    </FrameLayout>
 </RelativeLayout>
