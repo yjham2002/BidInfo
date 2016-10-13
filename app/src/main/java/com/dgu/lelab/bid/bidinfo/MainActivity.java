@@ -313,7 +313,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 
     public void loadList(){
         setLoadScrren(true);
-        Communicator.getHttp(URL.MAIN + URL.REST_BOARD_ALL, new Handler(){
+        Communicator.getHttp(URL.MAIN + URL.REST_BOARD_ALL + "?id=" + pref.getInt("id", 0), new Handler(){
             @Override
             public void handleMessage(Message msg){
                 String jsonString = msg.getData().getString("jsonString");

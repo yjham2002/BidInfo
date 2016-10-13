@@ -22,6 +22,7 @@ public class fm_1 extends Fragment implements View.OnClickListener{
     public ListViewAdapter testAdapter;
 
     private RecyclerView.LayoutManager layoutManager;
+    private RecyclerViewMaterialAdapter rAdapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -35,8 +36,8 @@ public class fm_1 extends Fragment implements View.OnClickListener{
          - 민간정보(물품8/공사9/용역10/미분류11)
          */
         testAdapter = new ListViewAdapter(rootView.getContext(), R.layout.listview_bid);
-
-        mRecyclerView.setAdapter(new RecyclerViewMaterialAdapter(testAdapter));
+        rAdapter = new RecyclerViewMaterialAdapter(testAdapter);
+        mRecyclerView.setAdapter(rAdapter);
         layoutManager = new LinearLayoutManager(getActivity().getBaseContext());
         mRecyclerView.setLayoutManager(layoutManager);
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -91,7 +92,8 @@ public class fm_1 extends Fragment implements View.OnClickListener{
             }
         }
         testAdapter.notifyDataSetChanged();
-        mRecyclerView.setAdapter(new RecyclerViewMaterialAdapter(testAdapter));
+        //mRecyclerView.setAdapter(new RecyclerViewMaterialAdapter(testAdapter));
+        rAdapter.notifyDataSetChanged();
         //layoutManager.scrollToPosition(0);
 
     }
