@@ -191,7 +191,7 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
                     }
 
                     URL = json_list.getString("Url");
-
+                    Communicator.getHttp(util.URL.MAIN + util.URL.REST_HIT + cmdMsg.getInt("id"), new Handler());
                     Communicator.getHttp(util.URL.MAIN + util.URL.REST_BOARD_COMMENT + cmdMsg.getInt("id"), new Handler(){
                         @Override
                         public void handleMessage(Message msg){
