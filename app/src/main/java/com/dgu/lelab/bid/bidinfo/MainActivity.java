@@ -17,6 +17,7 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
@@ -69,6 +70,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
                 break;
             case R.id.menu01:
                 startActivity(new Intent(this, MypageActivity.class));
+                closeDrawer();
                 break;
             case R.id.menu02:
                 startActivity(new Intent(this, SettingsActivity.class));
@@ -309,6 +311,10 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
             pbar.setVisibility(View.INVISIBLE);
             black.setVisibility(View.INVISIBLE);
         }
+    }
+
+    public void closeDrawer() {
+        mDrawer.closeDrawer(Gravity.LEFT);
     }
 
     public void loadList(){

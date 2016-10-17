@@ -26,13 +26,7 @@
                 android:layout_marginTop="@dimen/default_margin"
                 android:textColor="@color/white"
                 />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="MY PAGE"
-                android:textSize="@dimen/default_text"
-                android:textColor="@color/white"
-                />
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
@@ -42,15 +36,16 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="나의 수주정보"
+                android:text="매출정보"
+                android:layout_marginBottom="10dp"
                 android:textSize="@dimen/default_text_mid"
                 android:textColor="@color/white"
                 />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/default_margin"
-                android:background="@color/transparent_white"
+
+                android:background="@color/white"
                 >
                 <com.github.mikephil.charting.charts.BarChart
                     android:id="@+id/barChart"
@@ -66,39 +61,77 @@
                 android:layout_marginTop="@dimen/default_margin"
                 android:layout_marginBottom="@dimen/default_margin"
                 android:background="@color/white"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="분야별 매출현황"
-                android:textSize="@dimen/default_text_mid"
-                android:textColor="@color/white"
-                />
-            <View
+            <android.support.v7.widget.AppCompatButton
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:id="@+id/my_like"
+                android:gravity="left|center_vertical"
+                android:layout_gravity="center_horizontal|bottom"
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="@dimen/default_margin"
-                android:layout_marginBottom="@dimen/default_margin"
-                android:background="@color/white"/>
-            <TextView
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="@dimen/default_text"
                 android:text="나의 관심정보"
-                android:textSize="@dimen/default_text_mid"
-                android:textColor="@color/white"
                 />
+
+            <android.support.v7.widget.AppCompatButton
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:id="@+id/my_attend"
+                android:gravity="left|center_vertical"
+                android:layout_gravity="center_horizontal|bottom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="@dimen/default_text"
+                android:text="참여중인 민간공고"
+                />
+            <android.support.v7.widget.AppCompatButton
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:id="@+id/my_comment"
+                android:gravity="left|center_vertical"
+                android:layout_gravity="center_horizontal|bottom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="@dimen/default_text"
+                android:text="댓글"
+                />
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginTop="@dimen/default_margin"
                 android:layout_marginBottom="@dimen/default_margin"
                 android:background="@color/white"/>
-            <TextView
-                android:layout_width="wrap_content"
+            <android.support.v7.widget.AppCompatButton
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:id="@+id/my_edit"
+                android:gravity="left|center_vertical"
+                android:layout_gravity="center_horizontal|bottom"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="나의 민간정보"
-                android:textSize="@dimen/default_text_mid"
                 android:textColor="@color/white"
+                android:textSize="@dimen/default_text"
+                android:text="관심 키워드 추가/수정"
                 />
+
+            <android.support.v7.widget.AppCompatButton
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:id="@+id/my_edit_company"
+                android:gravity="left|center_vertical"
+                android:layout_gravity="center_horizontal|bottom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="@dimen/default_text"
+                android:text="기업 정보 수정"
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/default_margin"
+                android:layout_marginBottom="@dimen/default_margin"
+                android:background="@color/white"/>
         </LinearLayout>
     </ScrollView>
 </FrameLayout>
