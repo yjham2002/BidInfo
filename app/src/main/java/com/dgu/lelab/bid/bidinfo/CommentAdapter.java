@@ -1,7 +1,9 @@
 package com.dgu.lelab.bid.bidinfo;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.CardView;
+import android.support.v7.widget.LinearLayoutCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -61,6 +63,14 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
         public ViewHolder(View itemView) {
             super(itemView);
             _title = (TextView)itemView.findViewById(R.id.title);
+            _title.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v){
+                    Intent info = new Intent(mContext, ProfileActivity.class);
+                    info.putExtra("name", "테스트");
+                    mContext.startActivity(info);
+                }
+            });
             _date = (TextView)itemView.findViewById(R.id.date);
             _content = (TextView)itemView.findViewById(R.id.content);
             cardview = (LinearLayout) itemView.findViewById(R.id.cardview);

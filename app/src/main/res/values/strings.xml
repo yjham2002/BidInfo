@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">가나다(가제)</string>
+    <string name="app_name">영업맨</string>
     <string name="reg_msg">아직 회원이 아니신가요?</string>
     <string name="share_using">이 페이지를 공유</string>
     <string name="kakao_app_key">3c417bceda2397fce186d43221a27117</string>
