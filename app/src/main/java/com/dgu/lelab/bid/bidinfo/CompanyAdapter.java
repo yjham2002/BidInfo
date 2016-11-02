@@ -34,14 +34,15 @@ public class CompanyAdapter extends RecyclerView.Adapter<CompanyAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
-        CompanyData mData = mListData.get(position);
+        final CompanyData mData = mListData.get(position);
         holder._name.setText(mData.Name);
         holder._addr.setText(mData.Addr);
         holder._charge.setText(mData.Rprt);
         holder.cardview.setOnClickListener(new CardView.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                ApplyActivity.cid = mData.id;
+                ApplyActivity.cname = mData.Name;
                 ((AppCompatActivity)mContext).finish();
             }
         });

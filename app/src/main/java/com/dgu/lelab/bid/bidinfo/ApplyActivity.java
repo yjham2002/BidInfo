@@ -13,7 +13,9 @@ import android.widget.Toast;
 
 public class ApplyActivity extends AppCompatActivity implements View.OnClickListener, DatePickerDialog.OnDateSetListener{
 
+    public static String cname = "회사명 선택";
     public static int cid = -1;
+    public boolean dateset = false;
     public static String cName = "";
     private Button _birth, _submit, _company, _picker, _exit, _inst;
     private DatePickerDialog datePicker;
@@ -44,11 +46,25 @@ public class ApplyActivity extends AppCompatActivity implements View.OnClickList
     }
 
     public void onSubmit(){
+        if(cid == -1){
+            Toast.makeText(getApplicationContext(), "회사를 선택하세요", Toast.LENGTH_LONG).show();
+            return;
+        }
+        if(!dateset){
+            Toast.makeText(getApplicationContext(), "개업일자를 선택하세요", Toast.LENGTH_LONG).show();
+            return;
+        }
+    }
 
+    @Override
+    public void onResume(){
+        super.onResume();
+        _company.setText(cname);
     }
 
     @Override
     public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+        dateset = true;
         _birth.setText(year + "년 " + (monthOfYear +1) + "월 " + dayOfMonth +"일");
     }
 
@@ -56,6 +72,10 @@ public class ApplyActivity extends AppCompatActivity implements View.OnClickList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_apply);
+
+        dateset = false;
+        cid = -1;
+        cname = "회사명 선택";
 
         _inst = (Button)findViewById(R.id.reg_instruction);
         _company = (Button)findViewById(R.id.app_company);
