@@ -80,14 +80,7 @@
                 </LinearLayout>
 
             </FrameLayout>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/week_padding"
-                android:text="Here is the field for showing detail information"
-                android:id="@+id/detail"
-                android:textColor="@color/monsoon"
-                android:textSize="@dimen/default_text" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

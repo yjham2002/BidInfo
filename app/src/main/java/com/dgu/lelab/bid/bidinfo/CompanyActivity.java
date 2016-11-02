@@ -1,16 +1,23 @@
 package com.dgu.lelab.bid.bidinfo;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import util.Communicator;
+import util.URL;
 
 public class CompanyActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -29,11 +36,30 @@ public class CompanyActivity extends AppCompatActivity implements View.OnClickLi
                 if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
                     ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.CALL_PHONE}, MY_PERMISSIONS_REQUEST_CALL_PHONE);
                 }else {
-                    Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:"+PHONE));
+                    Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + PHONE));
                     startActivity(intent);
                 }
                 break;
             default: break;
+        }
+    }
+
+    public void refresh() {
+        Intent cmd = getIntent();
+        Bundle cmdMsg = cmd.getExtras();
+        if (cmdMsg == null) {
+            Toast.makeText(getApplicationContext(), "사용자 정보를 불러올 수 없습니다.", Toast.LENGTH_LONG).show();
+            finish();
+        } else {
+            final ProgressDialog progressDialog = new ProgressDialog(this, R.style.AppTheme_Dark_Dialog);
+            progressDialog.setIndeterminate(true);
+            progressDialog.setMessage("회사 정보를 불러오는 중...");
+            progressDialog.show();
+            Communicator.getHttp(URL.MAIN + URL.REST_COMPANY_ONE + cmdMsg.getInt("cid"), new Handler() {
+                @Override
+                public void handleMessage(Message msg) {
+                }
+            });
         }
     }
 
@@ -56,6 +82,8 @@ public class CompanyActivity extends AppCompatActivity implements View.OnClickLi
         _addr = (TextView)findViewById(R.id.addr);
         _div = (TextView)findViewById(R.id.div); // 업종/공종
         _keyword = (TextView)findViewById(R.id.hid);
+
+        refresh();
 
     }
 }

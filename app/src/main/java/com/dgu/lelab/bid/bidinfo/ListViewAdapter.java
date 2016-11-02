@@ -73,7 +73,6 @@ public class ListViewAdapter extends RecyclerView.Adapter<ListViewAdapter.ViewHo
                 break;
         }
         holder._subject.setText(mData.Title);
-        holder._detail.setText(mData.Url);
         holder._date.setText(mData.PDate);
         holder._like.setText(Integer.toString(mData.like));
         holder._comment.setText(Integer.toString(mData.comment));
@@ -97,7 +96,6 @@ public class ListViewAdapter extends RecyclerView.Adapter<ListViewAdapter.ViewHo
     public class ViewHolder extends RecyclerView.ViewHolder {
         public ImageView _favicon;
         public TextView _subject;
-        public TextView _detail;
         public TextView _like;
         public TextView _comment;
         public TextView _date;
@@ -108,7 +106,6 @@ public class ListViewAdapter extends RecyclerView.Adapter<ListViewAdapter.ViewHo
             _date = (TextView)itemView.findViewById(R.id.rawdate);
             _favicon = (ImageView)itemView.findViewById(R.id.favicon);
             _subject = (TextView)itemView.findViewById(R.id.subject);
-            _detail = (TextView)itemView.findViewById(R.id.detail);
             _like = (TextView)itemView.findViewById(R.id.indicate_like);
             _comment = (TextView)itemView.findViewById(R.id.indicate_comment);
             cardview = (CardView)itemView.findViewById(R.id.cardview);
