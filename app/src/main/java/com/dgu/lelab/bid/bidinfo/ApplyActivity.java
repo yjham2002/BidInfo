@@ -15,12 +15,15 @@ public class ApplyActivity extends AppCompatActivity implements View.OnClickList
 
     public static int cid = -1;
     public static String cName = "";
-    private Button _birth, _submit, _company, _picker, _exit;
+    private Button _birth, _submit, _company, _picker, _exit, _inst;
     private DatePickerDialog datePicker;
 
     @Override
     public void onClick(View v){
         switch(v.getId()){
+            case R.id.reg_instruction:
+                startActivity(new Intent(this, AgreeActivity.class));
+                break;
             case R.id.app_birth:
                 datePicker.show();
                 break;
@@ -54,11 +57,13 @@ public class ApplyActivity extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_apply);
 
+        _inst = (Button)findViewById(R.id.reg_instruction);
         _company = (Button)findViewById(R.id.app_company);
         _picker = (Button)findViewById(R.id.app_keyword);
         _exit = (Button)findViewById(R.id.cancel);
         _birth = (Button)findViewById(R.id.app_birth);
         _submit = (Button)findViewById(R.id.app_submit);
+        _inst.setOnClickListener(this);
         _birth.setOnClickListener(this);
         _submit.setOnClickListener(this);
         _company.setOnClickListener(this);
@@ -66,7 +71,6 @@ public class ApplyActivity extends AppCompatActivity implements View.OnClickList
         _exit.setOnClickListener(this);
 
         datePicker = new DatePickerDialog(this, AlertDialog.THEME_DEVICE_DEFAULT_DARK, this, 1990, 1, 1);
-
 
     }
 

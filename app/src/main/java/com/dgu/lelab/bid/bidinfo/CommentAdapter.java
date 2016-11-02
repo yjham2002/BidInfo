@@ -34,8 +34,16 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
-        CommentData mData = mListData.get(position);
+        final CommentData mData = mListData.get(position);
         holder._title.setText(mData.userName);
+        holder._title.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent info = new Intent(mContext, ProfileActivity.class);
+                info.putExtra("mid", mData.mid);
+                mContext.startActivity(info);
+            }
+        });
         holder._date.setText(mData.date);
         if(mData.amount.equals("null")) holder._amount.setVisibility(View.GONE);
         else holder._amount.setText("제시금액 : " + mData.amount + " 천원");
@@ -63,14 +71,6 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
         public ViewHolder(View itemView) {
             super(itemView);
             _title = (TextView)itemView.findViewById(R.id.title);
-            _title.setOnClickListener(new View.OnClickListener(){
-                @Override
-                public void onClick(View v){
-                    Intent info = new Intent(mContext, ProfileActivity.class);
-                    info.putExtra("name", "테스트");
-                    mContext.startActivity(info);
-                }
-            });
             _date = (TextView)itemView.findViewById(R.id.date);
             _content = (TextView)itemView.findViewById(R.id.content);
             cardview = (LinearLayout) itemView.findViewById(R.id.cardview);

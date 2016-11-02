@@ -90,9 +90,14 @@
             android:name=".CompanyPickerActivity"
             android:screenOrientation="portrait"
             android:theme="@style/SimpleBlack" />
-        <activity android:name=".ProfileActivity"
-            android:theme="@style/Theme.Transparent"
-            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".ProfileActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Transparent" />
+        <activity android:name=".AgreeActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/SimpleBlack"
+            ></activity>
     </application>
 
 </manifest>

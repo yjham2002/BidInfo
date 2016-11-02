@@ -2,6 +2,7 @@ package com.dgu.lelab.bid.bidinfo;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -13,8 +14,10 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,6 +33,9 @@ import util.URL;
 
 public class DetailActivity extends AppCompatActivity implements View.OnClickListener {
 
+    private InputMethodManager imm;
+    private ProgressDialog progressDialog;
+
     private SharedPreferences pref;
     private SharedPreferences.Editor prefEditor;
 
@@ -39,10 +45,11 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
     private TextView _Url, _Title, _PDate, _ReferAndBNum, _hid, _Bstart, _Bexpire, _Dept, _Charge;
     private ImageView _Type;
 
+    private EditText _comment;
     private RecyclerView mRecyclerView;
     private CommentAdapter commentAdapter;
     private String URL = "";
-    private Button _redirect, _exit;
+    private Button _redirect, _exit, _submit;
 
     public void toggleLike(){
         String URL = util.URL.MAIN;
@@ -56,9 +63,32 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
         new Communicator().postHttp(URL, data, new Handler(){});
     }
 
+    public void uploadComment(String msg){
+        if(msg.length() < 5) {
+            Toast.makeText(getApplicationContext(), "5글자 이상 입력하세요", Toast.LENGTH_LONG).show();
+            return;
+        }
+        HashMap<String, String> data = new HashMap<>();
+        data.put("Amount", null);
+        data.put("Comment", msg);
+        data.put("mid", Integer.toString(pref.getInt("id", 0)));
+        data.put("bid", Integer.toString(cmdMsg.getInt("id")));
+        new Communicator().postHttp(util.URL.MAIN + util.URL.REST_COMMENT_NEW, data, new Handler(){
+            @Override
+            public void handleMessage(Message msg){
+                _comment.setText("");
+                imm.hideSoftInputFromWindow(_comment.getWindowToken(), 0);
+                loadComment();
+            }
+        });
+    }
+
     @Override
     public void onClick(View v){
         switch (v.getId()){
+            case R.id.detail_submit:
+                uploadComment(_comment.getText().toString());
+                break;
             case R.id.like:
                 toggleLike();
                 break;
@@ -82,10 +112,13 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
-
+        imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
         pref = getSharedPreferences("BIDINFO", MODE_PRIVATE);
         prefEditor = pref.edit();
 
+        _comment = (EditText)findViewById(R.id.detail_comment);
+        _submit = (Button)findViewById(R.id.detail_submit);
+        _submit.setOnClickListener(this);
         _redirect = (Button)findViewById(R.id.redirect);
         _redirect.setOnClickListener(this);
         _exit = (Button)findViewById(R.id.bt_exit);
@@ -116,13 +149,12 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
         Intent cmd = getIntent();
         cmdMsg = cmd.getExtras();
 
-
     }
 
     @Override
     public void onResume(){
         super.onResume();
-        final ProgressDialog progressDialog = new ProgressDialog(this, R.style.AppTheme_Dark_Dialog);
+        progressDialog = new ProgressDialog(this, R.style.AppTheme_Dark_Dialog);
         progressDialog.setIndeterminate(true);
         progressDialog.setMessage("상세정보를 불러오는 중...");
         progressDialog.show();
@@ -192,34 +224,39 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
 
                     URL = json_list.getString("Url");
                     Communicator.getHttp(util.URL.MAIN + util.URL.REST_HIT + cmdMsg.getInt("id"), new Handler());
-                    Communicator.getHttp(util.URL.MAIN + util.URL.REST_BOARD_COMMENT + cmdMsg.getInt("id"), new Handler(){
-                        @Override
-                        public void handleMessage(Message msg){
-                            String jsonString = msg.getData().getString("jsonString");
-                            commentAdapter.mListData.clear();
-                            try {
-                                JSONArray json_arr = new JSONArray(jsonString);
-                                /**
-                                 * {"id":7,"Comment":"테스트 댓글1","Amount":"100","Date":"2016-10-07T12:45:15.000Z","mid":1,"bid":1,"userName":"함의진"}
-                                 * int id, String userName, String content, String date, String amount, int mid
-                                 * */
-                                for(int i = 0; i < json_arr.length(); i++){
-                                    JSONObject json_list = json_arr.getJSONObject(i);
-                                    commentAdapter.addItem(new CommentData(json_list.getInt("id"), json_list.getString("userName"), json_list.getString("Comment"), json_list.getString("Date"), json_list.getString("Amount"), json_list.getInt("mid")));
-                                }
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }finally {
-                                progressDialog.dismiss();
-                                commentAdapter.dataChange();
-                            }
-                        }
-                    });
+                    loadComment();
 
                 } catch (JSONException e) {
                     progressDialog.dismiss();
                     e.printStackTrace();
                     Toast.makeText(getApplicationContext(), "정보 불러오는 중 오류가 발생하였습니다.", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+
+    }
+
+    public void loadComment(){
+        Communicator.getHttp(util.URL.MAIN + util.URL.REST_BOARD_COMMENT + cmdMsg.getInt("id"), new Handler(){
+            @Override
+            public void handleMessage(Message msg){
+                String jsonString = msg.getData().getString("jsonString");
+                commentAdapter.mListData.clear();
+                try {
+                    JSONArray json_arr = new JSONArray(jsonString);
+                    /**
+                     * {"id":7,"Comment":"테스트 댓글1","Amount":"100","Date":"2016-10-07T12:45:15.000Z","mid":1,"bid":1,"userName":"함의진"}
+                     * int id, String userName, String content, String date, String amount, int mid
+                     * */
+                    for(int i = 0; i < json_arr.length(); i++){
+                        JSONObject json_list = json_arr.getJSONObject(i);
+                        commentAdapter.addItem(new CommentData(json_list.getInt("id"), json_list.getString("userName"), json_list.getString("Comment"), json_list.getString("Date"), json_list.getString("Amount"), json_list.getInt("mid")));
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }finally {
+                    progressDialog.dismiss();
+                    commentAdapter.dataChange();
                 }
             }
         });
