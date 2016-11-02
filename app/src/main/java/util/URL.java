@@ -15,5 +15,8 @@ public class URL {
     public static final String REST_CHECK = "/board/check";
     public static final String REST_GCM_NEW = "/gcm/new";
     public static final String REST_HIT = "/board/count/";
+    public static final String REST_COMPANY_ALL = "/company";
+    public static final String REST_COMPANY_ONE = "/company/";
+    public static final String REST_COMPANY_NEW = "/company/new";
 
 }

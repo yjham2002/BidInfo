@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardview"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="4dp"
+    card_view:cardCornerRadius="4dp"
+    >
+        <LinearLayout
+            android:orientation="vertical"
+            android:padding="@dimen/default_margin"
+            android:layout_weight="7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <FrameLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Company Name"
+                    android:id="@+id/com_name"
+                    android:layout_gravity="left|center_vertical"
+                    android:textColor="@color/jet"
+                    android:gravity="center"
+                    android:textSize="@dimen/default_text_mid" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/default_margin"
+                    android:layout_gravity="right|center_vertical"
+                    android:text="Charger Name"
+                    android:id="@+id/com_rprt"
+                    android:textColor="@color/monsoon"
+                    android:textSize="@dimen/default_text" />
+            </FrameLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/week_padding"
+                android:text="Company Location and Address"
+                android:id="@+id/com_addr"
+                android:textColor="@color/jet"
+                android:textSize="@dimen/default_text" />
+        </LinearLayout>
+
+</android.support.v7.widget.CardView>
+

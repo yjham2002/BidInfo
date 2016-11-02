@@ -55,6 +55,7 @@ public class NoticeActivity extends AppCompatActivity implements View.OnClickLis
             public void handleMessage(Message msg){
                 String jsonString = msg.getData().getString("jsonString");
                 try {
+                    noticeAdapter.mListData.clear();
                     JSONArray json_arr = new JSONArray(jsonString);
                     for(int i = 0; i < json_arr.length(); i++) {
                         JSONObject json_list = json_arr.getJSONObject(i);

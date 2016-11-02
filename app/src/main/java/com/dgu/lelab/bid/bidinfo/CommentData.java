@@ -20,4 +20,5 @@ public class CommentData {
         this.amount = amount;
         this.mid = mid;
     }
+
 }

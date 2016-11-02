@@ -25,11 +25,13 @@ public class ApplyActivity extends AppCompatActivity implements View.OnClickList
                 datePicker.show();
                 break;
             case R.id.app_submit:
+                onSubmit();
                 break;
             case R.id.app_company:
                 startActivity(new Intent(this, CompanyPickerActivity.class));
                 break;
             case R.id.app_keyword:
+                startActivity(new Intent(this, PickerActivity.class));
                 break;
             case R.id.cancel:
                 finish();
@@ -38,9 +40,13 @@ public class ApplyActivity extends AppCompatActivity implements View.OnClickList
         }
     }
 
+    public void onSubmit(){
+
+    }
+
     @Override
     public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-        _birth.setText(year + "년 " + monthOfYear + "월 " + dayOfMonth +"일");
+        _birth.setText(year + "년 " + (monthOfYear +1) + "월 " + dayOfMonth +"일");
     }
 
     @Override

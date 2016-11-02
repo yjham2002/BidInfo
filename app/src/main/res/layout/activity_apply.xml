@@ -112,7 +112,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/default_margin"
-                android:text="생년월일 선택"
+                android:text="개업일자 선택"
                 android:layout_gravity="center_horizontal|bottom" />
             <android.support.v7.widget.AppCompatButton
                 android:theme="@style/WhiteButton"
