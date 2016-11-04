@@ -41,6 +41,9 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
 
     private Bundle cmdMsg;
 
+    private String mTitle = "";
+    private int mToken = 0;
+
     private CheckBox _like;
     private TextView _Url, _Title, _PDate, _ReferAndBNum, _hid, _Bstart, _Bexpire, _Dept, _Charge;
     private ImageView _Type;
@@ -51,16 +54,27 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
     private String URL = "";
     private Button _redirect, _exit, _submit;
 
+    public void sendPush(String title, String message){
+        if(mToken == 0) return;
+        HashMap<String, String> data = new HashMap<>();
+        data.put("title", title);
+        data.put("message", message);
+        new Communicator().postHttp(util.URL.MAIN + util.URL.REST_FCM_ONE + mToken, data, new Handler());
+    }
+
     public void toggleLike(){
         String URL = util.URL.MAIN;
         if(!_like.isChecked()) // unlike
             URL = URL + util.URL.REST_UNLIKE;
-        else // like
+        else{ // like
             URL = URL + util.URL.REST_LIKE;
+            sendPush("새로운 관심글 지정 알림", mTitle);
+        }
         HashMap<String, String> data = new HashMap<>();
         data.put("mid", Integer.toString(pref.getInt("id", 0)));
         data.put("bid", Integer.toString(cmdMsg.getInt("id")));
         new Communicator().postHttp(URL, data, new Handler(){});
+
     }
 
     public void uploadComment(String msg){
@@ -81,6 +95,11 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
                 loadComment();
             }
         });
+        String titleTemp = mTitle;
+        String msgTemp = msg;
+        if(titleTemp.length() > 7) titleTemp = titleTemp.substring(0, 8) + "... ";
+        if(msgTemp.length() > 25) msgTemp = msgTemp.substring(0, 24) + "...";
+        sendPush(titleTemp + "에 새로운 댓글 등록됨", msgTemp);
     }
 
     @Override
@@ -198,7 +217,17 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
                             break;
                     }
 
-                    if(json_list.getString("Url").equals("null")) _Url.setVisibility(View.GONE);
+                    try{
+                        mToken = json_list.getInt("mid");
+                        mTitle = json_list.getString("Title");
+                    }catch (Exception e){
+                        mToken = 0;
+                    }
+
+                    if(json_list.getString("Url").equals("null") || json_list.getString("Url").equals("about:blank")) {
+                        _Url.setVisibility(View.GONE);
+                        _redirect.setVisibility(View.GONE);
+                    }
                     else _Url.setText(json_list.getString("Url"));
                     if(json_list.getString("Title").equals("null")) _Title.setVisibility(View.GONE);
                     else _Title.setText(json_list.getString("Title"));

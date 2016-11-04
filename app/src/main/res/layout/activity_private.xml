@@ -75,6 +75,7 @@
                     android:textColor="@color/white"
                     android:textSize="@dimen/default_text_mid"
                     android:layout_width="wrap_content"
+                    android:layout_marginBottom="@dimen/default_margin"
                     android:layout_height="wrap_content" />
                 <RadioButton
                     android:id="@+id/pr_service"
@@ -86,11 +87,12 @@
                     android:layout_height="wrap_content" />
 
             </RadioGroup>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/default_text_mid"
-                android:text="내용"
+                android:text="회사명/담당처"
                 android:textColor="@color/white"
                 />
             <EditText
@@ -100,8 +102,86 @@
                 android:layout_marginBottom="@dimen/default_margin"
                 android:background="@drawable/bg_edittext"
                 android:singleLine="true"
-                android:hint="내용"
-                android:id="@+id/private_content" />
+                android:hint="회사명/담당처"
+                android:id="@+id/private_dept" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/default_text_mid"
+                android:text="담당자"
+                android:textColor="@color/white"
+                />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/monsoon"
+                android:layout_marginBottom="@dimen/default_margin"
+                android:background="@drawable/bg_edittext"
+                android:singleLine="true"
+                android:hint="담당자"
+                android:id="@+id/private_charge" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/default_text_mid"
+                android:text="링크할 주소"
+                android:textColor="@color/white"
+                />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/monsoon"
+                android:layout_marginBottom="@dimen/default_margin"
+                android:background="@drawable/bg_edittext"
+                android:singleLine="true"
+                android:hint="링크할 주소(선택 입력)"
+                android:id="@+id/private_url" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/default_text_mid"
+                android:text="공고 번호"
+                android:textColor="@color/white"
+                />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/monsoon"
+                android:layout_marginBottom="@dimen/default_margin"
+                android:background="@drawable/bg_edittext"
+                android:singleLine="true"
+                android:hint="공고 번호(선택 입력)"
+                android:id="@+id/private_bidno" />
+
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <android.support.v7.widget.AppCompatButton
+                    android:theme="@style/WhiteButton"
+                    android:id="@+id/private_start"
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/default_margin"
+                    android:text="개시일 선택" />
+                <android.support.v7.widget.AppCompatButton
+                    android:theme="@style/WhiteButton"
+                    android:id="@+id/private_end"
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/default_margin"
+                    android:text="마감일 선택" />
+
+            </LinearLayout>
+
 
             <TextView
                 android:layout_width="wrap_content"
@@ -170,7 +250,7 @@
                 android:id="@+id/private_cancel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/default_margin"
+                android:layout_marginBottom="150dp"
                 android:textColor="@color/white"
                 android:text="취소"
                 android:layout_gravity="center_horizontal|bottom" />

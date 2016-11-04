@@ -76,7 +76,7 @@ public class ListViewAdapter extends RecyclerView.Adapter<ListViewAdapter.ViewHo
         if(title.length() > 24) title = title.substring(0, 19) + "...";
         holder._subject.setText(title);
 
-        holder._date.setText(mData.PDate);
+        holder._date.setText(mData.Date);
 
         holder._like.setText(Integer.toString(mData.like));
         holder._comment.setText(Integer.toString(mData.comment));
