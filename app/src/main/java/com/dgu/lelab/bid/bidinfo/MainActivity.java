@@ -333,9 +333,10 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
                                 , json_list.getString("Bexpire"), json_list.getString("PDate"), json_list.getString("Dept"), json_list.getString("Charge"), json_list.getString("Date")));
                     }
                 } catch (JSONException e) {
-                    Toast.makeText(getApplicationContext(), "정보를 불러오는 중 오류가 발생하였습니다.", Toast.LENGTH_LONG).show();
+                    //Toast.makeText(getApplicationContext(), "정보를 불러오는 중 오류가 발생하였습니다.", Toast.LENGTH_LONG).show();
                     e.printStackTrace();
                 }finally {
+                    if(bids.mListData.size() < 5) Toast.makeText(getApplicationContext(), "키워드를 통해 추출한 정보가 너무 적습니다.\n마이페이지에서 키워드를 수정하시기 바랍니다.", Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(UPDATE_INTENT);
                     LocalBroadcastManager.getInstance(context).sendBroadcast(intent);
                     setLoadScrren(false);

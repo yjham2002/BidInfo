@@ -57,6 +57,7 @@
 
             <RadioGroup
                 android:id="@+id/radioGroup"
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <RadioButton
@@ -65,9 +66,11 @@
                     android:textColor="@color/white"
                     android:textSize="@dimen/default_text_mid"
                     android:layout_width="wrap_content"
+                    android:layout_weight="1"
                     android:layout_height="wrap_content" />
                 <RadioButton
                     android:id="@+id/pr_const"
+                    android:layout_weight="1"
                     android:text="공사"
                     android:textColor="@color/white"
                     android:textSize="@dimen/default_text_mid"
@@ -76,6 +79,7 @@
                 <RadioButton
                     android:id="@+id/pr_service"
                     android:text="용역"
+                    android:layout_weight="1"
                     android:textColor="@color/white"
                     android:textSize="@dimen/default_text_mid"
                     android:layout_width="wrap_content"
@@ -107,14 +111,50 @@
                 android:text="키워드"
                 />
 
-            <EditText
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <android.support.v7.widget.AppCompatButton
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:id="@+id/bt_add"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/default_margin"
+                    android:textColor="@color/white"
+                    android:text="추가"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/monsoon"
+                    android:singleLine="true"
+                    android:layout_marginBottom="@dimen/default_margin"
+                    android:background="@drawable/bg_edittext"
+                    android:id="@+id/private_key"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_toLeftOf="@+id/bt_add"
+                    />
+
+            </RelativeLayout>
+            <com.dgu.lelab.bid.bidinfo.ExpandableHeightGridView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/monsoon"
-                android:singleLine="true"
-                android:layout_marginBottom="@dimen/default_margin"
-                android:background="@drawable/bg_edittext"
-                android:id="@+id/private_key" />
+                android:gravity="center"
+                android:id="@+id/gridView1"
+                android:layout_margin="15dp"
+                android:numColumns="4"
+                android:layout_gravity="center" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="10dp"
+                android:text="키워드를 선택하시면 삭제됩니다"
+                />
 
             <android.support.v7.widget.AppCompatButton
                 android:theme="@style/BlueButton"

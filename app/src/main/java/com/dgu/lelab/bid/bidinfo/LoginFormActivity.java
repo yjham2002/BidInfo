@@ -147,7 +147,7 @@ public class LoginFormActivity extends AppCompatActivity implements View.OnClick
         _account = (EditText)findViewById(R.id.log_mail);
         _password = (EditText)findViewById(R.id.log_pass);
 
-        _account.setText("yjham2002@gmail.com");
-        _password.setText("gpswpf12!");
+        _account.setText("admin@lelab.com");
+        _password.setText("lelab2016");
     }
 }

@@ -72,8 +72,12 @@ public class ListViewAdapter extends RecyclerView.Adapter<ListViewAdapter.ViewHo
                 holder._favicon.setImageDrawable(mContext.getResources().getDrawable(R.drawable.div_02));
                 break;
         }
-        holder._subject.setText(mData.Title);
+        String title = mData.Title;
+        if(title.length() > 24) title = title.substring(0, 19) + "...";
+        holder._subject.setText(title);
+
         holder._date.setText(mData.PDate);
+
         holder._like.setText(Integer.toString(mData.like));
         holder._comment.setText(Integer.toString(mData.comment));
         holder.cardview.setOnClickListener(new CardView.OnClickListener() {

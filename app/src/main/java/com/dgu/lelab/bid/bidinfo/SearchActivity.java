@@ -96,15 +96,21 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
         for(int i = 0; i < 5; i++){
             String str = MainActivity.bids.mListData.get(new Random().nextInt(MainActivity.bids.mListData.size())).Title.trim();
             List<String> list = new ArrayList<>(Arrays.asList(str.split(" ")));
-            String finalString = list.get(new Random().nextInt(list.size()));
+            String match = "[^\uAC00-\uD7A3xfe0-9a-zA-Z\\s]";
+            String finalString = list.get(new Random().nextInt(list.size())).replaceAll(match, "");
             mList1.add(finalString);
         }
+    }
+
+    public void onEmptySet(){
+        _fixed.setVisibility(View.GONE);
+        gv1.setVisibility(View.GONE);
     }
 
     public void setView(){
         mList1 = new ArrayList<>();
 
-        recommend();
+        if(MainActivity.bids.mListData.size() > 2) recommend();
 
         GridAdapter adapter1 = new GridAdapter(getApplicationContext(), R.layout.grid_item2, mList1);
 
