@@ -128,23 +128,6 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         mViewPager = (MaterialViewPager) findViewById(R.id.materialViewPager);
         toolbar = mViewPager.getToolbar();
 
-        Communicator.getHttp(URL.MAIN + URL.REST_NOTICE_RECENT, new Handler(){
-            @Override
-            public void handleMessage(Message msg){
-                String jsonString = msg.getData().getString("jsonString");
-                try {
-                    JSONArray json_arr = new JSONArray(jsonString);
-                    JSONObject json_list = json_arr.getJSONObject(0);
-                    String notice = json_list.getString("Content");
-                    if(notice.length() > 30) notice = notice.substring(0, 25) + "...";
-                    _noticetext.setText(notice);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-
-            }
-        });
-
         Intent cmd = getIntent();
         Bundle cmdMsg = cmd.getExtras();
         if(cmdMsg == null) {
@@ -273,6 +256,22 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         data.put("Token", pref.getString("Token", "#"));
         data.put("mid", Integer.toString(pref.getInt("id", 0)));
         new Communicator().postHttp(URL.MAIN + URL.REST_GCM_NEW, data, new Handler(){});
+        Communicator.getHttp(URL.MAIN + URL.REST_NOTICE_RECENT, new Handler(){
+            @Override
+            public void handleMessage(Message msg){
+                String jsonString = msg.getData().getString("jsonString");
+                try {
+                    JSONArray json_arr = new JSONArray(jsonString);
+                    JSONObject json_list = json_arr.getJSONObject(0);
+                    String notice = json_list.getString("Content");
+                    if(notice.length() > 30) notice = notice.substring(0, 25) + "...";
+                    _noticetext.setText(notice);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        });
     }
 
     @Override
