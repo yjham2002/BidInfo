@@ -231,7 +231,7 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
                     else _Url.setText(json_list.getString("Url"));
                     if(json_list.getString("Title").equals("null")) _Title.setVisibility(View.GONE);
                     else _Title.setText(json_list.getString("Title"));
-                    if(json_list.getString("PDate").equals("null")) _PDate.setVisibility(View.GONE);
+                    if(json_list.getString("PDate").equals("null") || json_list.getString("PDate").equals("NULL")) _PDate.setVisibility(View.GONE);
                     else _PDate.setText(json_list.getString("PDate"));
                     if(json_list.getString("Refer").equals("null")) _ReferAndBNum.setVisibility(View.GONE);
                     else{
