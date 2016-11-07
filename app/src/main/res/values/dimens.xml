@@ -3,7 +3,7 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="week_padding">5dp</dimen>
-
+    <dimen name="menu_text">15dp</dimen>
     <dimen name="default_text">12dp</dimen>
     <dimen name="default_text_mid">16dp</dimen>
     <dimen name="default_text_large">20dp</dimen>
@@ -17,7 +17,7 @@ http://developer.android.com/guide/topics/appwidgets/index.html#CreatingLayout
     <dimen name="default_refresh">10dp</dimen>
 
     <dimen name="actionbar_dimen">56dp</dimen>
-    <dimen name="iconSize">45dp</dimen>
+    <dimen name="iconSize">36dp</dimen>
     <dimen name="widget_margin">8dp</dimen>
     <dimen name="bottom_side">50dp</dimen>
 </resources>

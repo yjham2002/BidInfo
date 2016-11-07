@@ -11,10 +11,11 @@
     <color name="accent">#FFFFFF</color>
     <color name="black">#111111</color>
     <color name="jet">#222222</color>
-    <color name="oil">#333333</color>
+    <color name="oil">#3B4147</color>
     <color name="monsoon">#777777</color>
     <color name="jumbo">#888888</color>
     <color name="mint">#9FC93C</color>
+    <color name="menu_bg">#31363A</color>
     <color name="cool">#5AAEFF</color>
     <color name="orange">#FFBB00</color>
     <color name="skyblue">#00B4DB</color>

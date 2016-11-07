@@ -50,7 +50,9 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     private SharedPreferences pref;
     private SharedPreferences.Editor prefEditor;
 
-    private Button _menuBtn01, _menuBtn02, _menuBtn03, _noticemore;
+    private ImageView _menuBtn02; // Menu Buttons
+
+    private Button _menuBtn01, _menuBtn03, _noticemore, _attend, _likes;
     private TextView _username, _useraccount, _noticetext;
     private FloatingActionButton _addButton;
     private MaterialViewPager mViewPager;
@@ -68,16 +70,22 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
                 Intent i = new Intent(this, PrivateActivity.class);
                 startActivity(i);
                 break;
-            case R.id.menu01:
-                startActivity(new Intent(this, MypageActivity.class));
-                closeDrawer();
-                break;
+            //case R.id.menu01:
+                //startActivity(new Intent(this, MypageActivity.class));
+                //closeDrawer();
+                //break;
             case R.id.menu02:
                 startActivity(new Intent(this, SettingsActivity.class));
                 break;
             case R.id.menu03:
                 startActivity(new Intent(this, LoginActivity.class));
                 finish();
+                break;
+            case R.id.menu_like:
+                startActivity(new Intent(this, LikeActivity.class));
+                break;
+            case R.id.menu_attend:
+                startActivity(new Intent(this, AttendActivity.class));
                 break;
             default:
                 break;
@@ -99,9 +107,13 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 
         pbar = (TextView)findViewById(R.id.pbar);
         black = (ImageView)findViewById(R.id.black);
-        _menuBtn01 = (Button)findViewById(R.id.menu01);
-        _menuBtn01.setOnClickListener(this);
-        _menuBtn02 = (Button)findViewById(R.id.menu02);
+        //_menuBtn01 = (Button)findViewById(R.id.menu01);
+        //_menuBtn01.setOnClickListener(this);
+        _attend = (Button)findViewById(R.id.menu_attend);
+        _attend.setOnClickListener(this);
+        _likes = (Button)findViewById(R.id.menu_like);
+        _likes.setOnClickListener(this);
+        _menuBtn02 = (ImageView)findViewById(R.id.menu02);
         _menuBtn02.setOnClickListener(this);
         _menuBtn03 = (Button)findViewById(R.id.menu03);
         _menuBtn03.setOnClickListener(this);

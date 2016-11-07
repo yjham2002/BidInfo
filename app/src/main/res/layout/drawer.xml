@@ -5,44 +5,54 @@
     android:orientation="vertical"
     android:layout_height="match_parent"
     android:layout_gravity="start"
-    android:background="@color/colorPrimaryDark"
+    android:background="@color/menu_bg"
     >
-    <LinearLayout
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="130dp"
+        android:paddingTop="20dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
         android:orientation="vertical"
         android:gravity="center_vertical"
-        >
-
+        android:background="@color/white">
         <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:src="@drawable/smile"
-            android:layout_marginTop="@dimen/default_margin"
-            />
-        <TextView
-            android:layout_width="match_parent"
+            android:id="@+id/menu02"
+            android:src="@drawable/icon_setting"
+            android:layout_gravity="right|center"
+            android:background="?selectableItemBackgroundBorderless"
+            android:layout_width="@dimen/iconSize"
+            android:clickable="true"
+            android:layout_height="@dimen/iconSize" />
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="User"
-            android:id="@+id/sName"
-            android:gravity="center_horizontal"
-            android:layout_marginTop="@dimen/default_margin"
-            android:layout_gravity="center_horizontal"
-            android:textColor="@color/white"
-            android:textSize="@dimen/default_text_large"
-            />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="User Account"
-            android:id="@+id/sID"
-            android:gravity="center_horizontal"
-            android:layout_marginTop="@dimen/week_padding"
-            android:layout_gravity="center_horizontal"
-            android:textColor="@color/white"
-            android:textSize="@dimen/default_text"
-            />
-    </LinearLayout>
+            android:orientation="vertical"
+            android:gravity="left"
+            android:background="@color/white"
+            android:layout_gravity="left|center_vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="User"
+                android:id="@+id/sName"
+                android:gravity="center_horizontal"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/default_text_large"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="User Account"
+                android:id="@+id/sID"
+                android:gravity="center_horizontal"
+                android:layout_marginTop="@dimen/week_padding"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/default_text"
+                />
+        </LinearLayout>
+
+    </FrameLayout>
 
     <View
         android:layout_width="match_parent"
@@ -59,25 +69,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-            <LinearLayout
+            <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_margin="@dimen/default_margin"
-                >
-                <TextView
-                    android:textSize="@dimen/default_text"
-                    android:textColor="@color/white"
-                    android:text="공지사항"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-                <TextView
-                    android:id="@+id/notice_text"
-                    android:textSize="@dimen/default_text"
-                    android:text="공지사항이 없습니다."
-                    android:textColor="@color/monsoon"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                android:layout_height="wrap_content">
                 <android.support.v7.widget.AppCompatButton
                     style="@style/Widget.AppCompat.Button.Borderless"
                     android:layout_width="wrap_content"
@@ -89,7 +83,108 @@
                     android:id="@+id/notice_more"
                     android:gravity="center"
                     />
+                <LinearLayout
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_marginLeft="15dp"
+                    >
+                    <ImageView
+                        android:layout_width="@dimen/iconSize"
+                        android:layout_height="@dimen/iconSize"
+                        android:src="@drawable/icon_notice"
+                        android:layout_gravity="center"
+                        android:padding="@dimen/default_refresh" />
+                    <TextView
+                        android:textColor="@color/white"
+                        android:text="공지사항"
+                        android:padding="10dp"
+                        android:textSize="@dimen/menu_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+            </FrameLayout>
 
+            <TextView
+                android:id="@+id/notice_text"
+                android:textSize="@dimen/default_text"
+                android:text="공지사항이 없습니다."
+                android:layout_marginLeft="60dp"
+                android:layout_marginBottom="10dp"
+                android:textColor="@color/monsoon"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/oil"
+                android:layout_margin="5dp"
+                />
+            <LinearLayout
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_marginLeft="15dp"
+                >
+                <ImageView
+                    android:layout_width="@dimen/iconSize"
+                    android:layout_height="@dimen/iconSize"
+                    android:src="@drawable/icon_like_m"
+                    android:layout_gravity="center"
+                    android:padding="@dimen/default_refresh" />
+                <android.support.v7.widget.AppCompatButton
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="나의 관심정보"
+                    android:textSize="@dimen/menu_text"
+                    android:textColor="@color/white"
+                    android:id="@+id/menu_like"
+                    android:gravity="left|center"
+                    android:padding="10dp" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_marginLeft="15dp"
+                >
+                <ImageView
+                    android:layout_width="@dimen/iconSize"
+                    android:layout_height="@dimen/iconSize"
+                    android:src="@drawable/icon_attend"
+                    android:layout_gravity="center"
+                    android:padding="@dimen/default_refresh" />
+                <android.support.v7.widget.AppCompatButton
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="참여중인 공고"
+                    android:textSize="@dimen/menu_text"
+                    android:textColor="@color/white"
+                    android:id="@+id/menu_attend"
+                    android:gravity="left|center"
+                    android:padding="10dp" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_marginLeft="15dp"
+                >
+                <ImageView
+                    android:layout_width="@dimen/iconSize"
+                    android:layout_height="@dimen/iconSize"
+                    android:src="@drawable/icon_comment_m"
+                    android:layout_gravity="center"
+                    android:padding="@dimen/default_refresh" />
+                <android.support.v7.widget.AppCompatButton
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="댓글"
+                    android:textSize="@dimen/menu_text"
+                    android:textColor="@color/white"
+                    android:id="@+id/menu_comment"
+                    android:gravity="left|center"
+                    android:padding="10dp" />
             </LinearLayout>
             <View
                 android:layout_width="match_parent"
@@ -97,45 +192,61 @@
                 android:background="@color/oil"
                 android:layout_margin="5dp"
                 />
-            <LinearLayout android:layout_height="wrap_content"
-                android:layout_width="match_parent">
+            <LinearLayout
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_marginLeft="15dp"
+                >
                 <ImageView
                     android:layout_width="@dimen/iconSize"
                     android:layout_height="@dimen/iconSize"
-                    android:src="@drawable/icon_person"
+                    android:src="@drawable/icon_edit"
                     android:layout_gravity="center"
                     android:padding="@dimen/default_refresh" />
                 <android.support.v7.widget.AppCompatButton
                     style="@style/Widget.AppCompat.Button.Borderless"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="마이페이지"
+                    android:text="관심키워드 추가/수정"
+                    android:textSize="@dimen/menu_text"
                     android:textColor="@color/white"
-                    android:id="@+id/menu01"
+                    android:id="@+id/menu_edit"
                     android:gravity="left|center"
                     android:padding="10dp" />
             </LinearLayout>
-
-            <LinearLayout android:layout_height="wrap_content"
-                android:layout_width="match_parent">
+            <LinearLayout
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_marginLeft="15dp"
+                >
                 <ImageView
                     android:layout_width="@dimen/iconSize"
                     android:layout_height="@dimen/iconSize"
-                    android:src="@drawable/icon_gear"
+                    android:src="@drawable/icon_company"
                     android:layout_gravity="center"
                     android:padding="@dimen/default_refresh" />
                 <android.support.v7.widget.AppCompatButton
                     style="@style/Widget.AppCompat.Button.Borderless"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="설정"
+                    android:text="기업 정보 수정"
+                    android:textSize="@dimen/menu_text"
                     android:textColor="@color/white"
-                    android:id="@+id/menu02"
+                    android:id="@+id/menu_company"
                     android:gravity="left|center"
                     android:padding="10dp" />
             </LinearLayout>
-            <LinearLayout android:layout_height="wrap_content"
-                android:layout_width="match_parent">
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/oil"
+                android:layout_margin="5dp"
+                />
+            <LinearLayout
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_marginLeft="15dp"
+                >
                 <ImageView
                     android:layout_width="@dimen/iconSize"
                     android:layout_height="@dimen/iconSize"
@@ -147,13 +258,18 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="로그아웃"
+                    android:textSize="@dimen/menu_text"
                     android:textColor="@color/white"
                     android:id="@+id/menu03"
                     android:gravity="left|center"
                     android:padding="10dp" />
             </LinearLayout>
-
-
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/oil"
+                android:layout_margin="5dp"
+                />
         </LinearLayout>
     </ScrollView>
 
