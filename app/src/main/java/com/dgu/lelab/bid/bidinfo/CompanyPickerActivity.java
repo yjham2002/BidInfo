@@ -2,6 +2,7 @@ package com.dgu.lelab.bid.bidinfo;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -22,13 +23,16 @@ import util.URL;
 
 public class CompanyPickerActivity extends AppCompatActivity implements View.OnClickListener{
 
-    private Button _exit;
+    private Button _exit, _add;
     private RecyclerView mRecyclerView;
     private CompanyAdapter companyAdapter;
 
     @Override
     public void onClick(View v){
         switch (v.getId()){
+            case R.id.bt_add_comany:
+                startActivity(new Intent(this, RegisterActivity.class));
+                break;
             case R.id.bt_exit:
                 finish();
                 break;
@@ -41,6 +45,8 @@ public class CompanyPickerActivity extends AppCompatActivity implements View.OnC
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_company_picker);
 
+        _add = (Button)findViewById(R.id.bt_add_comany);
+        _add.setOnClickListener(this);
         _exit = (Button)findViewById(R.id.bt_exit);
         _exit.setOnClickListener(this);
         mRecyclerView = (RecyclerView)findViewById(R.id.recyclerView);

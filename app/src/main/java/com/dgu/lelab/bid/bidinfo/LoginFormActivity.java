@@ -113,8 +113,10 @@ public class LoginFormActivity extends AppCompatActivity implements View.OnClick
 
                     prefEditor.putString("Uid", json_list.getString("Uid"));
                     prefEditor.putString("Name", json_list.getString("Name"));
+                    prefEditor.putString("Pwd", json_list.getString("Pwd"));
                     prefEditor.putString("hid", json_list.getString("hid"));
                     prefEditor.putInt("id", json_list.getInt("id"));
+                    prefEditor.putBoolean("auto", true);
                     prefEditor.commit();
                     Log.e("hid", pref.getString("hid", "#"));
                     progressDialog.dismiss();
@@ -149,5 +151,9 @@ public class LoginFormActivity extends AppCompatActivity implements View.OnClick
 
         _account.setText("admin@lelab.com");
         _password.setText("lelab2016");
+
+        if(pref.getBoolean("auto", false)){
+            verifyLogin(pref.getString("Uid", "#"), pref.getString("Pwd", "#"));
+        }
     }
 }

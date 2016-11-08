@@ -52,7 +52,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 
     private ImageView _menuBtn02; // Menu Buttons
 
-    private Button _menuBtn01, _menuBtn03, _noticemore, _attend, _likes;
+    private Button _menuBtn01, _menuBtn03, _noticemore, _attend, _likes, _comment, _edit, _company;
     private TextView _username, _useraccount, _noticetext;
     private FloatingActionButton _addButton;
     private MaterialViewPager mViewPager;
@@ -63,6 +63,15 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     @Override
     public void onClick(View v){
         switch (v.getId()){
+            case R.id.menu_comment:
+                startActivity(new Intent(this, PickerActivity.class));
+                break;
+            case R.id.menu_edit:
+                startActivity(new Intent(this, PickerActivity.class));
+                break;
+            case R.id.menu_company:
+                startActivity(new Intent(this, RegisterActivity.class));
+                break;
             case R.id.notice_more:
                 startActivity(new Intent(this, NoticeActivity.class));
                 break;
@@ -79,6 +88,8 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
                 break;
             case R.id.menu03:
                 startActivity(new Intent(this, LoginActivity.class));
+                prefEditor.putBoolean("auto", false);
+                prefEditor.commit();
                 finish();
                 break;
             case R.id.menu_like:
@@ -109,6 +120,12 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         black = (ImageView)findViewById(R.id.black);
         //_menuBtn01 = (Button)findViewById(R.id.menu01);
         //_menuBtn01.setOnClickListener(this);
+        _comment = (Button)findViewById(R.id.menu_comment);
+        _comment.setOnClickListener(this);
+        _edit = (Button)findViewById(R.id.menu_edit);
+        _edit.setOnClickListener(this);
+        _company = (Button)findViewById(R.id.menu_company);
+        _company.setOnClickListener(this);
         _attend = (Button)findViewById(R.id.menu_attend);
         _attend.setOnClickListener(this);
         _likes = (Button)findViewById(R.id.menu_like);
@@ -347,7 +364,8 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
                     //Toast.makeText(getApplicationContext(), "정보를 불러오는 중 오류가 발생하였습니다.", Toast.LENGTH_LONG).show();
                     e.printStackTrace();
                 }finally {
-                    if(bids.mListData.size() < 5) Toast.makeText(getApplicationContext(), "키워드를 통해 추출한 정보가 너무 적습니다.\n마이페이지에서 키워드를 수정하시기 바랍니다.", Toast.LENGTH_LONG).show();
+                    if(bids.mListData.size() < 5 && bids.mListData.size() != 0) Toast.makeText(getApplicationContext(), "키워드를 통해 추출한 정보가 너무 적습니다.\n마이페이지에서 키워드를 수정하시기 바랍니다.", Toast.LENGTH_LONG).show();
+                    else if(bids.mListData.size() == 0) Toast.makeText(getApplicationContext(), "키워드에 일치하는 정보가 존재하지 않거나,\n정보를 불러오는 중 오류가 발생하였습니다.", Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(UPDATE_INTENT);
                     LocalBroadcastManager.getInstance(context).sendBroadcast(intent);
                     setLoadScrren(false);

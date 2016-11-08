@@ -24,7 +24,7 @@ import util.URL;
 
 public class IntroActivity extends AppCompatActivity {
 
-    private SharedPreferences prefs;
+    private SharedPreferences pref;
     private SharedPreferences.Editor prefEditor;
     private Handler h;
     private int delayTime = 2500, delayTime2 = 1000;
@@ -34,8 +34,8 @@ public class IntroActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_intro);
-        prefs = getSharedPreferences("UnivTable", MODE_PRIVATE);
-        prefEditor = prefs.edit();
+        pref = getSharedPreferences("BIDINFO", MODE_PRIVATE);
+        prefEditor = pref.edit();
 
         iv = (ImageView)findViewById(R.id.imageView);
         iv.setDrawingCacheEnabled(true);
@@ -94,7 +94,13 @@ public class IntroActivity extends AppCompatActivity {
 
     Runnable intro = new Runnable() {
         public void run() {
-            Intent i = new Intent(IntroActivity.this, LoginActivity.class);
+            Intent i;
+            if(pref.getBoolean("auto", false)){
+                i = new Intent(IntroActivity.this, LoginFormActivity.class);
+            }else{
+                i = new Intent(IntroActivity.this, LoginActivity.class);
+            }
+
             startActivity(i);
             finish();
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);

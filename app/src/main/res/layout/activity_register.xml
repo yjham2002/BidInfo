@@ -195,7 +195,7 @@
             android:id="@+id/reg_intro" />
 
         <android.support.v7.widget.AppCompatButton
-            android:theme="@style/RedButton"
+            android:theme="@style/BlueButton"
             android:id="@+id/reg_submit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

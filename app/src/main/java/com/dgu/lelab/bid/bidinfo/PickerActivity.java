@@ -23,6 +23,7 @@ public class PickerActivity extends Activity {
         mList1 = new ArrayList<>();
         mList2 = new ArrayList<>();
 
+
         mList1.add("교량설계");
         mList1.add("도로포장");
         mList1.add("가드레일");
