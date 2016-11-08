@@ -13,11 +13,13 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class CompanyAdapter extends RecyclerView.Adapter<CompanyAdapter.ViewHolder> {
 
     public Context mContext = null;
     public List<CompanyData> mListData = new ArrayList<>();
+    public ArrayList<CompanyData> arraylist = new ArrayList<CompanyData>();
     public int item_layout;
 
     public CompanyAdapter(Context mContext, int item_layout) {
@@ -74,10 +76,28 @@ public class CompanyAdapter extends RecyclerView.Adapter<CompanyAdapter.ViewHold
 
     public void addItem(CompanyData addInfo){
         mListData.add(addInfo.clone());
+        arraylist.add(addInfo.clone());
     }
 
     public void dataChange(){
         this.notifyDataSetChanged();
     }
+
+    public void filter(String charText) {
+        charText = charText.toLowerCase(Locale.getDefault());
+        mListData.clear();
+        if (charText.length() == 0) {
+            mListData.addAll(arraylist);
+        }
+        else {
+            for (CompanyData wp : arraylist) {
+                if (wp.Name.toLowerCase(Locale.getDefault()).contains(charText) || wp.Rprt.toLowerCase(Locale.getDefault()).contains(charText)) {
+                    mListData.add(wp);
+                }
+            }
+        }
+        dataChange();
+    }
+
 
 }

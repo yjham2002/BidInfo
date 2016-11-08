@@ -100,6 +100,9 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
             String finalString = list.get(new Random().nextInt(list.size())).replaceAll(match, "");
             mList1.add(finalString);
         }
+        for(int k = 0; k < mList1.size(); k++){
+            if(mList1.get(k).length() <= 1) mList1.remove(k);
+        }
     }
 
     public void onEmptySet(){

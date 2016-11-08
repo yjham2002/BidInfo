@@ -10,13 +10,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.Locale;
 
 import util.Communicator;
 import util.URL;
@@ -25,6 +30,7 @@ public class CompanyPickerActivity extends AppCompatActivity implements View.OnC
 
     private Button _exit, _add;
     private RecyclerView mRecyclerView;
+    private EditText _search;
     private CompanyAdapter companyAdapter;
 
     @Override
@@ -55,6 +61,20 @@ public class CompanyPickerActivity extends AppCompatActivity implements View.OnC
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
 
+        _search = (EditText)findViewById(R.id.view);
+        _search.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void afterTextChanged(Editable arg0) {
+                String text = _search.getText().toString().toLowerCase(Locale.getDefault());
+                companyAdapter.filter(text);
+            }
+            @Override
+            public void beforeTextChanged(CharSequence arg0, int arg1, int arg2, int arg3) {}
+            @Override
+            public void onTextChanged(CharSequence arg0, int arg1, int arg2, int arg3) {}
+        });
+
+
     }
 
     @Override
@@ -70,13 +90,15 @@ public class CompanyPickerActivity extends AppCompatActivity implements View.OnC
                 String jsonString = msg.getData().getString("jsonString");
                 try {
                     companyAdapter.mListData.clear();
+                    companyAdapter.arraylist.clear();
                     JSONArray json_arr = new JSONArray(jsonString);
                     for(int i = 0; i < json_arr.length(); i++) {
                         JSONObject json_list = json_arr.getJSONObject(i);
                         //Log.e("json", json_list.toString());
-                        companyAdapter.addItem(new CompanyData(json_list.getInt("id"), json_list.getInt("symbol"), json_list.getInt("Pnum"), json_list.getString("Name"), json_list.getString("Rnum"),
+                        CompanyData cData = new CompanyData(json_list.getInt("id"), json_list.getInt("symbol"), json_list.getInt("Pnum"), json_list.getString("Name"), json_list.getString("Rnum"),
                                 json_list.getString("Rprt"), json_list.getString("Charge"), json_list.getString("Addr"), json_list.getString("Phone"), json_list.getString("Email"), json_list.getString("Divs"),
-                                json_list.getString("Divl"), json_list.getString("Expl"), json_list.getString("Date"), json_list.getString("hid")));
+                                json_list.getString("Divl"), json_list.getString("Expl"), json_list.getString("Date"), json_list.getString("hid"));
+                        companyAdapter.addItem(cData);
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();

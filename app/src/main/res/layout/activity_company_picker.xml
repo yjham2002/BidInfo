@@ -42,37 +42,24 @@
 
     </FrameLayout>
 
-
-
-    <RelativeLayout
+<LinearLayout
+    android:layout_width="match_parent"
+    android:background="@color/colorPrimaryDark"
+    android:layout_height="wrap_content">
+    <util.ClearableEditText
+        android:layout_margin="10dp"
         android:layout_width="match_parent"
-        android:background="@color/menu_bg"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:hint="회사명을 입력하세요"
+        android:textColor="@color/colorPrimary"
+        android:singleLine="true"
+        android:textColorHint="@color/monsoon"
+        android:id="@+id/view"
+        android:background="@drawable/bg_edittext"
+        android:imeOptions="actionDone" />
 
-        <android.support.v7.widget.AppCompatButton
-            style="@style/Widget.AppCompat.Button.Borderless"
-            android:id="@+id/bt_search"
-            android:layout_gravity="center_vertical"
-            android:layout_width="90dp"
-            android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            android:textSize="@dimen/default_text"
-            android:text="검색"
-            android:layout_centerVertical="true"
-            android:layout_alignParentRight="true" />
-        <util.ClearableEditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            android:layout_marginTop="30dp"
-            android:singleLine="true"
-            android:id="@+id/view"
-            android:background="@drawable/bg_edittext"
-            android:imeOptions="actionDone"
-            android:layout_centerVertical="true"
-            android:layout_alignParentLeft="true"
-            android:layout_toLeftOf="@+id/bt_search" />
-    </RelativeLayout>
+</LinearLayout>
+
     <android.support.v7.widget.RecyclerView
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/recyclerView"

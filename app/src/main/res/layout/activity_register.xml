@@ -23,7 +23,7 @@
             android:textColor="@color/white"
             android:textSize="30dp"
             android:layout_marginBottom="@dimen/default_margin"
-            android:text="회사등록"
+            android:text="회사 정보"
             />
 
 
