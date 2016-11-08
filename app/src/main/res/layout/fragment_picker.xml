@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginTop="50dp"
+            android:layout_marginLeft="@dimen/default_margin"
+            android:layout_marginRight="@dimen/default_margin"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="110dp"
+                android:layout_height="110dp"
+                android:text="용역"
+                android:background="@drawable/circle"
+                android:textColor="@color/white"
+                android:gravity="center"
+                android:textSize="32dp"
+                android:layout_marginTop="@dimen/default_margin" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="건축분야"
+                android:layout_gravity="left"
+                android:textColor="@color/jet"
+                android:textSize="@dimen/default_text_mid"
+                android:layout_marginTop="@dimen/default_margin" />
+
+            <com.dgu.lelab.bid.bidinfo.ExpandableHeightGridView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/gridView1"
+                android:numColumns="3"
+                android:layout_gravity="center" />
+
+        </LinearLayout>
+
+    </ScrollView>
+</LinearLayout>
