@@ -43,15 +43,26 @@ class PickGridAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) convertView = inf.inflate(layout, null);
         TextView content = (TextView) convertView.findViewById(R.id.grid);
-        content.setText("#" + data.get(position).keyword);
+        if(data.get(position).keyword.length() == 0 || data.get(position).isTitle) {
+            content.setText(data.get(position).keyword);
+        }else{
+            content.setText("#" + data.get(position).keyword);
+        }
+
         if(data.get(position).isSelected) {
             content.setTextColor(context.getResources().getColor(R.color.white));
             content.setBackgroundColor(context.getResources().getColor(R.color.transparent_gray));
         }
         else {
-            content.setTextColor(context.getResources().getColor(R.color.jet));
+            content.setTextColor(context.getResources().getColor(R.color.monsoon));
             content.setBackgroundColor(context.getResources().getColor(R.color.transparent));
         }
+
+        if(data.get(position).isTitle){
+            content.setTextColor(context.getResources().getColor(R.color.jet));
+
+        }
+
         return convertView;
     }
 }

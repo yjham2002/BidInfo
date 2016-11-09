@@ -33,9 +33,23 @@ public class PickerFragment extends Fragment {
 
         mList1 = new ArrayList<>();
 
+        boolean flag = false;
+
         for(String[] dimen : dataSet){
-            for(String token : dimen){
-                mList1.add(new KeywordItem(token));
+            for(int i = 0; i < dimen.length; i++){
+                KeywordItem keywordItem = new KeywordItem(dimen[i]);
+                mList1.add(keywordItem);
+                if(i == 0){
+                    keywordItem.isTitle = true;
+                    mList1.add(new KeywordItem(""));
+                    mList1.add(new KeywordItem(""));
+                }
+                else if(i == dimen.length - 1){
+                    keywordItem.isTitle = false;
+                    for(int k = 0; k < 2 - (((dimen.length + 2)-1) % 3); k++){
+                        mList1.add(new KeywordItem(""));
+                    }
+                }
             }
         }
 
@@ -51,6 +65,7 @@ public class PickerFragment extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 mList1.get(position).isSelected = mList1.get(position).isSelected ? false : true;
                 adapter1.notifyDataSetChanged();
+
             }
         });
 
