@@ -58,12 +58,15 @@ public class PickerActivity extends FragmentActivity implements View.OnClickList
         @Override
         public Fragment getItem(int position) {
             Fragment temp;
+            Bundle args = new Bundle();
+            args.putInt("key", position);
             switch(position){
                 case 0: temp = new PickerFragment(); break;
                 case 1: temp = new PickerFragment(); break;
                 case 2: temp = new PickerFragment(); break;
-                default: temp = null; break;
+                default:temp = new PickerFragment(); break;
             }
+            temp.setArguments(args);
             return temp;
         }
 
