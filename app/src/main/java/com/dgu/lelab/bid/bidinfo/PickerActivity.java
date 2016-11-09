@@ -17,13 +17,15 @@ import java.util.List;
 
 public class PickerActivity extends FragmentActivity implements View.OnClickListener {
 
+    public static GridAdapter adapter1;
+
+    private ExpandableHeightGridView gv1;
+    public static List<String> mList1;
+
     SectionsPagerAdapter mSectionsPagerAdapter;
     ViewPager mViewPager;
 
-    public static ArrayList<KeywordItem> selected_goods, selected_const, selected_service;
-
-    private ExpandableHeightGridView gv1, gv2;
-    private List<KeywordItem> mList1, mList2;
+    public static ArrayList<KeywordItem> selected_goods, selected_const, selected_service, selected_etc;
 
     @Override
     public void onClick(View v){
@@ -36,6 +38,7 @@ public class PickerActivity extends FragmentActivity implements View.OnClickList
         selected_const = new ArrayList<>();
         selected_goods = new ArrayList<>();
         selected_service = new ArrayList<>();
+        selected_etc = new ArrayList<>();
     }
 
     @Override
@@ -47,7 +50,20 @@ public class PickerActivity extends FragmentActivity implements View.OnClickList
         mViewPager = (ViewPager) findViewById(R.id.pager);
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
+        mList1 = new ArrayList<>();
 
+        adapter1 = new GridAdapter(this, R.layout.grid_item, mList1);
+        gv1 = (ExpandableHeightGridView)findViewById(R.id.gridView1);
+        gv1.setExpanded(true);
+        gv1.setAdapter(adapter1);
+
+        gv1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                mList1.remove(position);
+                adapter1.notifyDataSetChanged();
+            }
+        });
     }
 
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
@@ -64,6 +80,7 @@ public class PickerActivity extends FragmentActivity implements View.OnClickList
                 case 0: temp = new PickerFragment(); break;
                 case 1: temp = new PickerFragment(); break;
                 case 2: temp = new PickerFragment(); break;
+                case 3: temp = new PickerFragment(); break;
                 default:temp = new PickerFragment(); break;
             }
             temp.setArguments(args);
@@ -72,7 +89,7 @@ public class PickerActivity extends FragmentActivity implements View.OnClickList
 
         @Override
         public int getCount() {
-            return 3;
+            return 4;
         }
 
         @Override
@@ -87,6 +104,9 @@ public class PickerActivity extends FragmentActivity implements View.OnClickList
                     break;
                 case 2:
                     title = "용역";
+                    break;
+                case 3:
+                    title = "기타";
                     break;
                 default: break;
             }

@@ -22,5 +22,11 @@
         tools:context=".MainActivity">
     </android.support.v4.view.ViewPager>
 
-
+    <com.dgu.lelab.bid.bidinfo.ExpandableHeightGridView
+        android:layout_width="match_parent"
+        android:background="@color/transparent_gray"
+        android:layout_height="wrap_content"
+        android:id="@+id/gridView1"
+        android:numColumns="3"
+        android:layout_gravity="bottom" />
 </FrameLayout>

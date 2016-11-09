@@ -17,6 +17,8 @@ import util.KEYWORDS;
 
 public class PickerFragment extends Fragment {
 
+    private int pos;
+
     View rootView;
 
     private TextView _title;
@@ -29,45 +31,54 @@ public class PickerFragment extends Fragment {
     private ExpandableHeightGridView gv1;
     private List<KeywordItem> mList1;
 
-    public void init(View v){
+    public void init(View v, int ii){
 
-        mList1 = new ArrayList<>();
+        if(ii == 3){
+            _title = (TextView)v.findViewById(R.id.pick_title);
+            _title.setText(titleData);
 
-        boolean flag = false;
+        }else{
+            mList1 = new ArrayList<>();
 
-        for(String[] dimen : dataSet){
-            for(int i = 0; i < dimen.length; i++){
-                KeywordItem keywordItem = new KeywordItem(dimen[i]);
-                mList1.add(keywordItem);
-                if(i == 0){
-                    keywordItem.isTitle = true;
-                    mList1.add(new KeywordItem(""));
-                    mList1.add(new KeywordItem(""));
-                }
-                else if(i == dimen.length - 1){
-                    keywordItem.isTitle = false;
-                    for(int k = 0; k < 2 - (((dimen.length + 2)-1) % 3); k++){
+            boolean flag = false;
+
+            for(String[] dimen : dataSet){
+                for(int i = 0; i < dimen.length; i++){
+                    KeywordItem keywordItem = new KeywordItem(dimen[i]);
+                    mList1.add(keywordItem);
+                    if(i == 0){
+                        keywordItem.isTitle = true;
                         mList1.add(new KeywordItem(""));
+                        mList1.add(new KeywordItem(""));
+                    }
+                    else if(i == dimen.length - 1){
+                        keywordItem.isTitle = false;
+                        for(int k = 0; k < 2 - (((dimen.length + 2)-1) % 3); k++){
+                            mList1.add(new KeywordItem(""));
+                        }
                     }
                 }
             }
+
+            _title = (TextView)v.findViewById(R.id.pick_title);
+            _title.setText(titleData);
+            adapter1 = new PickGridAdapter(getActivity(), R.layout.grid_item, mList1);
+            gv1 = (ExpandableHeightGridView) v.findViewById(R.id.gridView1);
+            gv1.setExpanded(true);
+            gv1.setAdapter(adapter1);
+
+            gv1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    mList1.get(position).isSelected = mList1.get(position).isSelected ? false : true;
+                    PickerActivity.mList1.add(mList1.get(position).keyword);
+                    PickerActivity.adapter1.notifyDataSetChanged();
+                    adapter1.notifyDataSetChanged();
+
+                }
+            });
         }
 
-        _title = (TextView)v.findViewById(R.id.pick_title);
-        _title.setText(titleData);
-        adapter1 = new PickGridAdapter(getActivity(), R.layout.grid_item, mList1);
-        gv1 = (ExpandableHeightGridView) v.findViewById(R.id.gridView1);
-        gv1.setExpanded(true);
-        gv1.setAdapter(adapter1);
-
-        gv1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                mList1.get(position).isSelected = mList1.get(position).isSelected ? false : true;
-                adapter1.notifyDataSetChanged();
-
-            }
-        });
 
     }
 
@@ -75,7 +86,7 @@ public class PickerFragment extends Fragment {
     public void onResume(){
         super.onResume();
         final ScrollView scrollview = ((ScrollView) rootView.findViewById(R.id.scrollview));
-        scrollview.post(new Runnable() { @Override public void run() { scrollview.fullScroll(ScrollView.FOCUS_UP); } });
+        if(pos != 3) scrollview.post(new Runnable() { @Override public void run() { scrollview.fullScroll(ScrollView.FOCUS_UP); } });
     }
 
     @Override
@@ -83,6 +94,7 @@ public class PickerFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         int position = getArguments().getInt("key");
+        pos = position;
 
         switch (position){
             case 0:
@@ -97,12 +109,16 @@ public class PickerFragment extends Fragment {
                 dataSet = KEYWORDS.KEY_SERVICE;
                 titleData = "용역";
                 break;
+            case 3:
+                titleData = "기타";
+                break;
             default: dataSet = null; break;
         }
 
-        rootView = inflater.inflate(R.layout.fragment_picker, container, false);
+        if(position == 3) rootView = inflater.inflate(R.layout.fragment_etc, container, false);
+        else rootView = inflater.inflate(R.layout.fragment_picker, container, false);
 
-        init(rootView);
+        init(rootView, position);
 
         return rootView;
     }
