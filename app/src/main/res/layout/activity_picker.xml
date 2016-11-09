@@ -13,20 +13,31 @@
         android:layout_gravity="center"
         android:src="@drawable/pick_bg"
         android:scaleType="centerCrop" />
-
-    <android.support.v4.view.ViewPager xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/pager"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".MainActivity">
-    </android.support.v4.view.ViewPager>
+        android:layout_height="match_parent">
 
-    <com.dgu.lelab.bid.bidinfo.ExpandableHeightGridView
-        android:layout_width="match_parent"
-        android:background="@color/transparent_gray"
-        android:layout_height="wrap_content"
-        android:id="@+id/gridView1"
-        android:numColumns="3"
-        android:layout_gravity="bottom" />
+        <android.support.v4.view.ViewPager xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/pager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".MainActivity"
+            android:layout_alignBottom="@+id/gridView1">
+        </android.support.v4.view.ViewPager>
+
+        <com.dgu.lelab.bid.bidinfo.ExpandableHeightGridView
+            android:layout_width="match_parent"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/colorPrimaryDark"
+            android:layout_height="wrap_content"
+            android:id="@+id/gridView1"
+            android:numColumns="4"
+            android:layout_gravity="bottom" />
+
+
+    </RelativeLayout>
+
 </FrameLayout>
