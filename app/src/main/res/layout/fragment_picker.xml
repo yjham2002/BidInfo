@@ -4,6 +4,18 @@
     android:orientation="vertical"
     android:layout_height="match_parent">
 
+    <TextView
+        android:id="@+id/pick_title"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:text="대분류"
+        android:background="@drawable/circle"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:layout_gravity="center_horizontal"
+        android:textSize="32dp"
+        android:layout_marginTop="50dp" />
+
     <ScrollView
         android:id="@+id/scrollview"
         android:layout_width="match_parent"
@@ -18,17 +30,6 @@
             android:layout_marginLeft="@dimen/default_margin"
             android:layout_marginRight="@dimen/default_margin"
             android:gravity="center">
-
-            <TextView
-                android:id="@+id/pick_title"
-                android:layout_width="110dp"
-                android:layout_height="110dp"
-                android:text="대분류"
-                android:background="@drawable/circle"
-                android:textColor="@color/white"
-                android:gravity="center"
-                android:textSize="32dp"
-                android:layout_marginTop="@dimen/default_margin" />
 
             <com.dgu.lelab.bid.bidinfo.ExpandableHeightGridView
                 android:layout_width="wrap_content"

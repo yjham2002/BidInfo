@@ -1,11 +1,15 @@
 package com.dgu.lelab.bid.bidinfo;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -15,12 +19,16 @@ import java.util.List;
 
 import util.KEYWORDS;
 
-public class PickerFragment extends Fragment {
+public class PickerFragment extends Fragment implements View.OnClickListener{
+
+    private InputMethodManager imm;
 
     private int pos;
 
     View rootView;
 
+    private Button _add, _end;
+    private EditText _keyword;
     private TextView _title;
 
     private String[][] dataSet;
@@ -31,12 +39,42 @@ public class PickerFragment extends Fragment {
     private ExpandableHeightGridView gv1;
     private List<KeywordItem> mList1;
 
-    public void init(View v, int ii){
+    public static boolean mode = false;
 
+    public void updateTags(List<String> l){
+
+    }
+
+    @Override
+    public void onClick(View v){
+        switch (v.getId()){
+            case R.id.key_end:
+                updateTags(PickerActivity.mList1);
+                getActivity().finish();
+                break;
+            case R.id.key_submit:
+                if(_keyword.getText().length() < 2){
+                    Toast.makeText(getActivity(), "2글자 이상 입력하세요", Toast.LENGTH_LONG).show();
+                    break;
+                }
+                addToBottom(_keyword.getText().toString());
+                _keyword.setText("");
+                imm.hideSoftInputFromWindow(_keyword.getWindowToken(), 0);
+                break;
+            default: break;
+        }
+    }
+
+    public void init(View v, int ii){
+        imm = (InputMethodManager)getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
         if(ii == 3){
+            _end = (Button)v.findViewById(R.id.key_end);
+            _end.setOnClickListener(this);
             _title = (TextView)v.findViewById(R.id.pick_title);
             _title.setText(titleData);
-
+            _keyword = (EditText)v.findViewById(R.id.view);
+            _add = (Button)v.findViewById(R.id.key_submit);
+            _add.setOnClickListener(this);
         }else{
             mList1 = new ArrayList<>();
 
@@ -71,10 +109,8 @@ public class PickerFragment extends Fragment {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     mList1.get(position).isSelected = mList1.get(position).isSelected ? false : true;
-                    PickerActivity.mList1.add(mList1.get(position).keyword);
-                    PickerActivity.adapter1.notifyDataSetChanged();
+                    addToBottom(mList1.get(position).keyword);
                     adapter1.notifyDataSetChanged();
-
                 }
             });
         }
@@ -82,11 +118,21 @@ public class PickerFragment extends Fragment {
 
     }
 
+    public void addToBottom(String s){
+        if(s.length() != 0 && !contains(PickerActivity.mList1, s)) PickerActivity.mList1.add(s);
+        PickerActivity.adapter1.notifyDataSetChanged();
+    }
+
+    public boolean contains(List<String> set, String element){
+        for(String s : set) if(s.equals(element)) return true;
+        return false;
+    }
+
     @Override
     public void onResume(){
         super.onResume();
-        final ScrollView scrollview = ((ScrollView) rootView.findViewById(R.id.scrollview));
-        if(pos != 3) scrollview.post(new Runnable() { @Override public void run() { scrollview.fullScroll(ScrollView.FOCUS_UP); } });
+        //final ScrollView scrollview = ((ScrollView) rootView.findViewById(R.id.scrollview));
+        //if(pos != 3) scrollview.post(new Runnable() { @Override public void run() { scrollview.fullScroll(ScrollView.FOCUS_UP); } });
     }
 
     @Override

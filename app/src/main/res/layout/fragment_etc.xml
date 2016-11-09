@@ -1,43 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:orientation="vertical"
-    android:gravity="center_vertical"
     android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/pick_title"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:text="대분류"
+        android:background="@drawable/circle"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:layout_gravity="top|center_horizontal"
+        android:textSize="32dp"
+        android:layout_marginTop="50dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
+        android:layout_gravity="center"
         android:layout_marginLeft="@dimen/default_margin"
         android:layout_marginRight="@dimen/default_margin"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+
         android:gravity="center">
 
-        <TextView
-            android:id="@+id/pick_title"
-            android:layout_width="110dp"
-            android:layout_height="110dp"
-            android:text="대분류"
-            android:background="@drawable/circle"
-            android:textColor="@color/white"
-            android:gravity="center"
-            android:textSize="32dp"
-            android:layout_marginTop="@dimen/default_margin" />
-
         <util.ClearableEditText
-            android:layout_marginTop="30dp"
-            android:layout_margin="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="회사명을 입력하세요"
+            android:hint="키워드를 입력하세요"
             android:textColor="@color/colorPrimary"
             android:singleLine="true"
             android:textColorHint="@color/monsoon"
             android:id="@+id/view"
             android:background="@drawable/bg_edittext"
             android:imeOptions="actionDone" />
+        <android.support.v7.widget.AppCompatButton
+            android:theme="@style/BlueButton"
+            android:id="@+id/key_submit"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:text="추가"
+            android:layout_gravity="center_horizontal|bottom" />
 
 
     </LinearLayout>
-
-</LinearLayout>
+    <android.support.v7.widget.AppCompatButton
+        android:theme="@style/BlueButton"
+        android:id="@+id/key_end"
+        android:layout_marginBottom="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/default_margin"
+        android:layout_marginRight="@dimen/default_margin"
+        android:textColor="@color/white"
+        android:text="완료"
+        android:layout_gravity="bottom" />
+</FrameLayout>

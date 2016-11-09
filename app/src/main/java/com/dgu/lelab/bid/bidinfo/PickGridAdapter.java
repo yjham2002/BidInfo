@@ -49,14 +49,14 @@ class PickGridAdapter extends BaseAdapter {
             content.setText("#" + data.get(position).keyword);
         }
 
-        if(data.get(position).isSelected) {
+        /*if(data.get(position).isSelected) {
             content.setTextColor(context.getResources().getColor(R.color.white));
             content.setBackgroundColor(context.getResources().getColor(R.color.transparent_gray));
         }
         else {
             content.setTextColor(context.getResources().getColor(R.color.monsoon));
             content.setBackgroundColor(context.getResources().getColor(R.color.transparent));
-        }
+        }*/
 
         if(data.get(position).isTitle){
             content.setTextColor(context.getResources().getColor(R.color.jet));
