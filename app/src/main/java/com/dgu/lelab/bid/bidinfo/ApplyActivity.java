@@ -36,7 +36,9 @@ public class ApplyActivity extends AppCompatActivity implements View.OnClickList
                 startActivity(new Intent(this, CompanyPickerActivity.class));
                 break;
             case R.id.app_keyword:
-                startActivity(new Intent(this, PickerActivity.class));
+                Intent intent = new Intent(this, PickerActivity.class);
+                PickerFragment.mode = false;
+                startActivity(intent);
                 break;
             case R.id.cancel:
                 finish();

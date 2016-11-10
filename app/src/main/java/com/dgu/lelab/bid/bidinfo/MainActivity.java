@@ -67,7 +67,10 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
                 startActivity(new Intent(this, PickerActivity.class));
                 break;
             case R.id.menu_edit:
-                startActivity(new Intent(this, PickerActivity.class));
+                Intent intent = new Intent(this, PickerActivity.class);
+                PickerFragment.mode = true;
+                //intent.putExtra("mode", true);
+                startActivity(intent);
                 break;
             case R.id.menu_company:
                 startActivity(new Intent(this, RegisterActivity.class));

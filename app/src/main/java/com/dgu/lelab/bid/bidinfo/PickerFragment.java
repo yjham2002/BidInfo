@@ -1,8 +1,13 @@
 package com.dgu.lelab.bid.bidinfo;
 
+import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,11 +20,17 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
+import util.Communicator;
 import util.KEYWORDS;
+import util.URL;
 
 public class PickerFragment extends Fragment implements View.OnClickListener{
+
+    private SharedPreferences pref;
+    private SharedPreferences.Editor prefEditor;
 
     private InputMethodManager imm;
 
@@ -39,9 +50,34 @@ public class PickerFragment extends Fragment implements View.OnClickListener{
     private ExpandableHeightGridView gv1;
     private List<KeywordItem> mList1;
 
+    private String finalTag;
+
     public static boolean mode = false;
 
     public void updateTags(List<String> l){
+        final ProgressDialog pdial = new ProgressDialog(getActivity(), R.style.AppTheme_Dark_Dialog);
+        pdial.setMessage("업데이트 요청중...");
+        pdial.setCancelable(false);
+        pdial.show();
+        HashMap<String, String> dataSet = new HashMap<>();
+        finalTag = "";
+        for(String s : PickerActivity.mList1){
+            finalTag = finalTag + "|" + s;
+        }
+        finalTag = finalTag.substring(1, finalTag.length()).trim();
+        dataSet.put("hid", finalTag);
+        dataSet.put("id", Integer.toString(pref.getInt("id", 0)));
+        Log.e("HID", finalTag);
+
+        new Communicator().postHttp(URL.MAIN + URL.REST_USER_UPDATE, dataSet, new Handler(){
+            @Override
+            public void handleMessage(Message msg){
+                prefEditor.putString("hid", finalTag);
+                prefEditor.commit();
+                pdial.dismiss();
+                getActivity().finish();
+            }
+        });
 
     }
 
@@ -49,8 +85,7 @@ public class PickerFragment extends Fragment implements View.OnClickListener{
     public void onClick(View v){
         switch (v.getId()){
             case R.id.key_end:
-                updateTags(PickerActivity.mList1);
-                getActivity().finish();
+                if(mode) updateTags(PickerActivity.mList1);
                 break;
             case R.id.key_submit:
                 if(_keyword.getText().length() < 2){
@@ -66,6 +101,7 @@ public class PickerFragment extends Fragment implements View.OnClickListener{
     }
 
     public void init(View v, int ii){
+
         imm = (InputMethodManager)getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
         if(ii == 3){
             _end = (Button)v.findViewById(R.id.key_end);
@@ -138,6 +174,9 @@ public class PickerFragment extends Fragment implements View.OnClickListener{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        pref = getContext().getSharedPreferences("BIDINFO", getActivity().MODE_PRIVATE);
+        prefEditor = pref.edit();
 
         int position = getArguments().getInt("key");
         pos = position;

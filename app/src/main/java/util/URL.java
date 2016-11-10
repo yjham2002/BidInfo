@@ -26,5 +26,6 @@ public class URL {
     public static final String REST_FCM_ONE = "/gcm/send/";
     public static final String REST_USER_LIKES = "/users/like/";
     public static final String REST_USER_ATTEND = "/users/attend/";
+    public static final String REST_USER_UPDATE = "/users/tag";
 
 }

@@ -1,7 +1,11 @@
 package com.dgu.lelab.bid.bidinfo;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -12,10 +16,20 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.Toast;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
+import util.Communicator;
+import util.URL;
+
 public class PickerActivity extends FragmentActivity implements View.OnClickListener {
+
+    private SharedPreferences pref;
+    private SharedPreferences.Editor prefEditor;
 
     public static GridAdapter adapter1;
 
@@ -25,8 +39,6 @@ public class PickerActivity extends FragmentActivity implements View.OnClickList
     SectionsPagerAdapter mSectionsPagerAdapter;
     ViewPager mViewPager;
 
-    public static ArrayList<KeywordItem> selected_goods, selected_const, selected_service, selected_etc;
-
     @Override
     public void onClick(View v){
         switch (v.getId()){
@@ -34,17 +46,20 @@ public class PickerActivity extends FragmentActivity implements View.OnClickList
         }
     }
 
-    public void init(){
-        selected_const = new ArrayList<>();
-        selected_goods = new ArrayList<>();
-        selected_service = new ArrayList<>();
-        selected_etc = new ArrayList<>();
+    public void loadTags(){
+        String s = pref.getString("hid","");
+        List<String> list = new ArrayList<String>(Arrays.asList(s.split("\\|")));
+        mList1.addAll(list);
+        adapter1.notifyDataSetChanged();
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_picker);
+
+        pref = getSharedPreferences("BIDINFO", MODE_PRIVATE);
+        prefEditor = pref.edit();
 
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
         mViewPager = (ViewPager) findViewById(R.id.pager);
@@ -64,6 +79,10 @@ public class PickerActivity extends FragmentActivity implements View.OnClickList
                 adapter1.notifyDataSetChanged();
             }
         });
+
+        if(PickerFragment.mode){
+            loadTags();
+        }
     }
 
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
