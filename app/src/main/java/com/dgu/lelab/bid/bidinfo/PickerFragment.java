@@ -86,6 +86,7 @@ public class PickerFragment extends Fragment implements View.OnClickListener{
         switch (v.getId()){
             case R.id.key_end:
                 if(mode) updateTags(PickerActivity.mList1);
+                else getActivity().finish();
                 break;
             case R.id.key_submit:
                 if(_keyword.getText().length() < 2){
@@ -155,6 +156,10 @@ public class PickerFragment extends Fragment implements View.OnClickListener{
     }
 
     public void addToBottom(String s){
+        if(PickerActivity.mList1.size() >= 15){
+            Toast.makeText(getActivity(), "15개 이하로 선택하세요", Toast.LENGTH_LONG).show();
+            return;
+        }
         if(s.length() != 0 && !contains(PickerActivity.mList1, s)) PickerActivity.mList1.add(s);
         PickerActivity.adapter1.notifyDataSetChanged();
     }

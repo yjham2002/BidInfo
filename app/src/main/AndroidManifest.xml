@@ -103,10 +103,13 @@
             android:name=".LikeActivity"
             android:screenOrientation="portrait"
             android:theme="@style/SimpleBlack" />
-        <activity android:name=".AttendActivity"
+        <activity
+            android:name=".AttendActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/SimpleBlack"
-            ></activity>
+            android:theme="@style/SimpleBlack" />
+        <activity android:name=".CommentActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/SimpleBlack"></activity>
     </application>
 
 </manifest>

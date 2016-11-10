@@ -27,5 +27,7 @@ public class URL {
     public static final String REST_USER_LIKES = "/users/like/";
     public static final String REST_USER_ATTEND = "/users/attend/";
     public static final String REST_USER_UPDATE = "/users/tag";
+    public static final String REST_USER_CHECK = "/users/red";
+    public static final String REST_USER_NEW = "/users/new";
 
 }

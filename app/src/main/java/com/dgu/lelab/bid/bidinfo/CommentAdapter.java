@@ -46,7 +46,7 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
         });
         holder._date.setText(mData.date);
         if(mData.amount.equals("null")) holder._amount.setVisibility(View.GONE);
-        else holder._amount.setText("제시금액 : " + mData.amount + " 천원");
+        else holder._amount.setText("제시금액 : " + mData.amount + " 만원");
         holder._content.setText(mData.content);
         holder.cardview.setOnClickListener(new CardView.OnClickListener() {
             @Override

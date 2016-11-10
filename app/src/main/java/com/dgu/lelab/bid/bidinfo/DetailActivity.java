@@ -12,9 +12,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -26,12 +29,19 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
 
 import util.Communicator;
 import util.URL;
 
 public class DetailActivity extends AppCompatActivity implements View.OnClickListener {
+
+    private View line;
+    private TextView unit;
 
     private InputMethodManager imm;
     private ProgressDialog progressDialog;
@@ -44,11 +54,16 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
     private String mTitle = "";
     private int mToken = 0;
 
-    private CheckBox _like;
-    private TextView _Url, _Title, _PDate, _ReferAndBNum, _hid, _Bstart, _Bexpire, _Dept, _Charge;
+    private Button _like;
+    private boolean like = false;
+    private TextView _Title, _PDate, _ReferAndBNum, _Bstart, _Bexpire, _Dept, _Charge, _bidno;
     private ImageView _Type;
 
-    private EditText _comment;
+    private GridAdapter adapter1;
+    private ExpandableHeightGridView _hid;
+    private List<String> mList1;
+
+    private EditText _comment, _amount;
     private RecyclerView mRecyclerView;
     private CommentAdapter commentAdapter;
     private String URL = "";
@@ -64,10 +79,15 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
 
     public void toggleLike(){
         String URL = util.URL.MAIN;
-        if(!_like.isChecked()) // unlike
+        if(like) { // unlike
             URL = URL + util.URL.REST_UNLIKE;
+            _like.setText("관심정보 지정");
+            like = false;
+        }
         else{ // like
             URL = URL + util.URL.REST_LIKE;
+            like = true;
+            _like.setText("관심정보 취소");
             sendPush("새로운 관심글 지정 알림", mTitle);
         }
         HashMap<String, String> data = new HashMap<>();
@@ -83,13 +103,17 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
             return;
         }
         HashMap<String, String> data = new HashMap<>();
-        data.put("Amount", null);
+        String amount;
+        if(_amount.getText().toString().length() == 0) amount = null;
+        else amount = _amount.getText().toString();
+        data.put("Amount", amount);
         data.put("Comment", msg);
         data.put("mid", Integer.toString(pref.getInt("id", 0)));
         data.put("bid", Integer.toString(cmdMsg.getInt("id")));
         new Communicator().postHttp(util.URL.MAIN + util.URL.REST_COMMENT_NEW, data, new Handler(){
             @Override
             public void handleMessage(Message msg){
+                _amount.setText("");
                 _comment.setText("");
                 imm.hideSoftInputFromWindow(_comment.getWindowToken(), 0);
                 loadComment();
@@ -135,6 +159,12 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
         pref = getSharedPreferences("BIDINFO", MODE_PRIVATE);
         prefEditor = pref.edit();
 
+        like = false;
+
+        unit = (TextView)findViewById(R.id.unit);
+        line = (View)findViewById(R.id.line);
+        _amount = (EditText)findViewById(R.id.detail_amount);
+        _bidno = (TextView)findViewById(R.id.bidno);
         _comment = (EditText)findViewById(R.id.detail_comment);
         _submit = (Button)findViewById(R.id.detail_submit);
         _submit.setOnClickListener(this);
@@ -143,18 +173,17 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
         _exit = (Button)findViewById(R.id.bt_exit);
         _exit.setOnClickListener(this);
 
-        _like = (CheckBox)findViewById(R.id.like);
+        _like = (Button)findViewById(R.id.like);
         _like.setOnClickListener(this);
 
         mRecyclerView = (RecyclerView)findViewById(R.id.recyclerView);
         commentAdapter = new CommentAdapter(this, R.layout.listview_comment);
 
         _Type = (ImageView)findViewById(R.id.favicon);
-        _Url = (TextView)findViewById(R.id.Url);
         _Title = (TextView)findViewById(R.id.Title);
         _PDate = (TextView)findViewById(R.id.PDate);
         _ReferAndBNum = (TextView)findViewById(R.id.Refer);
-        _hid = (TextView)findViewById(R.id.hid);
+
         _Bstart = (TextView)findViewById(R.id.Bstart);
         _Bexpire = (TextView)findViewById(R.id.Bexpire);
         _Dept = (TextView)findViewById(R.id.Dept);
@@ -165,9 +194,58 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
 
+        mList1 = new ArrayList<>();
+
+        adapter1 = new GridAdapter(this, R.layout.grid_item_detail, mList1);
+        _hid = (ExpandableHeightGridView)findViewById(R.id.hid);
+        _hid.setExpanded(true);
+        _hid.setAdapter(adapter1);
+
+        _amount.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void afterTextChanged(Editable arg0) {
+            }
+            @Override
+            public void beforeTextChanged(CharSequence arg0, int arg1, int arg2, int arg3) {}
+            @Override
+            public void onTextChanged(CharSequence arg0, int arg1, int arg2, int arg3) {
+                if(arg0.length() > 6) {
+                    _amount.setText(_amount.getText().toString().substring(0, 6));
+                    Toast.makeText(getApplicationContext(), "금액은 6자 이내로 입력하세요", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+
+        _comment.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void afterTextChanged(Editable arg0) {
+            }
+            @Override
+            public void beforeTextChanged(CharSequence arg0, int arg1, int arg2, int arg3) {}
+            @Override
+            public void onTextChanged(CharSequence arg0, int arg1, int arg2, int arg3) {
+                if(arg0.length() > 100) {
+                    _amount.setText(_amount.getText().toString().substring(0, 100));
+                    Toast.makeText(getApplicationContext(), "100자 이내로 입력하세요", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+
+        _hid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            }
+        });
+
         Intent cmd = getIntent();
         cmdMsg = cmd.getExtras();
 
+    }
+
+    public void hideAmount(){
+        _amount.setVisibility(View.GONE);
+        line.setVisibility(View.GONE);
+        unit.setVisibility(View.GONE);
     }
 
     @Override
@@ -188,8 +266,14 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
                 try{
                     JSONArray json_arr = new JSONArray(jsonString);
                     JSONObject json_list = json_arr.getJSONObject(0);
-                    if(json_list.getInt("check")==0) _like.setChecked(false);
-                    else _like.setChecked(true);
+                    if(json_list.getInt("check")==0) {
+                        like = false;
+                        _like.setText("관심정보 지정");
+                    }
+                    else {
+                        like = true;
+                        _like.setText("관심정보 취소");
+                    }
                 }catch(JSONException e){
                     e.printStackTrace();
                 }
@@ -207,9 +291,11 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
                     Log.e("JSON", msg.getData().getString("jsonString"));
                     switch (json_list.getInt("Type")){
                         case 0:case 1:case 2:case 3:
+                            hideAmount();
                             _Type.setImageDrawable(getResources().getDrawable(R.drawable.div_01));
                             break;
                         case 4:case 5:case 6:case 7:
+                            hideAmount();
                             _Type.setImageDrawable(getResources().getDrawable(R.drawable.div_03));
                             break;
                         default:
@@ -224,31 +310,33 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
                         mToken = 0;
                     }
 
+                    String none = "정보없음";
+
                     if(json_list.getString("Url").equals("null") || json_list.getString("Url").equals("about:blank")) {
-                        _Url.setVisibility(View.GONE);
                         _redirect.setVisibility(View.GONE);
                     }
-                    else _Url.setText(json_list.getString("Url"));
-                    if(json_list.getString("Title").equals("null")) _Title.setVisibility(View.GONE);
+                    if(json_list.getString("Title").equals("null")) _Title.setText(none);
                     else _Title.setText(json_list.getString("Title"));
-                    if(json_list.getString("PDate").equals("null") || json_list.getString("PDate").equals("NULL")) _PDate.setVisibility(View.GONE);
-                    else _PDate.setText(json_list.getString("PDate"));
-                    if(json_list.getString("Refer").equals("null")) _ReferAndBNum.setVisibility(View.GONE);
-                    else{
-                        if(json_list.getString("BidNo").equals("null")) _ReferAndBNum.setText(json_list.getString("Refer"));
-                        else _ReferAndBNum.setText(json_list.getString("Refer") + " - " + json_list.getString("BidNo"));
-                    }
-                    if(json_list.getString("Bstart").equals("null")) _Bstart.setVisibility(View.GONE);
-                    else _Bstart.setText("입찰시작일자 : " + json_list.getString("Bstart"));
+                    if(json_list.getString("Date").equals("null") || json_list.getString("Date").equals("NULL")) _PDate.setText(none);
+                    else _PDate.setText(json_list.getString("Date"));
+                    if(json_list.getString("Refer").equals("null")) _ReferAndBNum.setText(none);
+                    else _ReferAndBNum.setText(json_list.getString("Refer"));
+                    if(json_list.getString("BidNo").equals("null")) _bidno.setText(none);
+                    else _bidno.setText(json_list.getString("BidNo"));
+                    if(json_list.getString("Bstart").equals("null")) _Bstart.setText(none);
+                    else _Bstart.setText(json_list.getString("Bstart"));
                     if(json_list.getString("Bexpire").equals("null")) _Bexpire.setVisibility(View.GONE);
-                    else _Bexpire.setText("입찰종료일자 : " + json_list.getString("Bexpire"));
-                    if(json_list.getString("Dept").equals("null")) _Dept.setVisibility(View.GONE);
+                    else _Bexpire.setText(" / " + json_list.getString("Bexpire"));
+                    if(json_list.getString("Dept").equals("null")) _Dept.setText(none);
                     else _Dept.setText(json_list.getString("Dept"));
-                    if(json_list.getString("Charge").equals("null")) _Charge.setVisibility(View.GONE);
+                    if(json_list.getString("Charge").equals("null")) _Charge.setText(none);
                     else _Charge.setText(json_list.getString("Charge"));
-                    if(json_list.getString("hid").equals("null")) _hid.setVisibility(View.GONE);
-                    else {
-                        _hid.setText("#" + json_list.getString("hid").replaceAll("\\|", " #"));
+
+                    if(!json_list.getString("hid").equals("null")) {
+                        List<String> list = new ArrayList<String>(Arrays.asList(json_list.getString("hid").split("\\|")));
+                        mList1.clear();
+                        mList1.addAll(list);
+                        adapter1.notifyDataSetChanged();
                     }
 
                     URL = json_list.getString("Url");
@@ -266,11 +354,15 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     public void loadComment(){
+        commentAdapter = new CommentAdapter(this, R.layout.listview_comment);
+        mRecyclerView.setAdapter(commentAdapter);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
         Communicator.getHttp(util.URL.MAIN + util.URL.REST_BOARD_COMMENT + cmdMsg.getInt("id"), new Handler(){
             @Override
             public void handleMessage(Message msg){
                 String jsonString = msg.getData().getString("jsonString");
-                commentAdapter.mListData.clear();
+
                 try {
                     JSONArray json_arr = new JSONArray(jsonString);
                     /**

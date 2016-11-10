@@ -34,7 +34,7 @@ public class PickerActivity extends FragmentActivity implements View.OnClickList
     public static GridAdapter adapter1;
 
     private ExpandableHeightGridView gv1;
-    public static List<String> mList1;
+    public static List<String> mList1 = new ArrayList<>();
 
     SectionsPagerAdapter mSectionsPagerAdapter;
     ViewPager mViewPager;
@@ -47,6 +47,7 @@ public class PickerActivity extends FragmentActivity implements View.OnClickList
     }
 
     public void loadTags(){
+        mList1.clear();
         String s = pref.getString("hid","");
         List<String> list = new ArrayList<String>(Arrays.asList(s.split("\\|")));
         mList1.addAll(list);
@@ -65,9 +66,7 @@ public class PickerActivity extends FragmentActivity implements View.OnClickList
         mViewPager = (ViewPager) findViewById(R.id.pager);
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
-        mList1 = new ArrayList<>();
-
-        adapter1 = new GridAdapter(this, R.layout.grid_item_pick, mList1);
+        adapter1 = new GridAdapter(this, R.layout.grid_item_detail, mList1);
         gv1 = (ExpandableHeightGridView)findViewById(R.id.gridView1);
         gv1.setExpanded(true);
         gv1.setAdapter(adapter1);

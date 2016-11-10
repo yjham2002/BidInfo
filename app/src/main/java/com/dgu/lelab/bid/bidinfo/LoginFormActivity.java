@@ -121,8 +121,9 @@ public class LoginFormActivity extends AppCompatActivity implements View.OnClick
                     Log.e("hid", pref.getString("hid", "#"));
                     progressDialog.dismiss();
                     _login.setEnabled(true);
-                    if(!isExpired(json_list.getString("ExpDate"))) startActivity(mainCall);
-                    else startActivity(new Intent(LoginFormActivity.this, ExpireActivity.class));
+                    //if(!isExpired(json_list.getString("ExpDate"))) startActivity(mainCall);
+                    //else startActivity(new Intent(LoginFormActivity.this, ExpireActivity.class));
+                    startActivity(mainCall);
                     finish();
                 }catch (JSONException e){
                     Toast.makeText(getApplicationContext(), "로그인에 실패하였습니다.", Toast.LENGTH_LONG).show();

@@ -64,7 +64,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     public void onClick(View v){
         switch (v.getId()){
             case R.id.menu_comment:
-                startActivity(new Intent(this, PickerActivity.class));
+                startActivity(new Intent(this, CommentActivity.class));
                 break;
             case R.id.menu_edit:
                 Intent intent = new Intent(this, PickerActivity.class);

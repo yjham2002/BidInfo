@@ -28,6 +28,7 @@
             app:viewpager_displayToolbarWhenSwipe="true"
             app:viewpager_transparentToolbar="false"
             app:viewpager_animatedHeaderImage="true"
+            android:background="@color/grayline"
             />
         app:viewpager_pagerTitleStrip="@layout/material_view_pager_pagertitlestrip_newstand"
         TextView
@@ -39,7 +40,7 @@
             android:text="Testing"
             />
         <android.support.design.widget.FloatingActionButton
-            app:backgroundTint="@color/orange"
+            app:backgroundTint="@color/coral"
             app:rippleColor="@color/white"
             app:fabSize="auto"
             android:layout_width="wrap_content"
