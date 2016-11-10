@@ -24,35 +24,51 @@
                     android:id="@+id/title"
                     android:clickable="true"
                     android:textColor="@color/jet"
-                    android:textSize="@dimen/default_text" />
+                    android:textSize="13dp" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="right"
                     android:text="1970-01-01"
                     android:id="@+id/date"
-                    android:textColor="@color/jet"
+                    android:textColor="@color/monsoon"
                     android:textSize="@dimen/default_text" />
 
             </FrameLayout>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Amount"
-                android:background="@drawable/bg_textview"
-                android:layout_marginTop="2dp"
-                android:layout_marginBottom="2dp"
-                android:id="@+id/amount"
-                android:textColor="@color/jet"
-                android:textSize="12dp" />
 
-            <TextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Test Comment for detail view page"
-                android:id="@+id/content"
-                android:textColor="@color/monsoon"
-                android:textSize="12dp" />
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Amount"
+                    android:background="@drawable/bg_textview"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="2dp"
+                    android:id="@+id/amount"
+                    android:textColor="@color/cool"
+                    android:textSize="10dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Test Comment for detail view page"
+                    android:id="@+id/content"
+                    android:textColor="@color/jet"
+                    android:textSize="13dp"
+                    android:layout_marginLeft="5dp" />
+            </LinearLayout>
+            <View
+                android:layout_marginTop="7dp"
+                android:background="@color/grayline"
+                android:layout_width="match_parent"
+                android:layout_height="1dp">
+
+            </View>
 
         </LinearLayout>
 
