@@ -119,18 +119,26 @@ public class PickerFragment extends Fragment implements View.OnClickListener{
 
             for(String[] dimen : dataSet){
                 for(int i = 0; i < dimen.length; i++){
-                    KeywordItem keywordItem = new KeywordItem(dimen[i]);
-                    mList1.add(keywordItem);
                     if(i == 0){
-                        keywordItem.isTitle = true;
+                        KeywordItem keywordItem = new KeywordItem(dimen[i]);
                         mList1.add(new KeywordItem(""));
+                        keywordItem.isTitle = true;
+                        mList1.add(keywordItem);
                         mList1.add(new KeywordItem(""));
                     }
                     else if(i == dimen.length - 1){
+                        KeywordItem keywordItem = new KeywordItem(dimen[i]);
+                        mList1.add(keywordItem);
                         keywordItem.isTitle = false;
                         for(int k = 0; k < 2 - (((dimen.length + 2)-1) % 3); k++){
                             mList1.add(new KeywordItem(""));
                         }
+                        mList1.add(new KeywordItem(""));
+                        mList1.add(new KeywordItem(""));
+                        mList1.add(new KeywordItem(""));
+                    }else{
+                        KeywordItem keywordItem = new KeywordItem(dimen[i]);
+                        mList1.add(keywordItem);
                     }
                 }
             }

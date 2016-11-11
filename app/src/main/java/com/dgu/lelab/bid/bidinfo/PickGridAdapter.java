@@ -46,7 +46,7 @@ class PickGridAdapter extends BaseAdapter {
         if(data.get(position).keyword.length() == 0 || data.get(position).isTitle) {
             content.setText(data.get(position).keyword);
         }else{
-            content.setText("#" + data.get(position).keyword);
+            content.setText(data.get(position).keyword);
         }
 
         /*if(data.get(position).isSelected) {

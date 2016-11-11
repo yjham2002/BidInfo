@@ -16,6 +16,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
+import android.text.SpannableString;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
@@ -187,6 +188,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 
             @Override
             public CharSequence getPageTitle(int position) {
+
                 switch (position % 3) {
                     case 0:
                         return "물품정보";
