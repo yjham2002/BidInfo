@@ -6,15 +6,15 @@
 
     <TextView
         android:id="@+id/pick_title"
-        android:layout_width="110dp"
-        android:layout_height="110dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:text="대분류"
-        android:background="@drawable/circle"
-        android:textColor="@color/white"
+        android:textColor="@color/coral"
         android:gravity="center"
-        android:layout_gravity="top|center_horizontal"
+        android:layout_gravity="center_horizontal"
         android:textSize="32dp"
         android:layout_marginTop="50dp" />
+
 
     <LinearLayout
         android:layout_width="match_parent"

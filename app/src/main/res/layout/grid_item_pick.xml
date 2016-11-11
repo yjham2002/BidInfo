@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:text="#Testing Obj"
         android:gravity="center_horizontal"
-        android:textColor="@color/monsoon"
+        android:textColor="@color/coral"
         android:textStyle="bold"
         android:id="@+id/grid"
         android:background="@drawable/bg_edittext_focused"

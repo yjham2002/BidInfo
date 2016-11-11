@@ -6,8 +6,25 @@
     android:focusableInTouchMode="true"
     android:orientation="vertical"
 
-    android:background="@color/transparent_window"
+    android:background="@color/form_bg"
     tools:context="com.dgu.lelab.bid.bidinfo.ApplyActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/jet"
+        android:layout_marginTop="15dp"
+        android:gravity="center_horizontal"
+        android:textSize="20dp"
+        android:layout_marginBottom="@dimen/default_margin"
+        android:text="회원가입"
+        />
+
+    <View
+        android:background="@color/jet"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -18,25 +35,12 @@
             android:layout_margin="@dimen/default_margin"
             >
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="35dp"></View>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/white"
-                android:textSize="30dp"
-                android:layout_marginBottom="@dimen/default_margin"
-                android:text="회원가입"
-                />
-
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/default_text_mid"
                 android:text="이메일"
-                android:textColor="@color/white"
+                android:textColor="@color/jet"
                 />
             <EditText
                 android:layout_width="match_parent"
@@ -52,7 +56,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/default_text_mid"
                 android:text="패스워드"
-                android:textColor="@color/white"
+                android:textColor="@color/jet"
                 />
             <EditText
                 android:layout_width="match_parent"
@@ -67,7 +71,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/white"
+                android:textColor="@color/jet"
                 android:textSize="@dimen/default_text_mid"
                 android:text="성명"
                 />
@@ -82,7 +86,7 @@
                 android:id="@+id/app_name" />
 
             <TextView
-                android:textColor="@color/white"
+                android:textColor="@color/jet"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/default_text_mid"
@@ -90,6 +94,7 @@
                 />
 
             <EditText
+                android:textSize="@dimen/default_text_mid"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/monsoon"
@@ -98,29 +103,38 @@
                 android:singleLine="true"
                 android:background="@drawable/bg_edittext"
                 android:id="@+id/app_num" />
-            <android.support.v7.widget.AppCompatButton
-                android:theme="@style/WhiteButton"
+            <Button
+                android:textSize="@dimen/default_text_mid"
+                android:background="@drawable/button_selector_line"
                 android:id="@+id/app_company"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:elevation="0dp"
                 android:layout_marginBottom="@dimen/default_margin"
                 android:text="회사명 선택"
+                android:textColor="@color/coral"
                 android:layout_gravity="center_horizontal|bottom" />
-            <android.support.v7.widget.AppCompatButton
-                android:theme="@style/WhiteButton"
+            <Button
+                android:textSize="@dimen/default_text_mid"
+                android:background="@drawable/button_selector_line"
                 android:id="@+id/app_birth"
+                android:elevation="0dp"
+                android:textColor="@color/coral"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/default_margin"
                 android:text="개업일자 선택"
                 android:layout_gravity="center_horizontal|bottom" />
-            <android.support.v7.widget.AppCompatButton
-                android:theme="@style/WhiteButton"
+            <Button
+                android:background="@drawable/button_selector_line"
                 android:id="@+id/app_keyword"
+                android:elevation="0dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/default_margin"
                 android:text="관심키워드 선택"
+                android:textSize="@dimen/default_text_mid"
+                android:textColor="@color/coral"
                 android:layout_gravity="center_horizontal|bottom" />
 
             <android.support.v7.widget.AppCompatButton
@@ -129,37 +143,45 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/white"
+                android:textColor="@color/jet"
                 android:textSize="@dimen/default_text_mid"
                 android:text="사용자 이용권 계약 전문 보기"
                 />
             <TextView
-                android:textColor="@color/white"
-                android:layout_width="wrap_content"
-                android:layout_marginTop="20dp"
+                android:textColor="@color/jet"
+                android:layout_width="match_parent"
+                android:gravity="center_horizontal"
                 android:layout_marginBottom="@dimen/default_margin"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/default_text"
                 android:text="* 회원가입을 선택 시 약관에 동의하는 것으로 간주됩니다."
                 />
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <android.support.v7.widget.AppCompatButton
+                    android:background="@drawable/button_selector_blue"
+                    android:layout_weight="1"
+                    android:id="@+id/app_submit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:layout_marginRight="3dp"
+                    android:text="회원가입"
+                    android:layout_gravity="center_horizontal|bottom" />
+                <android.support.v7.widget.AppCompatButton
+                    android:background="@drawable/button_selector_dark"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="3dp"
+                    android:id="@+id/cancel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:text="취소"
+                    android:layout_gravity="center_horizontal|bottom" />
+            </LinearLayout>
 
-            <android.support.v7.widget.AppCompatButton
-                android:theme="@style/BlueButton"
-                android:id="@+id/app_submit"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/white"
-                android:text="회원가입"
-                android:layout_gravity="center_horizontal|bottom" />
-            <android.support.v7.widget.AppCompatButton
-                android:theme="@style/RedButton"
-                android:id="@+id/cancel"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/default_margin"
-                android:textColor="@color/white"
-                android:text="취소"
-                android:layout_gravity="center_horizontal|bottom" />
 
             <View
                 android:layout_width="match_parent"

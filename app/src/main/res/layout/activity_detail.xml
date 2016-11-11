@@ -125,7 +125,7 @@
                     android:layout_height="@dimen/iconSize2"
                     android:id="@+id/favicon"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="@dimen/week_padding"
+                    android:layout_marginLeft="18dp"
                     android:src="@drawable/div_01" />
 
                 <LinearLayout

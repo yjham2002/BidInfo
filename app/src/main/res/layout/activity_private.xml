@@ -6,8 +6,25 @@
     android:focusableInTouchMode="true"
     android:orientation="vertical"
 
-    android:background="@color/transparent_window"
+    android:background="@color/form_bg"
     tools:context="com.dgu.lelab.bid.bidinfo.PrivateActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/jet"
+        android:layout_marginTop="15dp"
+        android:gravity="center_horizontal"
+        android:textSize="20dp"
+        android:layout_marginBottom="@dimen/default_margin"
+        android:text="민간공고"
+        />
+
+    <View
+        android:background="@color/jet"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -18,25 +35,12 @@
             android:layout_margin="@dimen/default_margin"
             >
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="35dp"></View>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/white"
-                android:textSize="30dp"
-                android:layout_marginBottom="@dimen/default_margin"
-                android:text="민간공고"
-                />
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:textColor="@color/jet"
                 android:textSize="@dimen/default_text_mid"
                 android:text="제목"
-                android:textColor="@color/white"
                 />
             <EditText
                 android:layout_width="match_parent"
@@ -52,7 +56,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/default_text_mid"
                 android:text="분류"
-                android:textColor="@color/white"
+                android:textColor="@color/jet"
                 />
 
             <RadioGroup
@@ -63,7 +67,7 @@
                 <RadioButton
                     android:id="@+id/pr_goods"
                     android:text="물품"
-                    android:textColor="@color/white"
+                    android:textColor="@color/jet"
                     android:textSize="@dimen/default_text_mid"
                     android:layout_width="wrap_content"
                     android:layout_weight="1"
@@ -72,7 +76,7 @@
                     android:id="@+id/pr_const"
                     android:layout_weight="1"
                     android:text="공사"
-                    android:textColor="@color/white"
+                    android:textColor="@color/jet"
                     android:textSize="@dimen/default_text_mid"
                     android:layout_width="wrap_content"
                     android:layout_marginBottom="@dimen/default_margin"
@@ -81,7 +85,7 @@
                     android:id="@+id/pr_service"
                     android:text="용역"
                     android:layout_weight="1"
-                    android:textColor="@color/white"
+                    android:textColor="@color/jet"
                     android:textSize="@dimen/default_text_mid"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
@@ -93,7 +97,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/default_text_mid"
                 android:text="회사명/담당처"
-                android:textColor="@color/white"
+                android:textColor="@color/jet"
                 />
             <EditText
                 android:layout_width="match_parent"
@@ -110,7 +114,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/default_text_mid"
                 android:text="담당자"
-                android:textColor="@color/white"
+                android:textColor="@color/jet"
                 />
             <EditText
                 android:layout_width="match_parent"
@@ -128,7 +132,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/default_text_mid"
                 android:text="링크할 주소"
-                android:textColor="@color/white"
+                android:textColor="@color/jet"
                 />
             <EditText
                 android:layout_width="match_parent"
@@ -145,7 +149,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/default_text_mid"
                 android:text="공고 번호"
-                android:textColor="@color/white"
+                android:textColor="@color/jet"
                 />
             <EditText
                 android:layout_width="match_parent"
@@ -164,16 +168,22 @@
                 android:layout_height="wrap_content">
 
                 <android.support.v7.widget.AppCompatButton
-                    android:theme="@style/WhiteButton"
+                    android:background="@drawable/button_selector_line"
                     android:id="@+id/private_start"
                     android:layout_weight="1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginRight="3dp"
+                    android:textSize="@dimen/default_text_mid"
+                    android:textColor="@color/coral"
                     android:layout_marginBottom="@dimen/default_margin"
                     android:text="개시일 선택" />
                 <android.support.v7.widget.AppCompatButton
-                    android:theme="@style/WhiteButton"
+                    android:background="@drawable/button_selector_line"
                     android:id="@+id/private_end"
+                    android:textSize="@dimen/default_text_mid"
+                    android:textColor="@color/coral"
+                    android:layout_marginLeft="3dp"
                     android:layout_weight="1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -186,7 +196,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/white"
+                android:textColor="@color/jet"
                 android:textSize="@dimen/default_text_mid"
                 android:text="키워드"
                 />
@@ -195,7 +205,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <android.support.v7.widget.AppCompatButton
-                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:background="@drawable/button_selector_dark"
                     android:id="@+id/bt_add"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -231,31 +241,40 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/white"
+                android:textColor="@color/monsoon"
                 android:textSize="10dp"
                 android:text="키워드를 선택하시면 삭제됩니다"
                 />
 
-            <android.support.v7.widget.AppCompatButton
-                android:theme="@style/BlueButton"
-                android:id="@+id/private_submit"
+            <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/default_margin"
-                android:textColor="@color/white"
-                android:text="등록"
-                android:layout_gravity="center_horizontal|bottom" />
-            <android.support.v7.widget.AppCompatButton
-                android:theme="@style/RedButton"
-                android:id="@+id/private_cancel"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="150dp"
-                android:textColor="@color/white"
-                android:text="취소"
-                android:layout_gravity="center_horizontal|bottom" />
+                android:layout_height="wrap_content">
+                <android.support.v7.widget.AppCompatButton
+                    android:background="@drawable/button_selector_blue"
+                    android:id="@+id/private_submit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:layout_weight="1"
+                    android:layout_marginRight="3dp"
+                    android:text="등록"
+                    android:layout_gravity="center_horizontal|bottom" />
+                <android.support.v7.widget.AppCompatButton
+                    android:background="@drawable/button_selector_dark"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="3dp"
+                    android:id="@+id/private_cancel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:text="취소"
+                    android:layout_gravity="center_horizontal|bottom" />
+            </LinearLayout>
 
             <View
+                android:layout_marginBottom="150dp"
                 android:layout_width="match_parent"
                 android:layout_height="35dp"></View>
 

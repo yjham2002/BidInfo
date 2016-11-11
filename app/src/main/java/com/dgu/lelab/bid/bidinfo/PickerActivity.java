@@ -66,7 +66,7 @@ public class PickerActivity extends FragmentActivity implements View.OnClickList
         mViewPager = (ViewPager) findViewById(R.id.pager);
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
-        adapter1 = new GridAdapter(this, R.layout.grid_item_detail, mList1);
+        adapter1 = new GridAdapter(this, R.layout.grid_item_pick_a, mList1);
         gv1 = (ExpandableHeightGridView)findViewById(R.id.gridView1);
         gv1.setExpanded(true);
         gv1.setAdapter(adapter1);

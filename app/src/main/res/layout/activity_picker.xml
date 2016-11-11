@@ -31,7 +31,7 @@
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
             android:layout_alignParentBottom="true"
-            android:background="@color/colorPrimaryDark"
+            android:background="@color/form_bg"
             android:layout_height="wrap_content"
             android:id="@+id/gridView1"
             android:numColumns="4"

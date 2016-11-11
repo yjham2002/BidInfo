@@ -205,17 +205,17 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
             public HeaderDesign getHeaderDesign(int page) {
                 switch (page) {
                     case 0:
-                        return HeaderDesign.fromColorResAndUrl(
-                                R.color.oil,
-                                "http://fusible.com/wp-content/uploads/2011/09/groupon-goods.jpg");
+                        return HeaderDesign.fromColorAndDrawable(
+                                getResources().getColor(R.color.coral),
+                                getResources().getDrawable(R.drawable.bg_gr1));
                     case 1:
-                        return HeaderDesign.fromColorResAndUrl(
-                                R.color.green_teal,
-                                "https://upload.wikimedia.org/wikipedia/commons/c/cf/Construction_workers_not_wearing_fall_protection_equipment.jpg");
+                        return HeaderDesign.fromColorAndDrawable(
+                                getResources().getColor(R.color.coral),
+                                getResources().getDrawable(R.drawable.bg_gr1));
                     case 2:
-                        return HeaderDesign.fromColorResAndUrl(
-                                R.color.red,
-                                "http://www.incimages.com/uploaded_files/image/970x450/handshake-pano_19966.jpg");
+                        return HeaderDesign.fromColorAndDrawable(
+                                getResources().getColor(R.color.coral),
+                                getResources().getDrawable(R.drawable.bg_gr1));
                 }
 
                 //execute others actions if needed (ex : modify your header logo)
