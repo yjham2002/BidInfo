@@ -40,14 +40,14 @@
             android:text="Testing"
             />
         <android.support.design.widget.FloatingActionButton
-            app:backgroundTint="@color/coral"
+            app:backgroundTint="@color/colorPrimaryDark"
             app:rippleColor="@color/white"
             app:fabSize="auto"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|right"
             android:id="@+id/add"
-            android:src="@drawable/ic_edit"
+            android:src="@drawable/write"
             android:layout_margin="@dimen/default_margin"
             />
 

@@ -27,7 +27,7 @@ public class IntroActivity extends AppCompatActivity {
     private SharedPreferences pref;
     private SharedPreferences.Editor prefEditor;
     private Handler h;
-    private int delayTime = 2500, delayTime2 = 1000;
+    private int delayTime = 3500, delayTime2 = 1000;
     private ImageView iv;
 
     @Override

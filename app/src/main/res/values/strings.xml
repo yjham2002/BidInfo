@@ -3,7 +3,7 @@
     <string name="reg_msg">아직 회원이 아니신가요?</string>
     <string name="share_using">이 페이지를 공유</string>
     <string name="kakao_app_key">3c417bceda2397fce186d43221a27117</string>
-    <string name="title_string">검색없는 맞춤형 정보 알림</string>
+    <string name="title_string">검색없는 맞춤형 건설정보 알림 앱</string>
     <string name="expire_string">서비스 이용을 위해 아래 정보를 입력하고 결제 확인을 요청하시기 바랍니다.\n결제 확인은 입금이 완료된 이후 진행됩니다.</string>
     <string name="agreement">이용약관</string>
 </resources>

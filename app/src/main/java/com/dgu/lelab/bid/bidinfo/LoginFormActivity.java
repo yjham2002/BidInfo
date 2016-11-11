@@ -150,9 +150,6 @@ public class LoginFormActivity extends AppCompatActivity implements View.OnClick
         _account = (EditText)findViewById(R.id.log_mail);
         _password = (EditText)findViewById(R.id.log_pass);
 
-        _account.setText("admin@lelab.com");
-        _password.setText("lelab2016");
-
         if(pref.getBoolean("auto", false)){
             verifyLogin(pref.getString("Uid", "#"), pref.getString("Pwd", "#"));
         }

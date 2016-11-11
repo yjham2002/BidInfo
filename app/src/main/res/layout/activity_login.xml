@@ -18,45 +18,41 @@
         android:layout_margin="@dimen/default_margin">
 
         <android.support.v7.widget.AppCompatButton
-            android:theme="@style/BlueButton"
+            android:background="@drawable/button_selector_blue"
+            android:id="@+id/bt_signin"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="@dimen/default_text_mid"
+            android:text="로그인"
+            android:layout_marginBottom="10dp"
+            android:layout_gravity="center_horizontal|bottom"
+            />
+
+        <android.support.v7.widget.AppCompatButton
+            android:background="@drawable/button_selector_dark"
             android:id="@+id/bt_signup_ent"
+            android:textSize="@dimen/default_text_mid"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
             android:text="회원가입"
             android:layout_gravity="center_horizontal|bottom" />
 
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
+        <android.support.v7.widget.AppCompatButton
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:id="@+id/bt_seeing"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/default_margin"
-            android:layout_marginBottom="@dimen/default_margin"
-            android:layout_marginLeft="65dp"
-            android:layout_marginRight="65dp"
-            android:layout_gravity="center_horizontal">
-
-            <android.support.v7.widget.AppCompatButton
-                style="@style/Widget.AppCompat.Button.Borderless"
-                android:id="@+id/bt_signin"
-                android:layout_width="wrap_content"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:textColor="@color/monsoon"
-                android:textSize="@dimen/default_text"
-                android:text="로그인"
-                />
-            <android.support.v7.widget.AppCompatButton
-                style="@style/Widget.AppCompat.Button.Borderless"
-                android:id="@+id/bt_seeing"
-                android:layout_width="wrap_content"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:textColor="@color/monsoon"
-                android:textSize="@dimen/default_text"
-                android:text="둘러보기"
-                />
-        </LinearLayout>
+            android:textColor="@color/white"
+            android:textSize="14dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
+            android:text="둘러보기"
+            android:layout_gravity="center_horizontal|bottom"
+            />
 
     </LinearLayout>
 
@@ -65,30 +61,23 @@
         android:layout_height="wrap_content"
         android:layout_gravity="top|center_horizontal"
         android:gravity="center_horizontal"
-        android:paddingTop="90dp"
+        android:paddingTop="110dp"
         android:orientation="vertical">
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:layout_margin="20dp"
-            android:background="@color/monsoon"/>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/monsoon"
+            android:textColor="@color/white"
             android:gravity="center_horizontal"
-            android:textSize="@dimen/default_text"
+            android:layout_marginBottom="5dp"
+            android:textSize="@dimen/default_text_mid"
             android:text="@string/title_string"
              />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/monsoon"
-            android:gravity="center_horizontal"
-            android:textSize="@dimen/default_text_large"
-            android:text="@string/app_name"
-             />
-
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:src="@drawable/title"
+            />
     </LinearLayout>
 
 

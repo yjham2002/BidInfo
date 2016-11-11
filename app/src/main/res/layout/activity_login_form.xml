@@ -13,9 +13,34 @@
         android:scaleType="centerCrop" />
 
     <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|center_horizontal"
+        android:gravity="center_horizontal"
+        android:paddingTop="110dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:gravity="center_horizontal"
+            android:layout_marginBottom="5dp"
+            android:textSize="@dimen/default_text_mid"
+            android:text="@string/title_string"
+            />
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:src="@drawable/title"
+            />
+    </LinearLayout>
+
+    <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingTop="100dp"
         android:layout_gravity="center"
         android:layout_margin="@dimen/default_margin">
         <EditText
@@ -26,6 +51,7 @@
             android:layout_marginBottom="@dimen/default_margin"
             android:background="@drawable/bg_edittext"
             android:singleLine="true"
+            android:textColorHint="@color/grayline"
             android:textSize="@dimen/default_text_large"
             android:hint="이메일"
             android:id="@+id/log_mail" />
@@ -35,6 +61,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/monsoon"
             android:inputType="textPassword"
+            android:textColorHint="@color/grayline"
             android:layout_marginBottom="@dimen/default_margin"
             android:background="@drawable/bg_edittext"
             android:singleLine="true"
@@ -42,27 +69,27 @@
             android:id="@+id/log_pass" />
 
         <android.support.v7.widget.AppCompatButton
-            android:theme="@style/BlueButton"
+            android:background="@drawable/button_selector_blue"
             android:id="@+id/bt_sign_f"
+            android:layout_weight="1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
+            android:textSize="@dimen/default_text_mid"
             android:text="로그인"
-            android:layout_gravity="center" />
-
+            android:layout_marginBottom="10dp"
+            android:layout_gravity="center_horizontal|bottom"
+            />
+        <android.support.v7.widget.AppCompatButton
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:id="@+id/bt_signup_f"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="14dp"
+            android:text="아직 회원이 아니신가요?"
+            />
     </LinearLayout>
-
-    <android.support.v7.widget.AppCompatButton
-        style="@style/Widget.AppCompat.Button.Borderless"
-        android:id="@+id/bt_signup_f"
-        android:layout_gravity="center_horizontal|bottom"
-        android:layout_margin="40dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@color/monsoon"
-        android:textSize="@dimen/default_text"
-        android:text="아직 회원이 아니신가요?"
-        />
 
 
 </FrameLayout>
