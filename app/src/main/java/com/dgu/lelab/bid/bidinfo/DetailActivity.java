@@ -2,12 +2,14 @@ package com.dgu.lelab.bid.bidinfo;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -54,7 +56,7 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
     private String mTitle = "";
     private int mToken = 0;
 
-    private Button _like;
+    private Button _like, _remove;
     private boolean like = false;
     private TextView _Title, _PDate, _ReferAndBNum, _Bstart, _Bexpire, _Dept, _Charge, _bidno;
     private ImageView _Type;
@@ -129,6 +131,15 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
     @Override
     public void onClick(View v){
         switch (v.getId()){
+            case R.id.bt_remove:
+                new Communicator().postHttp(util.URL.MAIN + util.URL.REST_REMOVE_BOARD + cmdMsg.getInt("id"), new HashMap<String, String>(), new Handler(){
+                    @Override
+                    public void handleMessage(Message msg){
+                        Toast.makeText(getApplicationContext(), "삭제되었습니다.", Toast.LENGTH_LONG).show();
+                        finish();
+                    }
+                });
+                break;
             case R.id.detail_submit:
                 uploadComment(_comment.getText().toString());
                 break;
@@ -188,6 +199,8 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
         _Bexpire = (TextView)findViewById(R.id.Bexpire);
         _Dept = (TextView)findViewById(R.id.Dept);
         _Charge = (TextView)findViewById(R.id.Charge);
+        _remove = (Button)findViewById(R.id.bt_remove);
+        _remove.setOnClickListener(this);
         _Type = (ImageView)findViewById(R.id.favicon);
 
         mRecyclerView.setAdapter(commentAdapter);
@@ -239,6 +252,8 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
 
         Intent cmd = getIntent();
         cmdMsg = cmd.getExtras();
+
+        _remove.setVisibility(View.INVISIBLE);
 
     }
 
@@ -332,6 +347,14 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
                     if(json_list.getString("Charge").equals("null")) _Charge.setText(none);
                     else _Charge.setText(json_list.getString("Charge"));
 
+                    Log.e("REMOVE Button", cmdMsg.getInt("id") + " / " + json_list.getInt("mid"));
+
+                    if(pref.getInt("id", 0) != json_list.getInt("mid")){
+                        _remove.setVisibility(View.GONE);
+                    }else{
+                        _remove.setVisibility(View.VISIBLE);
+                    }
+
                     if(!json_list.getString("hid").equals("null")) {
                         List<String> list = new ArrayList<String>(Arrays.asList(json_list.getString("hid").split("\\|")));
                         mList1.clear();
@@ -383,5 +406,6 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
         });
 
     }
+
 
 }

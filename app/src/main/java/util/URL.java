@@ -29,5 +29,7 @@ public class URL {
     public static final String REST_USER_UPDATE = "/users/tag";
     public static final String REST_USER_CHECK = "/users/red";
     public static final String REST_USER_NEW = "/users/new";
+    public static final String REST_REMOVE_BOARD = "/board/removes/"; // with params
+    public static final String REST_REMOVE_COMMENT = "/board/remove/comment"; // with body mid and bid
 
 }

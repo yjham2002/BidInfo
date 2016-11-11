@@ -359,6 +359,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
                     JSONArray json_arr = new JSONArray(jsonString);
                     for(int i = 0; i < json_arr.length(); i++){
                         JSONObject json_list = json_arr.getJSONObject(i);
+                        if(json_list.getInt("Type")==-1) continue;
                         bids.addItem(new BidInfo(json_list.getInt("likecount"), json_list.getInt("commentcount"), json_list.getInt("id"), json_list.getInt("Type")
                                 , json_list.getString("Url"), json_list.getString("Title"), json_list.getString("Refer"), json_list.getString("BidNo"), json_list.getString("Bstart")
                                 , json_list.getString("Bexpire"), json_list.getString("PDate"), json_list.getString("Dept"), json_list.getString("Charge"), json_list.getString("Date")));
