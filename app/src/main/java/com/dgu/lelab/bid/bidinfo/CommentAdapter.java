@@ -23,6 +23,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import util.Communicator;
+import util.TimeCaculator;
 import util.URL;
 
 public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHolder> {
@@ -61,7 +62,7 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
                 mContext.startActivity(info);
             }
         });
-        holder._date.setText(mData.date);
+        holder._date.setText(TimeCaculator.formatTimeString(mData.date));
         if(mData.amount.equals("null")) holder._amount.setVisibility(View.GONE);
         else holder._amount.setText("제시금액 : " + mData.amount + " 만원");
         holder._content.setText(mData.content);

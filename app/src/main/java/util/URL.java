@@ -18,7 +18,8 @@ public class URL {
     public static final String REST_GCM_NEW = "/gcm/new";
     public static final String REST_HIT = "/board/count/";
     public static final String REST_COMPANY_ALL = "/company";
-    public static final String REST_COMPANY_ONE = "/company/";
+    public static final String REST_COMPANY_ONE = "/company/one/";
+    public static final String REST_COMPANY_SELECT = "/company/select";
     public static final String REST_COMPANY_NEW = "/company/new";
     public static final String REST_SEARCH = "/search/";
     public static final String REST_COMMENT_NEW = "/board/newc";

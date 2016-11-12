@@ -213,11 +213,11 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
                     case 1:
                         return HeaderDesign.fromColorAndDrawable(
                                 getResources().getColor(R.color.coral),
-                                getResources().getDrawable(R.drawable.bg_gr1));
+                                getResources().getDrawable(R.drawable.bg_gr2));
                     case 2:
                         return HeaderDesign.fromColorAndDrawable(
                                 getResources().getColor(R.color.coral),
-                                getResources().getDrawable(R.drawable.bg_gr1));
+                                getResources().getDrawable(R.drawable.bg_gr3));
                 }
 
                 //execute others actions if needed (ex : modify your header logo)
@@ -361,10 +361,14 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
                     JSONArray json_arr = new JSONArray(jsonString);
                     for(int i = 0; i < json_arr.length(); i++){
                         JSONObject json_list = json_arr.getJSONObject(i);
-                        if(json_list.getInt("Type")==-1) continue;
-                        bids.addItem(new BidInfo(json_list.getInt("likecount"), json_list.getInt("commentcount"), json_list.getInt("id"), json_list.getInt("Type")
+                        if(json_list.getInt("Type") == -1) continue;
+                        BidInfo bidinfo = new BidInfo(json_list.getInt("likecount"), json_list.getInt("commentcount"), json_list.getInt("id"), json_list.getInt("Type")
                                 , json_list.getString("Url"), json_list.getString("Title"), json_list.getString("Refer"), json_list.getString("BidNo"), json_list.getString("Bstart")
-                                , json_list.getString("Bexpire"), json_list.getString("PDate"), json_list.getString("Dept"), json_list.getString("Charge"), json_list.getString("Date")));
+                                , json_list.getString("Bexpire"), json_list.getString("PDate"), json_list.getString("Dept"), json_list.getString("Charge"), json_list.getString("Date"));
+                        if(bidinfo.Title.contains("용역") && (bidinfo.Type == 3 || bidinfo.Type == 7 || bidinfo.Type == 11)) bidinfo.Type -= 1;
+                        if(bidinfo.Title.contains("공사") && (bidinfo.Type == 3 || bidinfo.Type == 7 || bidinfo.Type == 11)) bidinfo.Type -= 2;
+                        if(bidinfo.Title.contains("물품") && (bidinfo.Type == 3 || bidinfo.Type == 7 || bidinfo.Type == 11)) bidinfo.Type -= 3;
+                        bids.addItem(bidinfo);
                     }
                 } catch (JSONException e) {
                     //Toast.makeText(getApplicationContext(), "정보를 불러오는 중 오류가 발생하였습니다.", Toast.LENGTH_LONG).show();

@@ -287,6 +287,30 @@
             </LinearLayout>
 
             <View
+                android:id="@+id/kc_line"
+                android:layout_marginTop="10dp"
+                android:background="@color/grayline"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
+
+            <TextView
+                android:text="키워드가 일치하는 회사 목록"
+                android:id="@+id/kc_title"
+                android:textSize="12dp"
+                android:textColor="@color/monsoon"
+                android:layout_width="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
+                android:layout_height="wrap_content" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/kc_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/linearLayout2" />
+
+            <View
                 android:layout_marginTop="10dp"
                 android:background="@color/grayline"
                 android:layout_width="match_parent"

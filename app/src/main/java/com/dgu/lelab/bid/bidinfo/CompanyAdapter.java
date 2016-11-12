@@ -30,7 +30,7 @@ public class CompanyAdapter extends RecyclerView.Adapter<CompanyAdapter.ViewHold
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.listview_company, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(item_layout, parent, false);
         return new ViewHolder(v);
     }
 
@@ -45,7 +45,7 @@ public class CompanyAdapter extends RecyclerView.Adapter<CompanyAdapter.ViewHold
             public void onClick(View v) {
                 ApplyActivity.cid = mData.id;
                 ApplyActivity.cname = mData.Name;
-                ((AppCompatActivity)mContext).finish();
+                if(mContext instanceof CompanyPickerActivity) ((AppCompatActivity)mContext).finish();
             }
         });
     }

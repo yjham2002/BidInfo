@@ -14,6 +14,8 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+import util.TimeCaculator;
+
 public class ListViewAdapter extends RecyclerView.Adapter<ListViewAdapter.ViewHolder> {
 
     public static final int HEADER = 3, DEFAULT = 0;
@@ -76,7 +78,7 @@ public class ListViewAdapter extends RecyclerView.Adapter<ListViewAdapter.ViewHo
         if(title.length() > 24) title = title.substring(0, 19) + "...";
         holder._subject.setText(title);
 
-        holder._date.setText(mData.Date);
+        holder._date.setText(TimeCaculator.formatTimeString(mData.Date));
 
         holder._like.setText(Integer.toString(mData.like));
         holder._comment.setText(Integer.toString(mData.comment));

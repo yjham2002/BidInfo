@@ -38,17 +38,21 @@ import java.util.List;
 import java.util.Locale;
 
 import util.Communicator;
+import util.TimeCaculator;
 import util.URL;
 
 public class DetailActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private View line;
+    private View line, companyLine;
     private TextView unit;
 
     private InputMethodManager imm;
-    private ProgressDialog progressDialog;
+    private ProgressDialog progressDialog, progressDialog1;
 
     private SharedPreferences pref;
+
+    private CompanyAdapter companyAdapter;
+
     private SharedPreferences.Editor prefEditor;
 
     private Bundle cmdMsg;
@@ -58,7 +62,7 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
 
     private Button _like, _remove;
     private boolean like = false;
-    private TextView _Title, _PDate, _ReferAndBNum, _Bstart, _Bexpire, _Dept, _Charge, _bidno;
+    private TextView _Title, _PDate, _ReferAndBNum, _Bstart, _Bexpire, _Dept, _Charge, _bidno, companyTitle;
     private ImageView _Type;
 
     private GridAdapter adapter1;
@@ -66,7 +70,7 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
     private List<String> mList1;
 
     private EditText _comment, _amount;
-    private RecyclerView mRecyclerView;
+    private RecyclerView mRecyclerView, companyList;
     private CommentAdapter commentAdapter;
     private String URL = "";
     private Button _redirect, _exit, _submit;
@@ -99,7 +103,27 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
 
     }
 
+    private Handler waiter = new Handler();
+
+    public void hidePrivate(){
+        companyLine.setVisibility(View.GONE);
+        companyList.setVisibility(View.GONE);
+        companyTitle.setVisibility(View.GONE);
+    }
+
+    private Runnable loader = new Runnable() {
+        @Override
+        public void run() {
+            loadComment();
+            progressDialog1.dismiss();
+        }
+    };
+
     public void uploadComment(String msg){
+        progressDialog1 = new ProgressDialog(this, R.style.AppTheme_Dark_Dialog);
+        progressDialog1.setIndeterminate(true);
+        progressDialog1.setMessage("댓글 목록을 불러오는 중...");
+
         if(msg.length() < 5) {
             Toast.makeText(getApplicationContext(), "5글자 이상 입력하세요", Toast.LENGTH_LONG).show();
             return;
@@ -118,7 +142,8 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
                 _amount.setText("");
                 _comment.setText("");
                 imm.hideSoftInputFromWindow(_comment.getWindowToken(), 0);
-                loadComment();
+                progressDialog1.show();
+                waiter.postDelayed(loader, 800);
             }
         });
         String titleTemp = mTitle;
@@ -195,6 +220,15 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
         _PDate = (TextView)findViewById(R.id.PDate);
         _ReferAndBNum = (TextView)findViewById(R.id.Refer);
 
+        companyLine = findViewById(R.id.kc_line);
+        companyList = (RecyclerView)findViewById(R.id.kc_list);
+        companyTitle = (TextView) findViewById(R.id.kc_title);
+
+        companyAdapter = new CompanyAdapter(this, R.layout.listview_company_small);
+        companyList.setAdapter(companyAdapter);
+        companyList.setLayoutManager(new LinearLayoutManager(this));
+        companyList.setItemAnimator(new DefaultItemAnimator());
+
         _Bstart = (TextView)findViewById(R.id.Bstart);
         _Bexpire = (TextView)findViewById(R.id.Bexpire);
         _Dept = (TextView)findViewById(R.id.Dept);
@@ -257,6 +291,33 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
 
     }
 
+    public void loadCompany(){
+        Log.e("URL", util.URL.MAIN + util.URL.REST_COMPANY_SELECT + "?id=" + Integer.toString(cmdMsg.getInt("id")));
+        Communicator.getHttp(util.URL.MAIN + util.URL.REST_COMPANY_SELECT + "?id=" + Integer.toString(cmdMsg.getInt("id")), new Handler(){
+            @Override
+            public void handleMessage(Message msg){
+                String jsonString = msg.getData().getString("jsonString");
+                try {
+                    companyAdapter.mListData.clear();
+                    JSONArray json_arr = new JSONArray(jsonString);
+                    if(json_arr.length() == 0) hidePrivate();
+                    for(int i = 0; i < json_arr.length(); i++){
+                        JSONObject json_list = json_arr.getJSONObject(i);
+                        CompanyData cData = new CompanyData(json_list.getInt("id"), json_list.getInt("symbol"), json_list.getInt("Pnum"), json_list.getString("Name"), json_list.getString("Rnum"),
+                                json_list.getString("Rprt"), json_list.getString("Charge"), json_list.getString("Addr"), json_list.getString("Phone"), json_list.getString("Email"), json_list.getString("Divs"),
+                                json_list.getString("Divl"), json_list.getString("Expl"), json_list.getString("Date"), json_list.getString("hid"));
+                        companyAdapter.addItem(cData);
+                    }
+                }catch (JSONException e){
+                    e.printStackTrace();
+                }finally {
+                    progressDialog.dismiss();
+                    companyAdapter.dataChange();
+                }
+            }
+        });
+    }
+
     public void hideAmount(){
         _amount.setVisibility(View.GONE);
         line.setVisibility(View.GONE);
@@ -307,10 +368,12 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
                     switch (json_list.getInt("Type")){
                         case 0:case 1:case 2:case 3:
                             hideAmount();
+                            hidePrivate();
                             _Type.setImageDrawable(getResources().getDrawable(R.drawable.div_01));
                             break;
                         case 4:case 5:case 6:case 7:
                             hideAmount();
+                            hidePrivate();
                             _Type.setImageDrawable(getResources().getDrawable(R.drawable.div_03));
                             break;
                         default:
@@ -333,7 +396,7 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
                     if(json_list.getString("Title").equals("null")) _Title.setText(none);
                     else _Title.setText(json_list.getString("Title"));
                     if(json_list.getString("Date").equals("null") || json_list.getString("Date").equals("NULL")) _PDate.setText(none);
-                    else _PDate.setText(json_list.getString("Date"));
+                    else _PDate.setText(TimeCaculator.formatTimeString(json_list.getString("Date")));
                     if(json_list.getString("Refer").equals("null")) _ReferAndBNum.setText(none);
                     else _ReferAndBNum.setText(json_list.getString("Refer"));
                     if(json_list.getString("BidNo").equals("null")) _bidno.setText(none);
@@ -385,7 +448,6 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
             @Override
             public void handleMessage(Message msg){
                 String jsonString = msg.getData().getString("jsonString");
-
                 try {
                     JSONArray json_arr = new JSONArray(jsonString);
                     /**
@@ -399,7 +461,7 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }finally {
-                    progressDialog.dismiss();
+                    loadCompany();
                     commentAdapter.dataChange();
                 }
             }
