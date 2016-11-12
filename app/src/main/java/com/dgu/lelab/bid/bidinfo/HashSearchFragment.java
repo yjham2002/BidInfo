@@ -61,7 +61,7 @@ public class HashSearchFragment extends Fragment implements View.OnClickListener
         gv1.setVisibility(View.GONE);
         final ProgressDialog progressDialog = new ProgressDialog(getActivity(), R.style.AppTheme_Dark_Dialog);
         progressDialog.setIndeterminate(true);
-        progressDialog.setMessage("검색 하는 중...");
+        progressDialog.setMessage("검색하는 중...");
         progressDialog.show();
         HashMap<String, String> data = new HashMap<>();
         data.put("search", msg);

@@ -47,6 +47,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/monsoon"
             android:singleLine="true"
+            android:hint="회사명"
             android:textColorHint="@color/grayline"
             android:layout_marginBottom="@dimen/default_margin"
             android:background="@drawable/bg_edittext"
@@ -66,6 +67,8 @@
             android:textColor="@color/monsoon"
             android:layout_marginBottom="@dimen/default_margin"
             android:singleLine="true"
+            android:hint="사업자등록번호"
+            android:textColorHint="@color/grayline"
             android:background="@drawable/bg_edittext"
             android:id="@+id/reg_num" />
 
@@ -83,6 +86,8 @@
             android:textColor="@color/monsoon"
             android:singleLine="true"
             android:layout_marginBottom="@dimen/default_margin"
+            android:hint="대표자"
+            android:textColorHint="@color/grayline"
             android:background="@drawable/bg_edittext"
             android:id="@+id/reg_rep" />
         <TextView
@@ -100,6 +105,8 @@
             android:layout_marginBottom="@dimen/default_margin"
             android:singleLine="true"
             android:background="@drawable/bg_edittext"
+            android:hint="담당자"
+            android:textColorHint="@color/grayline"
             android:id="@+id/reg_chr" />
 
         <TextView
@@ -115,6 +122,8 @@
             android:layout_height="wrap_content"
             android:textColor="@color/monsoon"
             android:singleLine="true"
+            android:hint="소재지"
+            android:textColorHint="@color/grayline"
             android:layout_marginBottom="@dimen/default_margin"
             android:background="@drawable/bg_edittext"
             android:id="@+id/reg_addr" />
@@ -133,6 +142,9 @@
             android:layout_marginBottom="@dimen/default_margin"
             android:background="@drawable/bg_edittext"
             android:singleLine="true"
+            android:inputType="phone"
+            android:hint="연락처/팩스"
+            android:textColorHint="@color/grayline"
             android:id="@+id/reg_phone" />
         <TextView
             android:layout_width="wrap_content"
@@ -149,6 +161,8 @@
             android:singleLine="true"
             android:inputType="textEmailAddress"
             android:layout_marginBottom="@dimen/default_margin"
+            android:hint="이메일"
+            android:textColorHint="@color/grayline"
             android:background="@drawable/bg_edittext"
             android:id="@+id/reg_email" />
 
@@ -203,6 +217,7 @@
                 android:id="@+id/private_key"
                 android:layout_centerVertical="true"
                 android:layout_alignParentLeft="true"
+                android:hint="키워드를 입력하세요"
                 android:textColorHint="@color/grayline"
                 android:layout_toLeftOf="@+id/bt_add"
                 />
