@@ -70,7 +70,7 @@
         <activity
             android:name=".RegisterActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/Simple" />
+            android:theme="@style/SimpleBlack" />
         <activity
             android:name=".ApplyActivity"
             android:screenOrientation="portrait"

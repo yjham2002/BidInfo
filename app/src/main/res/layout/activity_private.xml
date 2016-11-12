@@ -47,6 +47,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/monsoon"
                 android:layout_marginBottom="@dimen/default_margin"
+                android:textColorHint="@color/grayline"
                 android:background="@drawable/bg_edittext"
                 android:singleLine="true"
                 android:hint="제목"
@@ -107,6 +108,7 @@
                 android:background="@drawable/bg_edittext"
                 android:singleLine="true"
                 android:hint="회사명/담당처"
+                android:textColorHint="@color/grayline"
                 android:id="@+id/private_dept" />
 
             <TextView
@@ -121,6 +123,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/monsoon"
                 android:layout_marginBottom="@dimen/default_margin"
+                android:textColorHint="@color/grayline"
                 android:background="@drawable/bg_edittext"
                 android:singleLine="true"
                 android:hint="담당자"
@@ -142,6 +145,7 @@
                 android:background="@drawable/bg_edittext"
                 android:singleLine="true"
                 android:hint="링크할 주소(선택 입력)"
+                android:textColorHint="@color/grayline"
                 android:id="@+id/private_url" />
 
             <TextView
@@ -158,6 +162,7 @@
                 android:layout_marginBottom="@dimen/default_margin"
                 android:background="@drawable/bg_edittext"
                 android:singleLine="true"
+                android:textColorHint="@color/grayline"
                 android:hint="공고 번호(선택 입력)"
                 android:id="@+id/private_bidno" />
 
@@ -175,6 +180,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginRight="3dp"
                     android:textSize="@dimen/default_text_mid"
+                    android:elevation="0dp"
+                    android:shadowColor="#FFFFFFFF"
                     android:textColor="@color/coral"
                     android:layout_marginBottom="@dimen/default_margin"
                     android:text="개시일 선택" />
@@ -185,6 +192,8 @@
                     android:textColor="@color/coral"
                     android:layout_marginLeft="3dp"
                     android:layout_weight="1"
+                    android:elevation="0dp"
+                    android:shadowColor="#FFFFFFFF"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/default_margin"
@@ -225,6 +234,7 @@
                     android:id="@+id/private_key"
                     android:layout_centerVertical="true"
                     android:layout_alignParentLeft="true"
+                    android:textColorHint="@color/grayline"
                     android:layout_toLeftOf="@+id/bt_add"
                     />
 

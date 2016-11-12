@@ -28,6 +28,8 @@ import util.URL;
 
 public class PrivateActivity extends AppCompatActivity implements View.OnClickListener, DatePickerDialog.OnDateSetListener{
 
+    private ExpandableHeightGridView gv1;
+    private List<String> mList1;
     GridAdapter adapter1;
 
     private Date startDate, endDate;
@@ -42,9 +44,6 @@ public class PrivateActivity extends AppCompatActivity implements View.OnClickLi
     private Button _exit, _submit, _add, _pickStart, _pickEnd;
     private EditText _title, _keyword, _bidno, _url, _charge, _dept;
     private RadioGroup radioGroup;
-
-    private ExpandableHeightGridView gv1;
-    private List<String> mList1;
 
     @Override
     public void onClick(View v){

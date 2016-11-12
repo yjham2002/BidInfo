@@ -5,8 +5,25 @@
     android:layout_height="match_parent"
     android:focusableInTouchMode="true"
     android:orientation="vertical"
-    android:background="@color/colorPrimaryDark"
+    android:background="@color/form_bg"
     tools:context="com.dgu.lelab.bid.bidinfo.RegisterActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/jet"
+        android:layout_marginTop="15dp"
+        android:gravity="center_horizontal"
+        android:textSize="20dp"
+        android:layout_marginBottom="@dimen/default_margin"
+        android:text="회사정보"
+        />
+
+    <View
+        android:background="@color/jet"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+
 <ScrollView
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -20,17 +37,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            android:textSize="30dp"
-            android:layout_marginBottom="@dimen/default_margin"
-            android:text="회사 정보"
-            />
-
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/white"
+            android:textColor="@color/jet"
             android:textSize="@dimen/default_text_mid"
             android:text="회사명"
             />
@@ -40,16 +47,17 @@
             android:layout_height="wrap_content"
             android:textColor="@color/monsoon"
             android:singleLine="true"
+            android:textColorHint="@color/grayline"
             android:layout_marginBottom="@dimen/default_margin"
             android:background="@drawable/bg_edittext"
             android:id="@+id/reg_name" />
 
         <TextView
-            android:textColor="@color/white"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="@dimen/default_text_mid"
             android:text="사업자등록번호"
+            android:textColor="@color/jet"
             />
 
         <EditText
@@ -66,7 +74,7 @@
             android:layout_height="wrap_content"
             android:textSize="@dimen/default_text_mid"
             android:text="대표자"
-            android:textColor="@color/white"
+            android:textColor="@color/jet"
             />
 
         <EditText
@@ -82,7 +90,7 @@
             android:layout_height="wrap_content"
             android:textSize="@dimen/default_text_mid"
             android:text="담당자"
-            android:textColor="@color/white"
+            android:textColor="@color/jet"
             />
 
         <EditText
@@ -99,7 +107,7 @@
             android:layout_height="wrap_content"
             android:textSize="@dimen/default_text_mid"
             android:text="소재지"
-            android:textColor="@color/white"
+            android:textColor="@color/jet"
             />
 
         <EditText
@@ -115,7 +123,7 @@
             android:layout_height="wrap_content"
             android:textSize="@dimen/default_text_mid"
             android:text="연락처/팩스"
-            android:textColor="@color/white"
+            android:textColor="@color/jet"
             />
 
         <EditText
@@ -131,7 +139,7 @@
             android:layout_height="wrap_content"
             android:textSize="@dimen/default_text_mid"
             android:text="이메일"
-            android:textColor="@color/white"
+            android:textColor="@color/jet"
             />
 
         <EditText
@@ -143,79 +151,103 @@
             android:layout_marginBottom="@dimen/default_margin"
             android:background="@drawable/bg_edittext"
             android:id="@+id/reg_email" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="@dimen/default_text_mid"
-            android:text="업종"
-            android:textColor="@color/white"
+            android:text="홈페이지 주소"
+            android:textColor="@color/jet"
             />
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/monsoon"
+            android:hint="홈페이지 주소를 입력하세요(선택 입력)"
+            android:textColorHint="@color/grayline"
             android:singleLine="true"
+            android:inputType="textUri"
             android:layout_marginBottom="@dimen/default_margin"
             android:background="@drawable/bg_edittext"
-            android:id="@+id/reg_kind1" />
+            android:id="@+id/reg_homepage" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="@dimen/default_text_mid"
-            android:text="공종"
-            android:textColor="@color/white"
+            android:text="키워드"
+            android:textColor="@color/jet"
             />
 
-        <EditText
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/monsoon"
-            android:singleLine="true"
-            android:layout_marginBottom="@dimen/default_margin"
-            android:background="@drawable/bg_edittext"
-            android:id="@+id/reg_kind2" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/default_text_mid"
-            android:text="회사소개"
-            android:textColor="@color/white"
-            />
+            android:layout_height="wrap_content">
+            <android.support.v7.widget.AppCompatButton
+                android:background="@drawable/button_selector_dark"
+                android:id="@+id/bt_add"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/default_margin"
+                android:textColor="@color/white"
+                android:text="추가"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true" />
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/default_text_mid"
-            android:hint="검색 대상 내용으로서 상세할수록 노출 가능성이 높습니다."
-            android:textColor="@color/monsoon"
-            android:textColorHint="@color/monsoon"
-            android:layout_marginBottom="@dimen/default_margin"
-            android:background="@drawable/bg_edittext"
-            android:id="@+id/reg_intro" />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/monsoon"
+                android:singleLine="true"
+                android:layout_marginBottom="@dimen/default_margin"
+                android:background="@drawable/bg_edittext"
+                android:id="@+id/private_key"
+                android:layout_centerVertical="true"
+                android:layout_alignParentLeft="true"
+                android:textColorHint="@color/grayline"
+                android:layout_toLeftOf="@+id/bt_add"
+                />
 
-        <android.support.v7.widget.AppCompatButton
-            android:theme="@style/BlueButton"
-            android:id="@+id/reg_submit"
+        </RelativeLayout>
+        <com.dgu.lelab.bid.bidinfo.ExpandableHeightGridView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/default_margin"
-            android:textColor="@color/white"
-            android:text="등록"
-            android:layout_gravity="center_horizontal|bottom" />
-        <android.support.v7.widget.AppCompatButton
-            android:theme="@style/RedButton"
-            android:id="@+id/cancel"
+            android:gravity="center"
+            android:id="@+id/gridView1"
+            android:layout_margin="15dp"
+            android:numColumns="4"
+            android:layout_gravity="center" />
+
+        <LinearLayout
+            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/default_margin"
-            android:textColor="@color/white"
-            android:text="취소"
-            android:layout_gravity="center_horizontal|bottom" />
+            android:layout_height="wrap_content">
+
+            <android.support.v7.widget.AppCompatButton
+                android:background="@drawable/button_selector_blue"
+                android:id="@+id/reg_submit"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="3dp"
+                android:textColor="@color/white"
+                android:text="등록"
+                android:layout_gravity="center_horizontal|bottom" />
+            <android.support.v7.widget.AppCompatButton
+                android:background="@drawable/button_selector_dark"
+                android:id="@+id/reg_cancel"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="3dp"
+                android:textColor="@color/white"
+                android:text="취소"
+                android:layout_gravity="center_horizontal|bottom" />
+
+        </LinearLayout>
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="35dp"></View>
+            android:layout_height="70dp"></View>
     </LinearLayout>
 
 </ScrollView>
