@@ -69,6 +69,7 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
 
     private GridAdapter adapter1;
     private ExpandableHeightGridView _hid;
+    
     private List<String> mList1;
 
     private EditText _comment, _amount;
