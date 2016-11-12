@@ -96,9 +96,8 @@ public class CompanyPickerActivity extends AppCompatActivity implements View.OnC
                     for(int i = 0; i < json_arr.length(); i++) {
                         JSONObject json_list = json_arr.getJSONObject(i);
                         //Log.e("json", json_list.toString());
-                        CompanyData cData = new CompanyData(json_list.getInt("id"), json_list.getInt("symbol"), json_list.getInt("Pnum"), json_list.getString("Name"), json_list.getString("Rnum"),
-                                json_list.getString("Rprt"), json_list.getString("Charge"), json_list.getString("Addr"), json_list.getString("Phone"), json_list.getString("Email"), json_list.getString("Divs"),
-                                json_list.getString("Divl"), json_list.getString("Expl"), json_list.getString("Date"), json_list.getString("hid"));
+                        CompanyData cData = new CompanyData(json_list.getInt("id"), json_list.getInt("Pnum"), json_list.getString("Name"), json_list.getString("Rnum"),
+                                json_list.getString("Rprt"), json_list.getString("Charge"), json_list.getString("Addr"), json_list.getString("Phone"), json_list.getString("Email"), json_list.getString("Expl"), json_list.getString("Date"), json_list.getString("hid"));
                         companyAdapter.addItem(cData);
                     }
                 } catch (JSONException e) {

@@ -64,12 +64,21 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         finalHash = finalHash.substring(0, finalHash.length() - 1);
         String finalURL = URL.MAIN;
         if(!mode){ // On Registeration
-
+            finalURL = finalURL + URL.REST_COMPANY_NEW;
         }else{ // On Modifying
-
+            finalURL = finalURL + URL.REST_COMPANY_UPDATE;
         }
         HashMap<String, String> data = new HashMap<>();
-
+        data.put("Name", _name.getText().toString());
+        data.put("Rnum", _rnum.getText().toString());
+        data.put("Rprt", _rprt.getText().toString());
+        data.put("Charge", _charge.getText().toString());
+        data.put("Addr", _addr.getText().toString());
+        data.put("Phone", _phone.getText().toString());
+        data.put("Email", _email.getText().toString());
+        data.put("Expl", _home.getText().toString());
+        data.put("hid", finalHash);
+        data.put("id", Integer.toString(pref.getInt("cid", 0)));
         new Communicator().postHttp(finalURL, data, new Handler(){
             @Override
             public void handleMessage(Message msg){
@@ -91,6 +100,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 _keyword.setText("");
                 break;
             case R.id.reg_submit:
+                onPost();
                 break;
             case R.id.reg_cancel:
                 finish();

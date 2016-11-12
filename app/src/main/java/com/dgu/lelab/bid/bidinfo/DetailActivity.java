@@ -69,7 +69,7 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
 
     private GridAdapter adapter1;
     private ExpandableHeightGridView _hid;
-    
+
     private List<String> mList1;
 
     private EditText _comment, _amount;
@@ -83,6 +83,7 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
         HashMap<String, String> data = new HashMap<>();
         data.put("title", title);
         data.put("message", message);
+        Log.e("FCM Sent", util.URL.MAIN + util.URL.REST_FCM_ONE + mToken);
         new Communicator().postHttp(util.URL.MAIN + util.URL.REST_FCM_ONE + mToken, data, new Handler());
     }
 
@@ -306,9 +307,8 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
                     if(json_arr.length() == 0) hidePrivate();
                     for(int i = 0; i < json_arr.length(); i++){
                         JSONObject json_list = json_arr.getJSONObject(i);
-                        CompanyData cData = new CompanyData(json_list.getInt("id"), json_list.getInt("symbol"), json_list.getInt("Pnum"), json_list.getString("Name"), json_list.getString("Rnum"),
-                                json_list.getString("Rprt"), json_list.getString("Charge"), json_list.getString("Addr"), json_list.getString("Phone"), json_list.getString("Email"), json_list.getString("Divs"),
-                                json_list.getString("Divl"), json_list.getString("Expl"), json_list.getString("Date"), json_list.getString("hid"));
+                        CompanyData cData = new CompanyData(json_list.getInt("id"), json_list.getInt("Pnum"), json_list.getString("Name"), json_list.getString("Rnum"),
+                                json_list.getString("Rprt"), json_list.getString("Charge"), json_list.getString("Addr"), json_list.getString("Phone"), json_list.getString("Email"), json_list.getString("Expl"), json_list.getString("Date"), json_list.getString("hid"));
                         companyAdapter.addItem(cData);
                     }
                 }catch (JSONException e){

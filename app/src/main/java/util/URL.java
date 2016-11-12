@@ -22,10 +22,11 @@ public class URL {
     public static final String REST_COMPANY_ONE = "/company/one/";
     public static final String REST_COMPANY_SELECT = "/company/select";
     public static final String REST_COMPANY_NEW = "/company/new";
+    public static final String REST_COMPANY_UPDATE = "/company/updates";
     public static final String REST_SEARCH = "/search/";
     public static final String REST_COMMENT_NEW = "/board/newc";
     public static final String REST_FCM_ALL = "/gcm/send/all";
-    public static final String REST_FCM_ONE = "/gcm/send/";
+    public static final String REST_FCM_ONE = "/gcm/sends/";
     public static final String REST_USER_LIKES = "/users/like/";
     public static final String REST_USER_ATTEND = "/users/attend/";
     public static final String REST_USER_UPDATE = "/users/tag";
