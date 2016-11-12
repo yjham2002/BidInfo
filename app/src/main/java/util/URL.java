@@ -7,6 +7,7 @@ public class URL {
     public static final String REST_BOARD_NEW = "/board/new";
     public static final String REST_BOARD_ONE = "/board/";
     public static final String REST_BOARD_COMMENT = "/board/comment/";
+    public static final String REST_BOARD_PCOMMENT = "/board/pcomment/";
     public static final String REST_NOTICE_ALL = "/notice";
     public static final String REST_NOTICE_ONE = "/notice/";
     public static final String REST_NOTICE_RECENT = "/notice/recent";

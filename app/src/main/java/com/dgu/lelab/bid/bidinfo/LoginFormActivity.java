@@ -115,6 +115,7 @@ public class LoginFormActivity extends AppCompatActivity implements View.OnClick
                     prefEditor.putString("Name", json_list.getString("Name"));
                     prefEditor.putString("Pwd", json_list.getString("Pwd"));
                     prefEditor.putString("hid", json_list.getString("hid"));
+                    prefEditor.putInt("cid", json_list.getInt("symbol"));
                     prefEditor.putInt("id", json_list.getInt("id"));
                     prefEditor.putBoolean("auto", true);
                     prefEditor.commit();

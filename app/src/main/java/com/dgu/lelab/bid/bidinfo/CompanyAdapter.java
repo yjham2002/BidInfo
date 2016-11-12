@@ -46,6 +46,11 @@ public class CompanyAdapter extends RecyclerView.Adapter<CompanyAdapter.ViewHold
                 ApplyActivity.cid = mData.id;
                 ApplyActivity.cname = mData.Name;
                 if(mContext instanceof CompanyPickerActivity) ((AppCompatActivity)mContext).finish();
+                else if(mContext instanceof DetailActivity) {
+                    Intent intent = new Intent(mContext, CompanyActivity.class);
+                    intent.putExtra("cid", mData.id);
+                    mContext.startActivity(intent);
+                }
             }
         });
     }

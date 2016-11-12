@@ -46,6 +46,8 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
     private View line, companyLine;
     private TextView unit;
 
+    private String none;
+
     private InputMethodManager imm;
     private ProgressDialog progressDialog, progressDialog1;
 
@@ -356,6 +358,8 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
             }
             });
 
+        none = "미제공";
+
         Communicator.getHttp(util.URL.MAIN + util.URL.REST_BOARD_ONE + cmdMsg.getInt("id"), new Handler(){
             @Override
             public void handleMessage(Message msg){
@@ -388,8 +392,6 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
                         mToken = 0;
                     }
 
-                    String none = "정보없음";
-
                     if(json_list.getString("Url").equals("null") || json_list.getString("Url").equals("about:blank")) {
                         _redirect.setVisibility(View.GONE);
                     }
@@ -399,7 +401,7 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
                     else _PDate.setText(TimeCaculator.formatTimeString(json_list.getString("Date")));
                     if(json_list.getString("Refer").equals("null")) _ReferAndBNum.setText(none);
                     else _ReferAndBNum.setText(json_list.getString("Refer"));
-                    if(json_list.getString("BidNo").equals("null")) _bidno.setText(none);
+                    if(json_list.getString("BidNo").equals("null") || json_list.getString("BidNo").length() == 0) _bidno.setText(none);
                     else _bidno.setText(json_list.getString("BidNo"));
                     if(json_list.getString("Bstart").equals("null")) _Bstart.setText(none);
                     else _Bstart.setText(json_list.getString("Bstart"));

@@ -74,6 +74,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
                 startActivity(intent);
                 break;
             case R.id.menu_company:
+                RegisterActivity.mode = true;
                 startActivity(new Intent(this, RegisterActivity.class));
                 break;
             case R.id.notice_more:

@@ -6,12 +6,210 @@
     android:focusableInTouchMode="true"
     android:orientation="horizontal"
     tools:context="com.dgu.lelab.bid.bidinfo.DetailActivity">
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/frameLayout"
+        android:layout_above="@+id/redirect">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:orientation="vertical"
+            android:id="@+id/linearLayout2"
+            android:layout_below="@+id/frameLayout">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:id="@+id/linearLayout">
+                <ImageView
+                    android:layout_width="@dimen/iconSize2"
+                    android:layout_height="@dimen/iconSize2"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="18dp"
+                    android:src="@drawable/div_04" />
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:padding="@dimen/default_margin"
+                    android:layout_weight="7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="회사명"
+                            android:id="@+id/company_name"
+                            android:layout_gravity="left"
+                            android:textColor="@color/jet"
+                            android:textSize="@dimen/default_text_mid" />
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="right"
+                            android:orientation="horizontal"
+                            >
+                        </LinearLayout>
+
+                    </FrameLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/week_padding"
+                        android:text="사업자 등록 번호"
+                        android:id="@+id/company_rnum"
+                        android:textColor="@color/monsoon"
+                        android:textSize="@dimen/default_text" />
+                </LinearLayout>
+
+            </LinearLayout>
+            <View
+                android:layout_marginBottom="10dp"
+                android:background="@color/grayline"
+                android:layout_width="match_parent"
+                android:layout_height="1dp">
+
+            </View>
+            <LinearLayout
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_marginRight="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:text="대표자"
+                        android:layout_marginBottom="10dp"
+                        android:textSize="12dp"
+                        android:textColor="@color/monsoon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:text="담당자"
+                        android:textSize="12dp"
+                        android:textColor="@color/monsoon"
+                        android:layout_width="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:text="소재지"
+                        android:textSize="12dp"
+                        android:textColor="@color/monsoon"
+                        android:layout_width="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:text="이메일"
+                        android:textSize="12dp"
+                        android:textColor="@color/monsoon"
+                        android:layout_width="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:text="홈페이지 주소"
+                        android:textSize="12dp"
+                        android:textColor="@color/monsoon"
+                        android:layout_width="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:text="대표자"
+                        android:layout_marginBottom="10dp"
+                        android:textSize="12dp"
+                        android:id="@+id/company_rprt"
+                        android:textColor="@color/jet"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:text="담당자"
+                        android:textSize="12dp"
+                        android:id="@+id/company_charge"
+                        android:textColor="@color/jet"
+                        android:layout_width="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:text="소재지"
+                        android:id="@+id/company_addr"
+                        android:textSize="12dp"
+                        android:textColor="@color/jet"
+                        android:layout_width="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:text="이메일"
+                        android:textSize="12dp"
+                        android:id="@+id/company_email"
+                        android:textColor="@color/jet"
+                        android:layout_width="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:text="홈페이지 주소"
+                        android:textSize="12dp"
+                        android:id="@+id/company_url"
+                        android:textColor="@color/jet"
+                        android:layout_width="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <View
+                android:id="@+id/kc_line"
+                android:layout_marginTop="10dp"
+                android:background="@color/grayline"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
+
+            <com.dgu.lelab.bid.bidinfo.ExpandableHeightGridView
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_width="match_parent"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:layout_alignParentBottom="true"
+                android:layout_height="wrap_content"
+                android:id="@+id/hid"
+                android:numColumns="5"
+                android:layout_gravity="bottom" />
+
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorPrimaryDark"
         android:id="@+id/frameLayout"
-        android:layout_alignParentTop="true">
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
 
         <android.support.v7.widget.AppCompatButton
             style="@style/Widget.AppCompat.Button.Borderless"
@@ -33,160 +231,16 @@
             android:textColor="@color/white" />
 
     </FrameLayout>
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/frameLayout"
-        android:layout_above="@+id/redirect">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:orientation="vertical"
-            android:id="@+id/linearLayout2">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:id="@+id/linearLayout">
-                <ImageView
-                    android:layout_width="@dimen/iconSize"
-                    android:layout_height="@dimen/iconSize"
-                    android:id="@+id/favicon"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="@dimen/week_padding"
-                    android:src="@drawable/div_01" />
-
-                <LinearLayout
-                    android:orientation="vertical"
-                    android:padding="@dimen/default_margin"
-                    android:layout_weight="7"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-
-                    <FrameLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Title"
-                            android:id="@+id/Title"
-                            android:layout_gravity="left"
-                            android:textColor="@color/jet"
-                            android:textSize="@dimen/default_text_mid" />
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="right"
-                            android:orientation="horizontal"
-                            >
-                        </LinearLayout>
-
-                    </FrameLayout>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/week_padding"
-                        android:text="Here is the field for showing detail information"
-                        android:id="@+id/email"
-                        android:textColor="@color/monsoon"
-                        android:textSize="@dimen/default_text" />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/week_padding"
-                        android:text="010-0000-0000"
-                        android:id="@+id/Phone"
-                        android:textColor="@color/jet"
-                        android:textSize="@dimen/default_text" />
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/default_margin"
-                android:layout_marginBottom="@dimen/default_margin"
-                android:text="소재지 정보"
-                android:id="@+id/addr"
-                android:textColor="@color/jet"
-                android:textSize="@dimen/default_text" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/default_margin"
-                android:text="대표자 : 대표자 / 담당자 : 담당자"
-                android:id="@+id/repCharge"
-                android:textColor="@color/jet"
-                android:textSize="13dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/default_margin"
-                android:text="0000000000-00000"
-                android:id="@+id/regNum"
-                android:textColor="@color/jet"
-                android:textSize="15dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/default_margin"
-                android:layout_marginBottom="@dimen/default_margin"
-                android:text="Description"
-                android:id="@+id/expl"
-                android:textColor="@color/monsoon"
-                android:textSize="12dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/default_margin"
-                android:text="업종/공종"
-                android:id="@+id/div"
-                android:textColor="@color/jet"
-                android:textSize="@dimen/default_text" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/default_margin"
-                android:layout_marginLeft="@dimen/default_margin"
-                android:text="#Keywords"
-                android:id="@+id/hid"
-                android:textColor="@color/monsoon"
-                android:textSize="@dimen/default_text" />
-
-        </LinearLayout>
-
-
-
-
-    </ScrollView>
-
-    <android.support.v7.widget.AppCompatButton
-        android:theme="@style/BlueButton"
+    <Button
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/button_selector_blue"
         android:id="@+id/redirect"
+        android:layout_weight="1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textSize="15dp"
         android:textColor="@color/white"
-        android:text="문의 전화"
+        android:text="문의전화"
         android:layout_gravity="center_horizontal|bottom"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-
+        />
 </RelativeLayout>

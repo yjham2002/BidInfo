@@ -37,6 +37,7 @@ public class CompanyPickerActivity extends AppCompatActivity implements View.OnC
     public void onClick(View v){
         switch (v.getId()){
             case R.id.bt_add_comany:
+                RegisterActivity.mode = false;
                 startActivity(new Intent(this, RegisterActivity.class));
                 break;
             case R.id.bt_exit:

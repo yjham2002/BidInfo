@@ -53,7 +53,12 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
         prefEditor = pref.edit();
 
         final CommentData mData = mListData.get(position);
-        holder._title.setText(mData.userName);
+        if(mContext instanceof CommentActivity){
+            holder._title.setText(mData.userName + "님이 댓글을 남겼습니다.");
+            holder._content.setTextColor(mContext.getResources().getColor(R.color.monsoon));
+        }else{
+            holder._title.setText(mData.userName);
+        }
         holder._title.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
@@ -70,28 +75,35 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
             @Override
             public void onClick(View v) {
                 //final NoticeData mData = mListData.get(position);
-                AlertDialog.Builder builder = new AlertDialog.Builder(mContext, R.style.AppTheme_Dark_Dialog);
-                builder.setMessage("댓글을 삭제하시겠습니까?");
-                builder.setCancelable(true);
-                builder.setPositiveButton("취소", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        dialog.cancel();
-                    }
-                })
-                        .setNegativeButton("확인", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                HashMap<String, String> data = new HashMap<>();
-                                data.put("id", Integer.toString(mData.id));
-                                new Communicator().postHttp(URL.MAIN + URL.REST_REMOVE_COMMENT, data, new Handler(){
-                                    @Override
-                                    public void handleMessage(Message msg){
-                                        if(mContext instanceof DetailActivity) ((DetailActivity)mContext).loadComment();
-                                    }
-                                });
-                            }
-                        });
-                AlertDialog alert = builder.create();
-                if(pref.getInt("id", 0) == mData.mid) alert.show();
+                if(mContext instanceof CommentActivity){
+                    //Intent i = new Intent(mContext, DetailActivity.class);
+                    //i.putExtra("id", mData.bid);
+                    //mContext.startActivity(i);
+                }else {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(mContext, R.style.AppTheme_Dark_Dialog);
+                    builder.setMessage("댓글을 삭제하시겠습니까?");
+                    builder.setCancelable(true);
+                    builder.setPositiveButton("취소", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.cancel();
+                        }
+                    })
+                            .setNegativeButton("확인", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    HashMap<String, String> data = new HashMap<>();
+                                    data.put("id", Integer.toString(mData.id));
+                                    new Communicator().postHttp(URL.MAIN + URL.REST_REMOVE_COMMENT, data, new Handler() {
+                                        @Override
+                                        public void handleMessage(Message msg) {
+                                            if (mContext instanceof DetailActivity)
+                                                ((DetailActivity) mContext).loadComment();
+                                        }
+                                    });
+                                }
+                            });
+                    AlertDialog alert = builder.create();
+                    if (pref.getInt("id", 0) == mData.mid) alert.show();
+                }
             }
         });
     }
