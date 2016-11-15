@@ -8,7 +8,6 @@ public class CompanyData {
 
     public CompanyData(int id, int pnum, String name, String rnum, String rprt, String charge, String addr, String phone, String email, String expl, String date, String hid) {
         this.id = id;
-        this.symbol = symbol;
         this.Pnum = pnum;
         this.Name = name;
         this.Rnum = rnum;
@@ -19,6 +18,14 @@ public class CompanyData {
         this.Email = email;
         this.Expl = expl;
         this.Date = date;
+        this.hid = hid;
+    }
+
+    public CompanyData(int id, String name, String phone, String addr, String hid) {
+        this.id = id;
+        this.Name = name;
+        this.Addr = addr;
+        this.Phone = phone;
         this.hid = hid;
     }
 

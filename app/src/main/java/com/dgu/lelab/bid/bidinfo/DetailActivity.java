@@ -415,7 +415,9 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
 
                     Log.e("REMOVE Button", cmdMsg.getInt("id") + " / " + json_list.getInt("mid"));
 
-                    if(pref.getInt("id", 0) != json_list.getInt("mid")){
+                    if(pref.getString("Uid", "#").equals("admin@lelab.com")){
+                        _remove.setVisibility(View.VISIBLE);
+                    }else if(pref.getInt("id", 0) != json_list.getInt("mid")){
                         _remove.setVisibility(View.GONE);
                     }else{
                         _remove.setVisibility(View.VISIBLE);
