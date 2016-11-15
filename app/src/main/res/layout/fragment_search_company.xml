@@ -30,6 +30,8 @@
             android:textColor="@color/white"
             android:layout_marginTop="30dp"
             android:singleLine="true"
+            android:hint="검색"
+            android:textColorHint="@color/monsoon"
             android:id="@+id/view"
             android:imeOptions="actionDone"
             android:layout_centerVertical="true"

@@ -31,6 +31,8 @@
             android:layout_marginTop="30dp"
             android:singleLine="true"
             android:id="@+id/view"
+            android:hint="검색"
+            android:textColorHint="@color/monsoon"
             android:imeOptions="actionDone"
             android:layout_centerVertical="true"
             android:layout_alignParentLeft="true"

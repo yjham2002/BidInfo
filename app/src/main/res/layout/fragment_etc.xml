@@ -32,7 +32,7 @@
             android:hint="키워드를 입력하세요"
             android:textColor="@color/colorPrimary"
             android:singleLine="true"
-            android:textColorHint="@color/monsoon"
+            android:textColorHint="@color/white"
             android:id="@+id/view"
             android:background="@drawable/bg_edittext"
             android:imeOptions="actionDone" />

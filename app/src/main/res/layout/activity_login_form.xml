@@ -51,7 +51,7 @@
             android:layout_marginBottom="@dimen/default_margin"
             android:background="@drawable/bg_edittext"
             android:singleLine="true"
-            android:textColorHint="@color/grayline"
+            android:textColorHint="@color/white"
             android:textSize="@dimen/default_text_large"
             android:hint="이메일"
             android:id="@+id/log_mail" />
@@ -61,7 +61,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/monsoon"
             android:inputType="textPassword"
-            android:textColorHint="@color/grayline"
+            android:textColorHint="@color/white"
             android:layout_marginBottom="@dimen/default_margin"
             android:background="@drawable/bg_edittext"
             android:singleLine="true"

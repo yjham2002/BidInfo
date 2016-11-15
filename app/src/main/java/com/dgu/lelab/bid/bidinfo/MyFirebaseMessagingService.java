@@ -46,7 +46,11 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                 if(prefSet.getBoolean("keyword_push", true) && isKeyword(msg)) {
                     notifyReg("키워드가 포함된 공고 게시됨", "#" + msg.trim().replaceAll("\\|", " #"));
                 }
-            }else{
+            }else if(title.equals("#popup")){
+                prefEditor.putBoolean("popup", true);
+                prefEditor.putString("popurl", msg);
+                prefEditor.commit();
+            } else{
                 notifyReg(title, msg);
             }
         }

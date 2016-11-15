@@ -45,6 +45,9 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             Toast.makeText(getApplicationContext(), "2자 이상 입력하세요", Toast.LENGTH_LONG).show();
             return;
         }
+        for(String s : mList1){
+            if(s.equals(msg)) return;
+        }
         msg = msg.replaceAll(" ", "_").trim();
         mList1.add(msg);
         adapter1.notifyDataSetChanged();

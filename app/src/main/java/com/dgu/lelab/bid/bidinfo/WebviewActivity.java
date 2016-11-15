@@ -1,15 +1,19 @@
 package com.dgu.lelab.bid.bidinfo;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.media.Image;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.webkit.DownloadListener;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class WebviewActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -42,6 +46,7 @@ public class WebviewActivity extends AppCompatActivity implements View.OnClickLi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_webview);
 
         webView = (WebView)findViewById(R.id.webView);
@@ -60,6 +65,26 @@ public class WebviewActivity extends AppCompatActivity implements View.OnClickLi
             }
         });
         webView.getSettings().setJavaScriptEnabled(true);
+
+        webView.getSettings().setLoadWithOverviewMode(true);
+        //webView.getSettings().setUseWideViewPort(true);
+        webView.clearCache(true);
+        webView.getSettings().setDomStorageEnabled(true);
+        webView.getSettings().setJavaScriptEnabled(true);
+        webView.getSettings().setAllowFileAccess(true);
+        webView.getSettings().setAllowContentAccess(true);
+        webView.setDownloadListener(new DownloadListener() {
+            public void onDownloadStart(String url, String userAgent,
+                                        String contentDisposition, String mimetype,
+                                        long contentLength) {
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse(url));
+                startActivity(i);
+            }
+        });
+        webView.getSettings().setAllowFileAccessFromFileURLs(true);
+
+        Toast.makeText(getApplicationContext(), "가로모드로 전환하여 크게보세요", Toast.LENGTH_LONG).show();
 
         Intent cmd = getIntent();
         Bundle cmdMsg = cmd.getExtras();

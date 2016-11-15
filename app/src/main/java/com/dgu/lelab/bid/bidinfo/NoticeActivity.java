@@ -59,6 +59,7 @@ public class NoticeActivity extends AppCompatActivity implements View.OnClickLis
                     JSONArray json_arr = new JSONArray(jsonString);
                     for(int i = 0; i < json_arr.length(); i++) {
                         JSONObject json_list = json_arr.getJSONObject(i);
+                        if(json_list.getString("Title").equals("#popup") || json_list.getString("Title").equals("#keyword")) continue;
                         noticeAdapter.addItem(new NoticeData(json_list.getInt("id"), json_list.getString("Title"), json_list.getString("Content"), json_list.getString("Date")));
                     }
                 } catch (JSONException e) {

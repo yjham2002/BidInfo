@@ -242,6 +242,8 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
             });
         }
 
+        if(pref.getBoolean("popup", false)) startActivity(new Intent(this, PopupActivity.class));
+
     }
 
     @Override

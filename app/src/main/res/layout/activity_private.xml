@@ -47,7 +47,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/monsoon"
                 android:layout_marginBottom="@dimen/default_margin"
-                android:textColorHint="@color/grayline"
+                android:textColorHint="@color/white"
                 android:background="@drawable/bg_edittext"
                 android:singleLine="true"
                 android:hint="제목"
@@ -108,7 +108,7 @@
                 android:background="@drawable/bg_edittext"
                 android:singleLine="true"
                 android:hint="회사명/담당처"
-                android:textColorHint="@color/grayline"
+                android:textColorHint="@color/white"
                 android:id="@+id/private_dept" />
 
             <TextView
@@ -123,7 +123,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/monsoon"
                 android:layout_marginBottom="@dimen/default_margin"
-                android:textColorHint="@color/grayline"
+                android:textColorHint="@color/white"
                 android:background="@drawable/bg_edittext"
                 android:singleLine="true"
                 android:hint="담당자"
@@ -145,7 +145,7 @@
                 android:background="@drawable/bg_edittext"
                 android:singleLine="true"
                 android:hint="링크할 주소(선택 입력)"
-                android:textColorHint="@color/grayline"
+                android:textColorHint="@color/white"
                 android:id="@+id/private_url" />
 
             <TextView
@@ -162,7 +162,7 @@
                 android:layout_marginBottom="@dimen/default_margin"
                 android:background="@drawable/bg_edittext"
                 android:singleLine="true"
-                android:textColorHint="@color/grayline"
+                android:textColorHint="@color/white"
                 android:hint="공고 번호(선택 입력)"
                 android:id="@+id/private_bidno" />
 
@@ -234,7 +234,7 @@
                     android:id="@+id/private_key"
                     android:layout_centerVertical="true"
                     android:layout_alignParentLeft="true"
-                    android:textColorHint="@color/grayline"
+                    android:textColorHint="@color/white"
                     android:layout_toLeftOf="@+id/bt_add"
                     />
 

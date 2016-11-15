@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.ACCESS_DOWNLOAD_MANAGER" />
 
     <application
         android:allowBackup="true"
@@ -24,8 +25,8 @@
 
         <activity
             android:name=".IntroActivity"
-            android:theme="@style/Theme.Transparent"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Transparent">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -40,7 +41,6 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".WebviewActivity"
-            android:screenOrientation="portrait"
             android:theme="@style/Simple" />
         <activity
             android:name=".SearchActivity"
@@ -60,8 +60,8 @@
             android:theme="@style/SimpleBlack" />
         <activity
             android:name=".PickerActivity"
-            android:theme="@style/SimpleBlack"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:theme="@style/SimpleBlack" />
         <activity
             android:name=".PrivateActivity"
             android:screenOrientation="portrait"
@@ -109,9 +109,14 @@
             android:name=".AttendActivity"
             android:screenOrientation="portrait"
             android:theme="@style/SimpleBlack" />
-        <activity android:name=".CommentActivity"
+        <activity
+            android:name=".CommentActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/SimpleBlack"></activity>
+            android:theme="@style/SimpleBlack" />
+        <activity android:name=".PopupActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Transparent"
+            ></activity>
     </application>
 
 </manifest>
