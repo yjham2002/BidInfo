@@ -60,7 +60,7 @@ class PickGridAdapter extends BaseAdapter {
 
         if(data.get(position).isTitle){
 
-            content.setTextColor(context.getResources().getColor(R.color.aluminum));
+            content.setTextColor(context.getResources().getColor(R.color.coral));
 
         }
 

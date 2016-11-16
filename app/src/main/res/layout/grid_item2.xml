@@ -13,7 +13,7 @@
         android:textColor="@color/white"
         android:textStyle="bold"
         android:id="@+id/grid"
-        android:textSize="@dimen/default_text_mid"
+        android:textSize="19sp"
         android:layout_margin="@dimen/default_margin"
         />
 </LinearLayout>

@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
+import android.text.SpannableString;
+import android.text.style.UnderlineSpan;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -190,6 +192,10 @@ public class ApplyActivity extends AppCompatActivity implements View.OnClickList
         _exit.setOnClickListener(this);
 
         datePicker = new DatePickerDialog(this, AlertDialog.THEME_DEVICE_DEFAULT_DARK, this, 1990, 1, 1);
+
+        SpannableString content = new SpannableString("사용자 이용권 계약 전문 보기");
+        content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
+        _inst.setText(content);
 
     }
 

@@ -7,6 +7,18 @@
     tools:context="com.dgu.lelab.bid.bidinfo.SearchActivity"
     android:orientation="vertical"
     >
+    <LinearLayout
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="10dp"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:src="@drawable/icon_search"
+            android:layout_width="@dimen/iconSize"
+            android:padding="5dp"
+            android:layout_height="@dimen/iconSize"
+            android:id="@+id/imageView2" />
 
     <RelativeLayout
         android:layout_margin="10dp"
@@ -20,7 +32,7 @@
             android:layout_width="90dp"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
-            android:textSize="@dimen/default_text"
+            android:textSize="@dimen/default_text_mid"
             android:text="검색"
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true" />
@@ -38,6 +50,7 @@
             android:layout_alignParentLeft="true"
             android:layout_toLeftOf="@+id/bt_search" />
     </RelativeLayout>
+        </LinearLayout>
 
     <android.support.v7.widget.RecyclerView
         xmlns:android="http://schemas.android.com/apk/res/android"

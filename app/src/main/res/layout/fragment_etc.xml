@@ -4,16 +4,6 @@
     android:orientation="vertical"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/pick_title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="대분류"
-        android:textColor="@color/coral"
-        android:gravity="center"
-        android:layout_gravity="center_horizontal"
-        android:textSize="32dp"
-        android:layout_marginTop="50dp" />
 
 
     <LinearLayout
@@ -40,10 +30,13 @@
             android:theme="@style/BlueButton"
             android:id="@+id/key_submit"
             android:layout_marginTop="10dp"
+            android:background="@drawable/button_selector_blue"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
             android:text="추가"
+            style="?android:attr/borderlessButtonStyle"
+            android:textSize="@dimen/default_text_mid"
             android:layout_gravity="center_horizontal|bottom" />
 
 
@@ -53,10 +46,13 @@
         android:id="@+id/key_end"
         android:layout_marginBottom="50dp"
         android:layout_width="match_parent"
+        style="?android:attr/borderlessButtonStyle"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/default_margin"
         android:layout_marginRight="@dimen/default_margin"
         android:textColor="@color/white"
         android:text="완료"
+        android:textSize="@dimen/default_text_mid"
+        android:background="@drawable/button_selector_blue"
         android:layout_gravity="bottom" />
 </FrameLayout>

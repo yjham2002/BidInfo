@@ -4,11 +4,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.os.Message;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
@@ -16,7 +18,9 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
+import android.text.Spannable;
 import android.text.SpannableString;
+import android.text.style.ImageSpan;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
@@ -60,6 +64,9 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     private Toolbar toolbar;
     private DrawerLayout mDrawer;
     private ActionBarDrawerToggle mDrawerToggle;
+
+    private int[] ImageResId = {R.drawable.icon_comment, R.drawable.test, R.drawable.test};
+    private String[] tabText = { "물품정보", "공사정보", "용역정보" };
 
     @Override
     public void onClick(View v){
@@ -190,15 +197,13 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
             @Override
             public CharSequence getPageTitle(int position) {
 
-                switch (position % 3) {
-                    case 0:
-                        return "물품정보";
-                    case 1:
-                        return "공사정보";
-                    case 2:
-                        return "용역정보";
-                }
-                return "";
+                Drawable image = ContextCompat.getDrawable(context, ImageResId[position]);
+                image.setBounds(0, 0, image.getIntrinsicWidth(), image.getIntrinsicHeight());
+                SpannableString sb = new SpannableString(" " + tabText[position]);
+                ImageSpan imageSpan = new ImageSpan(image, ImageSpan.ALIGN_BOTTOM);
+                sb.setSpan(imageSpan, 0, 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                return sb;
+
             }
         });
 

@@ -22,8 +22,20 @@
             android:id="@+id/pager"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:paddingTop="20dp"
             tools:context=".MainActivity"
             android:layout_above="@+id/gridView1">
+            <android.support.v4.view.PagerTitleStrip
+                android:id="@+id/pager_title_strip"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:background="@color/coral"
+                android:paddingBottom="8dp"
+                android:paddingTop="8dp"
+                android:textColor="@color/white"
+                android:textSize = "32sp"
+                />
         </android.support.v4.view.ViewPager>
 
         <com.dgu.lelab.bid.bidinfo.ExpandableHeightGridView

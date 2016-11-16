@@ -4,16 +4,6 @@
     android:orientation="vertical"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/pick_title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="대분류"
-        android:textColor="@color/coral"
-        android:gravity="center"
-        android:layout_gravity="center_horizontal"
-        android:textSize="32dp"
-        android:layout_marginTop="50dp" />
 
     <ScrollView
         android:id="@+id/scrollview"

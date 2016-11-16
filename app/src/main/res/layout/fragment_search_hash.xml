@@ -8,43 +8,58 @@
     android:orientation="vertical"
     >
 
-    <RelativeLayout
-        android:layout_margin="10dp"
+    <LinearLayout
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
         android:layout_width="match_parent"
+        android:layout_marginLeft="10dp"
         android:layout_height="wrap_content">
+        <ImageView
+            android:src="@drawable/icon_search"
+            android:layout_width="@dimen/iconSize"
+            android:padding="5dp"
+            android:layout_height="@dimen/iconSize"
+            android:id="@+id/imageView2" />
+        <RelativeLayout
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <android.support.v7.widget.AppCompatButton
-            style="@style/Widget.AppCompat.Button.Borderless"
-            android:id="@+id/bt_search"
-            android:layout_gravity="center_vertical"
-            android:layout_width="90dp"
-            android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            android:textSize="@dimen/default_text"
-            android:text="검색"
-            android:layout_centerVertical="true"
-            android:layout_alignParentRight="true" />
-        <util.ClearableEditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            android:layout_marginTop="30dp"
-            android:singleLine="true"
-            android:id="@+id/view"
-            android:hint="검색"
-            android:textColorHint="@color/monsoon"
-            android:imeOptions="actionDone"
-            android:layout_centerVertical="true"
-            android:layout_alignParentLeft="true"
-            android:layout_toLeftOf="@+id/bt_search" />
-    </RelativeLayout>
+            <android.support.v7.widget.AppCompatButton
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:id="@+id/bt_search"
+                android:layout_gravity="center_vertical"
+                android:layout_width="90dp"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:text="검색"
+                android:textSize="@dimen/default_text_mid"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true" />
+            <util.ClearableEditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:layout_marginTop="30dp"
+                android:singleLine="true"
+                android:id="@+id/view"
+                android:hint="검색"
+                android:textColorHint="@color/monsoon"
+                android:imeOptions="actionDone"
+                android:layout_centerVertical="true"
+                android:layout_alignParentLeft="true"
+                android:layout_toLeftOf="@+id/bt_search" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
 
 
     <TextView
         android:id="@+id/fixed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/white"
+        android:textColor="@color/monsoon"
         android:text="추천검색어"
         android:textSize="@dimen/default_text"
         android:layout_marginTop="30dp"

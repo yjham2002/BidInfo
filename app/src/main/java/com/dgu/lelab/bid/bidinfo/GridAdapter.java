@@ -42,7 +42,7 @@ class GridAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) convertView = inf.inflate(layout, null);
         TextView content = (TextView) convertView.findViewById(R.id.grid);
-        content.setText("#" + data.get(position));
+        content.setText(data.get(position));
         return convertView;
     }
 }

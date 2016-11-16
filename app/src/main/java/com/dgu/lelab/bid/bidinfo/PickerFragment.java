@@ -40,7 +40,6 @@ public class PickerFragment extends Fragment implements View.OnClickListener{
 
     private Button _add, _end;
     private EditText _keyword;
-    private TextView _title;
 
     private String[][] dataSet;
     private String titleData;
@@ -107,8 +106,7 @@ public class PickerFragment extends Fragment implements View.OnClickListener{
         if(ii == 3){
             _end = (Button)v.findViewById(R.id.key_end);
             _end.setOnClickListener(this);
-            _title = (TextView)v.findViewById(R.id.pick_title);
-            _title.setText(titleData);
+
             _keyword = (EditText)v.findViewById(R.id.view);
             _add = (Button)v.findViewById(R.id.key_submit);
             _add.setOnClickListener(this);
@@ -143,8 +141,6 @@ public class PickerFragment extends Fragment implements View.OnClickListener{
                 }
             }
 
-            _title = (TextView)v.findViewById(R.id.pick_title);
-            _title.setText(titleData);
             adapter1 = new PickGridAdapter(getActivity(), R.layout.grid_item, mList1);
             gv1 = (ExpandableHeightGridView) v.findViewById(R.id.gridView1);
             gv1.setExpanded(true);
