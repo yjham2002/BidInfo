@@ -119,6 +119,8 @@ public class LoginFormActivity extends AppCompatActivity implements View.OnClick
                     mainCall.putExtra("user_account", json_list.getString("Uid"));
                     mainCall.putExtra("user_name", json_list.getString("Name"));
 
+                    MainActivity.userId = json_list.getInt("id");
+
                     prefEditor.putString("Uid", json_list.getString("Uid"));
                     prefEditor.putString("Name", json_list.getString("Name"));
                     prefEditor.putString("Pwd", json_list.getString("Pwd"));

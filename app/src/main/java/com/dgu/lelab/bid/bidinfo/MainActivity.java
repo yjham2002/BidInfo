@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Handler;
 import android.os.Message;
 import android.support.design.widget.FloatingActionButton;
@@ -49,6 +50,8 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 
     private Context context;
 
+    public static int userId = 0;
+
     private TextView pbar;
     private ImageView black;
 
@@ -58,7 +61,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 
     private ImageView _menuBtn02; // Menu Buttons
 
-    private Button _menuBtn01, _menuBtn03, _noticemore, _attend, _likes, _comment, _edit, _company;
+    private Button _menuBtn01, _menuBtn03, _noticemore, _attend, _likes, _comment, _edit, _company, _link;
     private TextView _username, _useraccount, _noticetext;
     private FloatingActionButton _addButton;
     private MaterialViewPager mViewPager;
@@ -74,9 +77,21 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         super.attachBaseContext(TypekitContextWrapper.wrap(newBase));
     }
 
+    public void callBrowser(String url) {
+        try {
+            Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+            startActivity(i);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     @Override
     public void onClick(View v){
         switch (v.getId()){
+            case R.id.drawer_link:
+                callBrowser(URL.MAINWEB);
+                break;
             case R.id.menu_comment:
                 startActivity(new Intent(this, CommentActivity.class));
                 break;
@@ -138,6 +153,8 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         black = (ImageView)findViewById(R.id.black);
         //_menuBtn01 = (Button)findViewById(R.id.menu01);
         //_menuBtn01.setOnClickListener(this);
+        _link = (Button)findViewById(R.id.drawer_link);
+        _link.setOnClickListener(this);
         _comment = (Button)findViewById(R.id.menu_comment);
         _comment.setOnClickListener(this);
         _edit = (Button)findViewById(R.id.menu_edit);

@@ -16,29 +16,46 @@
 
         android:gravity="center">
 
-        <util.ClearableEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="키워드를 입력하세요"
-            android:textColor="@color/colorPrimary"
-            android:singleLine="true"
-            android:textColorHint="@color/white"
-            android:id="@+id/view"
-            android:background="@drawable/bg_edittext"
-            android:imeOptions="actionDone" />
-        <android.support.v7.widget.AppCompatButton
-            android:theme="@style/BlueButton"
-            android:id="@+id/key_submit"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/button_selector_blue"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+        <TextView
+            android:text="추가하고 싶은 키워드를 입력하세요"
+            android:layout_width="wrap_content"
             android:textColor="@color/white"
-            android:text="추가"
-            style="?android:attr/borderlessButtonStyle"
-            android:textSize="@dimen/default_text_mid"
-            android:layout_gravity="center_horizontal|bottom" />
+            android:textSize="18dp"
+            android:layout_height="wrap_content" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <android.support.v7.widget.AppCompatButton
+                android:background="@drawable/button_selector_blue"
+                android:id="@+id/key_submit"
+                android:layout_width="wrap_content"
+                android:textSize="@dimen/default_text_mid"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_marginLeft="5dp"
+                android:layout_height="39dp"
+                android:layout_marginTop="@dimen/default_margin"
+                android:textColor="@color/white"
+                android:text="추가"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true" />
 
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimary"
+                android:singleLine="true"
+                android:layout_marginBottom="@dimen/default_margin"
+                android:background="@drawable/bg_edittext"
+                android:id="@+id/view"
+                android:layout_centerVertical="true"
+                android:layout_alignParentLeft="true"
+                android:hint="키워드를 입력하세요"
+                android:textColorHint="@color/white"
+                android:imeOptions="actionDone"
+                android:layout_toLeftOf="@+id/key_submit"
+                />
+
+        </RelativeLayout>
 
     </LinearLayout>
     <android.support.v7.widget.AppCompatButton

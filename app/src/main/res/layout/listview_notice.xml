@@ -41,6 +41,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/week_padding"
+                android:autoLink="all"
                 android:text="Here is the field for showing detail information"
                 android:id="@+id/content"
                 android:textColor="@color/monsoon"

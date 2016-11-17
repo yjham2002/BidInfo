@@ -313,7 +313,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="마이페이지 웹사이트에서 보기\nymanpage.com"
-                android:textSize="@dimen/default_text_mid"
+                android:textSize="14dp"
                 android:textColor="@color/monsoon"
                 android:id="@+id/drawer_link"
                 android:gravity="center"

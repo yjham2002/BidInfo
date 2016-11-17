@@ -57,6 +57,10 @@ public class NoticeActivity extends AppCompatActivity implements View.OnClickLis
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
 
+        loadList();
+    }
+
+    public void loadList(){
         Communicator.getHttp(URL.MAIN + URL.REST_NOTICE_ALL, new Handler(){
             @Override
             public void handleMessage(Message msg){
@@ -77,6 +81,5 @@ public class NoticeActivity extends AppCompatActivity implements View.OnClickLis
 
             }
         });
-
     }
 }

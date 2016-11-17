@@ -18,6 +18,13 @@
             android:title="키워드 알림" />
 
     </PreferenceCategory>
+    <PreferenceCategory android:title="회원 정보" >
+        <Preference
+            android:title="비밀번호 변경"
+            android:key="cpass"
+            android:summary="비밀번호를 변경합니다">
+        </Preference>
+    </PreferenceCategory>
     <PreferenceCategory android:title="앱 정보" >
         <PreferenceScreen
             android:title="앱 버전"
