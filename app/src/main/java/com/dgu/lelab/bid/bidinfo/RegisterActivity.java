@@ -2,6 +2,7 @@ package com.dgu.lelab.bid.bidinfo;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -13,6 +14,8 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.tsengvn.typekit.TypekitContextWrapper;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -39,6 +42,11 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
     private EditText _name, _rnum, _rprt, _charge, _addr, _phone, _email, _home, _keyword;
     private Button _submit, _cancel, _add;
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(TypekitContextWrapper.wrap(newBase));
+    }
 
     public void addKeyword(String msg){
         if(msg.length() < 2){

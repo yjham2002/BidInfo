@@ -1,6 +1,7 @@
 package com.dgu.lelab.bid.bidinfo;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
@@ -11,6 +12,8 @@ import android.webkit.DownloadListener;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
+
+import com.tsengvn.typekit.TypekitContextWrapper;
 
 public class PopupActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -32,6 +35,11 @@ public class PopupActivity extends AppCompatActivity implements View.OnClickList
                 finish();
                 break;
         }
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(TypekitContextWrapper.wrap(newBase));
     }
 
     @Override

@@ -1,6 +1,7 @@
 package com.dgu.lelab.bid.bidinfo;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -9,6 +10,8 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
 import android.widget.TextView;
+
+import com.tsengvn.typekit.TypekitContextWrapper;
 
 public class ExpireActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -24,6 +27,11 @@ public class ExpireActivity extends AppCompatActivity implements View.OnClickLis
                 break;
             default: break;
         }
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(TypekitContextWrapper.wrap(newBase));
     }
 
     @Override

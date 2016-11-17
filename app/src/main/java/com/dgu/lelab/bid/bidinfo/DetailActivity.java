@@ -27,6 +27,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.tsengvn.typekit.TypekitContextWrapper;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -77,6 +79,11 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
     private CommentAdapter commentAdapter;
     private String URL = "";
     private Button _redirect, _exit, _submit;
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(TypekitContextWrapper.wrap(newBase));
+    }
 
     public void sendPush(String title, String message){
         if(mToken == 0) return;

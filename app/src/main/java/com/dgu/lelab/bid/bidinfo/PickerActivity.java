@@ -1,8 +1,11 @@
 package com.dgu.lelab.bid.bidinfo;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -14,7 +17,11 @@ import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
+
+import com.tsengvn.typekit.TypekitContextWrapper;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -55,6 +62,11 @@ public class PickerActivity extends FragmentActivity implements View.OnClickList
     }
 
     @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(TypekitContextWrapper.wrap(newBase));
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_picker);
@@ -82,6 +94,43 @@ public class PickerActivity extends FragmentActivity implements View.OnClickList
         if(PickerFragment.mode){
             loadTags();
         }
+        addDots();
+    }
+
+    private final static int NUM_PAGES = 4;
+    private List<ImageView> dots;
+
+    public void addDots() {
+        dots = new ArrayList<>();
+        LinearLayout dotsLayout = (LinearLayout)findViewById(R.id.dots);
+        for(int i = 0; i < NUM_PAGES; i++) {
+            ImageView dot = new ImageView(this);
+            if(i==0) dot.setImageDrawable(getResources().getDrawable(R.drawable.pager_dot_selected));
+            else dot.setImageDrawable(getResources().getDrawable(R.drawable.pager_dot_not_selected));
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(30, 30);
+            dotsLayout.addView(dot, params);
+            dots.add(dot);
+        }
+        mViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {}
+
+            @Override
+            public void onPageSelected(int position) {
+                selectDot(position);
+            }
+            @Override
+            public void onPageScrollStateChanged(int state) {}
+        });
+    }
+
+    public void selectDot(int idx) {
+        Resources res = getResources();
+        for(int i = 0; i < NUM_PAGES; i++) {
+            int drawableId = (i==idx) ? (R.drawable.pager_dot_selected):(R.drawable.pager_dot_not_selected);
+            Drawable drawable = res.getDrawable(drawableId);
+            dots.get(i).setImageDrawable(drawable);
+        }
     }
 
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
@@ -107,7 +156,7 @@ public class PickerActivity extends FragmentActivity implements View.OnClickList
 
         @Override
         public int getCount() {
-            return 4;
+            return NUM_PAGES;
         }
 
         @Override

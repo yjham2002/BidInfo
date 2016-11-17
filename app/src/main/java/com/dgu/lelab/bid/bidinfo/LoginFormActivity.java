@@ -3,6 +3,7 @@ package com.dgu.lelab.bid.bidinfo;
 import android.app.Activity;
 import android.app.Notification;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -14,6 +15,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.tsengvn.typekit.TypekitContextWrapper;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -34,6 +37,11 @@ public class LoginFormActivity extends AppCompatActivity implements View.OnClick
     private SharedPreferences.Editor prefEditor;
     private Button _login, _notyet;
     private EditText _account, _password;
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(TypekitContextWrapper.wrap(newBase));
+    }
 
     @Override
     public void onClick(View v){

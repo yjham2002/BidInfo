@@ -1,5 +1,6 @@
 package com.dgu.lelab.bid.bidinfo;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.media.Image;
@@ -14,6 +15,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.tsengvn.typekit.TypekitContextWrapper;
 
 public class WebviewActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -92,5 +95,10 @@ public class WebviewActivity extends AppCompatActivity implements View.OnClickLi
         else webURL = cmdMsg.getString("URL");
 
         webView.loadUrl(webURL);
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(TypekitContextWrapper.wrap(newBase));
     }
 }

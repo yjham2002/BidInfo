@@ -1,6 +1,7 @@
 package com.dgu.lelab.bid.bidinfo;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -24,6 +25,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.github.florent37.materialviewpager.adapter.RecyclerViewMaterialAdapter;
+import com.tsengvn.typekit.TypekitContextWrapper;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -43,6 +45,10 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
     SectionsPagerAdapter mSectionsPagerAdapter;
     ViewPager mViewPager;
 
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(TypekitContextWrapper.wrap(newBase));
+    }
 
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
         public SectionsPagerAdapter(FragmentManager fm) {

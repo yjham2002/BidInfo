@@ -34,6 +34,7 @@ import android.widget.Toast;
 
 import com.github.florent37.materialviewpager.MaterialViewPager;
 import com.github.florent37.materialviewpager.header.HeaderDesign;
+import com.tsengvn.typekit.TypekitContextWrapper;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -67,6 +68,11 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 
     private int[] ImageResId = {R.drawable.icon_comment, R.drawable.test, R.drawable.test};
     private String[] tabText = { "물품정보", "공사정보", "용역정보" };
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(TypekitContextWrapper.wrap(newBase));
+    }
 
     @Override
     public void onClick(View v){
