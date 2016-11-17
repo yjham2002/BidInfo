@@ -41,6 +41,7 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".WebviewActivity"
+            android:screenOrientation="landscape"
             android:theme="@style/Simple" />
         <activity
             android:name=".SearchActivity"

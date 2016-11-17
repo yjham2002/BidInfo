@@ -14,7 +14,7 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="300dp"
+        android:paddingTop="220dp"
         android:layout_gravity="center"
         android:layout_margin="@dimen/default_margin">
 
@@ -40,20 +40,6 @@
             android:textColor="@color/white"
             android:text="회원가입"
             android:layout_gravity="center_horizontal|bottom" />
-
-        <android.support.v7.widget.AppCompatButton
-            style="@style/Widget.AppCompat.Button.Borderless"
-            android:id="@+id/bt_seeing"
-            android:layout_width="wrap_content"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            android:textSize="14dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="20dp"
-            android:text="둘러보기"
-            android:layout_gravity="center_horizontal|bottom"
-            />
 
     </LinearLayout>
 

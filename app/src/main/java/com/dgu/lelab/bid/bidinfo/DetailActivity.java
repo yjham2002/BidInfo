@@ -64,7 +64,7 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
 
     private Button _like, _remove;
     private boolean like = false;
-    private TextView _Title, _PDate, _ReferAndBNum, _Bstart, _Bexpire, _Dept, _Charge, _bidno, companyTitle;
+    private TextView _Title, _PDate, _Bstart, _Bexpire, _Dept, _Charge, _bidno, companyTitle;
     private ImageView _Type;
 
     private GridAdapter adapter1;
@@ -222,7 +222,6 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
         _Type = (ImageView)findViewById(R.id.favicon);
         _Title = (TextView)findViewById(R.id.Title);
         _PDate = (TextView)findViewById(R.id.PDate);
-        _ReferAndBNum = (TextView)findViewById(R.id.Refer);
 
         companyLine = findViewById(R.id.kc_line);
         companyList = (RecyclerView)findViewById(R.id.kc_list);
@@ -400,8 +399,6 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
                     else _Title.setText(json_list.getString("Title"));
                     if(json_list.getString("Date").equals("null") || json_list.getString("Date").equals("NULL")) _PDate.setText(none);
                     else _PDate.setText(TimeCaculator.formatTimeString(json_list.getString("Date")));
-                    if(json_list.getString("Refer").equals("null")) _ReferAndBNum.setText(none);
-                    else _ReferAndBNum.setText(json_list.getString("Refer"));
                     if(json_list.getString("BidNo").equals("null") || json_list.getString("BidNo").length() == 0) _bidno.setText(none);
                     else _bidno.setText(json_list.getString("BidNo"));
                     if(json_list.getString("Bstart").equals("null")) _Bstart.setText(none);

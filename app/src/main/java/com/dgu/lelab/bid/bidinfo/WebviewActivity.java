@@ -84,7 +84,7 @@ public class WebviewActivity extends AppCompatActivity implements View.OnClickLi
         });
         webView.getSettings().setAllowFileAccessFromFileURLs(true);
 
-        Toast.makeText(getApplicationContext(), "가로모드로 전환하여 크게보세요", Toast.LENGTH_LONG).show();
+        //Toast.makeText(getApplicationContext(), "가로모드로 전환하여 크게보세요", Toast.LENGTH_LONG).show();
 
         Intent cmd = getIntent();
         Bundle cmdMsg = cmd.getExtras();
