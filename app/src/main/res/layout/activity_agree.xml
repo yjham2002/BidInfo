@@ -32,15 +32,8 @@
 
     </FrameLayout>
 
-    <ScrollView
+    <WebView
+        android:id="@+id/agreeweb"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/scrollView"
-        >
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/agreement"
-            android:layout_margin="20dp"/>
-    </ScrollView>
+        android:layout_height="match_parent"/>
 </LinearLayout>

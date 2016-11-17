@@ -5,12 +5,16 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.Button;
 
 import com.tsengvn.typekit.TypekitContextWrapper;
 
+import util.URL;
+
 public class AgreeActivity extends AppCompatActivity implements View.OnClickListener{
 
+    private WebView _agreeview;
     private Button _close;
 
     @Override
@@ -29,6 +33,7 @@ public class AgreeActivity extends AppCompatActivity implements View.OnClickList
     }
 
     public void setView(){
+        _agreeview = (WebView)findViewById(R.id.agreeweb);
         _close = (Button)findViewById(R.id.bt_exit);
         _close.setOnClickListener(this);
     }
@@ -39,5 +44,7 @@ public class AgreeActivity extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.activity_agree);
 
         setView();
+
+        _agreeview.loadUrl(URL.MAIN + URL.REST_AGREEMENT_VIEW);
     }
 }
