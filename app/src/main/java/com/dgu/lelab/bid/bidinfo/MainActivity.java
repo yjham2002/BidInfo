@@ -93,15 +93,27 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
                 callBrowser(URL.MAINWEB);
                 break;
             case R.id.menu_comment:
+                if(pref.getString("Uid", "#").equals("testmode@test.com")){
+                    Toast.makeText(getApplicationContext(), "로그인이 필요한 서비스입니다", Toast.LENGTH_LONG).show();
+                    break;
+                }
                 startActivity(new Intent(this, CommentActivity.class));
                 break;
             case R.id.menu_edit:
+                if(pref.getString("Uid", "#").equals("testmode@test.com")){
+                    Toast.makeText(getApplicationContext(), "로그인이 필요한 서비스입니다", Toast.LENGTH_LONG).show();
+                    break;
+                }
                 Intent intent = new Intent(this, PickerActivity.class);
                 PickerFragment.mode = true;
                 //intent.putExtra("mode", true);
                 startActivity(intent);
                 break;
             case R.id.menu_company:
+                if(pref.getString("Uid", "#").equals("testmode@test.com")){
+                    Toast.makeText(getApplicationContext(), "로그인이 필요한 서비스입니다", Toast.LENGTH_LONG).show();
+                    break;
+                }
                 RegisterActivity.mode = true;
                 startActivity(new Intent(this, RegisterActivity.class));
                 break;
@@ -109,6 +121,10 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
                 startActivity(new Intent(this, NoticeActivity.class));
                 break;
             case R.id.add:
+                if(pref.getString("Uid", "#").equals("testmode@test.com")){
+                    Toast.makeText(getApplicationContext(), "로그인이 필요한 서비스입니다", Toast.LENGTH_LONG).show();
+                    break;
+                }
                 Intent i = new Intent(this, PrivateActivity.class);
                 startActivity(i);
                 break;
@@ -117,6 +133,10 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
                 //closeDrawer();
                 //break;
             case R.id.menu02:
+                if(pref.getString("Uid", "#").equals("testmode@test.com")){
+                    Toast.makeText(getApplicationContext(), "로그인이 필요한 서비스입니다", Toast.LENGTH_LONG).show();
+                    break;
+                }
                 startActivity(new Intent(this, SettingsActivity.class));
                 break;
             case R.id.menu03:
@@ -126,9 +146,17 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
                 finish();
                 break;
             case R.id.menu_like:
+                if(pref.getString("Uid", "#").equals("testmode@test.com")){
+                    Toast.makeText(getApplicationContext(), "로그인이 필요한 서비스입니다", Toast.LENGTH_LONG).show();
+                    break;
+                }
                 startActivity(new Intent(this, LikeActivity.class));
                 break;
             case R.id.menu_attend:
+                if(pref.getString("Uid", "#").equals("testmode@test.com")){
+                    Toast.makeText(getApplicationContext(), "로그인이 필요한 서비스입니다", Toast.LENGTH_LONG).show();
+                    break;
+                }
                 startActivity(new Intent(this, AttendActivity.class));
                 break;
             default:

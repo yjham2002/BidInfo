@@ -138,6 +138,8 @@ public class LoginFormActivity extends AppCompatActivity implements View.OnClick
                     finish();
                 }catch (JSONException e){
                     Toast.makeText(getApplicationContext(), "로그인에 실패하였습니다.", Toast.LENGTH_LONG).show();
+                    prefEditor.putBoolean("auto", false);
+                    prefEditor.commit();
                     progressDialog.dismiss();
                     _login.setEnabled(true);
                     e.printStackTrace();

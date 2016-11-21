@@ -168,6 +168,10 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
     public void onClick(View v){
         switch (v.getId()){
             case R.id.bt_remove:
+                if(pref.getString("Uid", "#").equals("testmode@test.com")){
+                    Toast.makeText(getApplicationContext(), "로그인이 필요한 서비스입니다", Toast.LENGTH_LONG).show();
+                    break;
+                }
                 new Communicator().postHttp(util.URL.MAIN + util.URL.REST_REMOVE_BOARD + cmdMsg.getInt("id"), new HashMap<String, String>(), new Handler(){
                     @Override
                     public void handleMessage(Message msg){
@@ -177,9 +181,17 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
                 });
                 break;
             case R.id.detail_submit:
+                if(pref.getString("Uid", "#").equals("testmode@test.com")){
+                    Toast.makeText(getApplicationContext(), "로그인이 필요한 서비스입니다", Toast.LENGTH_LONG).show();
+                    break;
+                }
                 uploadComment(_comment.getText().toString());
                 break;
             case R.id.like:
+                if(pref.getString("Uid", "#").equals("testmode@test.com")){
+                    Toast.makeText(getApplicationContext(), "로그인이 필요한 서비스입니다", Toast.LENGTH_LONG).show();
+                    break;
+                }
                 toggleLike();
                 break;
             case R.id.redirect:
@@ -222,6 +234,11 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
 
         _like = (Button)findViewById(R.id.like);
         _like.setOnClickListener(this);
+
+        if(pref.getString("Uid", "#").equals("testmode@test.com")){
+            _comment.setText("댓글을 작성하려면 로그인하세요");
+            _comment.setEnabled(false);
+        }
 
         mRecyclerView = (RecyclerView)findViewById(R.id.recyclerView);
         commentAdapter = new CommentAdapter(this, R.layout.listview_comment);

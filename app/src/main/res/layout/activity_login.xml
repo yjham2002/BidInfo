@@ -14,8 +14,8 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="210dp"
-        android:layout_gravity="center"
+        android:layout_gravity="bottom"
+        android:paddingBottom="20dp"
         android:layout_margin="@dimen/default_margin">
 
         <android.support.v7.widget.AppCompatButton
@@ -26,6 +26,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/white"
             android:textSize="@dimen/default_text_mid"
+            style="?android:attr/borderlessButtonStyle"
             android:text="로그인"
             android:layout_marginBottom="10dp"
             android:layout_gravity="center_horizontal|bottom"
@@ -34,11 +35,24 @@
         <android.support.v7.widget.AppCompatButton
             android:background="@drawable/button_selector_dark"
             android:id="@+id/bt_signup_ent"
+            style="?android:attr/borderlessButtonStyle"
             android:textSize="@dimen/default_text_mid"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
             android:text="회원가입"
+            android:layout_gravity="center_horizontal|bottom" />
+
+        <android.support.v7.widget.AppCompatButton
+            android:background="@drawable/button_selector_gray"
+            android:id="@+id/bt_see"
+            android:textSize="@dimen/default_text_mid"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_marginTop="20dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/jet"
+            android:text="둘러보기"
             android:layout_gravity="center_horizontal|bottom" />
 
     </LinearLayout>
