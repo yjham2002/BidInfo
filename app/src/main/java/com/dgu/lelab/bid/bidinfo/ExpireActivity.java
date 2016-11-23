@@ -17,15 +17,23 @@ import com.tsengvn.typekit.TypekitContextWrapper;
 public class ExpireActivity extends AppCompatActivity implements View.OnClickListener {
 
     private EditText _name;
-    private Button _submit;
+    private Button _submit, _close;
 
     @Override
     public void onClick(View v){
         switch (v.getId()){
             case R.id.expr_submit:
+                onSubmit(_name.getText().toString());
+                break;
+            case R.id.bt_exit:
+                finish();
                 break;
             default: break;
         }
+    }
+
+    private void onSubmit(String name){
+
     }
 
     @Override
@@ -41,6 +49,8 @@ public class ExpireActivity extends AppCompatActivity implements View.OnClickLis
         _name = (EditText)findViewById(R.id.expire_draw);
         _submit = (Button)findViewById(R.id.expr_submit);
         _submit.setOnClickListener(this);
+        _close = (Button)findViewById(R.id.bt_exit);
+        _close.setOnClickListener(this);
 
     }
 }

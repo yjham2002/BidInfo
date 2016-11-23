@@ -4,12 +4,14 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.content.LocalBroadcastManager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -172,13 +174,28 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
                     Toast.makeText(getApplicationContext(), "로그인이 필요한 서비스입니다", Toast.LENGTH_LONG).show();
                     break;
                 }
-                new Communicator().postHttp(util.URL.MAIN + util.URL.REST_REMOVE_BOARD + cmdMsg.getInt("id"), new HashMap<String, String>(), new Handler(){
-                    @Override
-                    public void handleMessage(Message msg){
-                        Toast.makeText(getApplicationContext(), "삭제되었습니다.", Toast.LENGTH_LONG).show();
-                        finish();
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.AppTheme_Dark_Dialog);
+                builder.setMessage("정말 삭제하시겠습니까?");
+                builder.setCancelable(true);
+                builder.setPositiveButton("취소", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
                     }
-                });
+                })
+                        .setNegativeButton("확인", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                new Communicator().postHttp(util.URL.MAIN + util.URL.REST_REMOVE_BOARD + cmdMsg.getInt("id"), new HashMap<String, String>(), new Handler(){
+                                    @Override
+                                    public void handleMessage(Message msg){
+                                        Toast.makeText(getApplicationContext(), "삭제되었습니다.", Toast.LENGTH_LONG).show();
+                                        finish();
+                                    }
+                                });
+                            }
+                        });
+                AlertDialog alert = builder.create();
+                alert.show();
                 break;
             case R.id.detail_submit:
                 if(pref.getString("Uid", "#").equals("testmode@test.com")){
