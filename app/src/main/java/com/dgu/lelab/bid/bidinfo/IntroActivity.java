@@ -95,9 +95,10 @@ public class IntroActivity extends AppCompatActivity {
     Runnable intro = new Runnable() {
         public void run() {
             Intent i;
-            if(pref.getBoolean("auto", false)){
+
+            if (pref.getBoolean("auto", false)) {
                 i = new Intent(IntroActivity.this, LoginFormActivity.class);
-            }else{
+            } else {
                 i = new Intent(IntroActivity.this, LoginActivity.class);
             }
 

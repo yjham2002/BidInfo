@@ -115,9 +115,14 @@
             android:name=".CommentActivity"
             android:screenOrientation="portrait"
             android:theme="@style/SimpleBlack" />
-        <activity android:name=".PopupActivity"
+        <activity
+            android:name=".PopupActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Transparent" />
+        <activity android:name=".TutorialActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Transparent"
+            android:hardwareAccelerated="true"
             ></activity>
     </application>
 

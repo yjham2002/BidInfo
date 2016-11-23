@@ -122,6 +122,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         _seeing.setOnClickListener(this);
         _signup.setOnClickListener(this);
 
+        if(pref.getBoolean("tutorial", true)) startActivity(new Intent(this, TutorialActivity.class));
+
     }
 
 }
