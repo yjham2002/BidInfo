@@ -108,6 +108,7 @@ public class PickerActivity extends FragmentActivity implements View.OnClickList
             if(i==0) dot.setImageDrawable(getResources().getDrawable(R.drawable.pager_dot_selected));
             else dot.setImageDrawable(getResources().getDrawable(R.drawable.pager_dot_not_selected));
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(30, 30);
+            params.setMargins(10, 10, 10, 10);
             dotsLayout.addView(dot, params);
             dots.add(dot);
         }

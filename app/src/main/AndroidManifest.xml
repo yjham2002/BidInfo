@@ -79,8 +79,8 @@
             android:theme="@style/SimpleBlack" />
         <activity
             android:name=".ExpireActivity"
-            android:theme="@style/SimplePurple"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:theme="@style/SimplePurple" />
         <activity
             android:name=".LoginFormActivity"
             android:screenOrientation="portrait" />
@@ -120,11 +120,12 @@
             android:name=".PopupActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Transparent" />
-        <activity android:name=".TutorialActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.Transparent"
+        <activity
+            android:name=".TutorialActivity"
             android:hardwareAccelerated="true"
-            ></activity>
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Transparent" />
+        <activity android:name=".HowActivity"></activity>
     </application>
 
 </manifest>

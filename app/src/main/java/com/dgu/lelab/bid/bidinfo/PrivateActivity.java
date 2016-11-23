@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
@@ -241,5 +242,10 @@ public class PrivateActivity extends AppCompatActivity implements View.OnClickLi
         prefEditor = pref.edit();
 
         setView();
+        if(pref.getBoolean("privatehow", true)){
+            Intent i = new Intent(this, HowActivity.class);
+            i.putExtra("what", 0);
+            startActivity(i);
+        }
     }
 }

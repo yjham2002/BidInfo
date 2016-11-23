@@ -333,6 +333,12 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
 
         _remove.setVisibility(View.INVISIBLE);
 
+        if(pref.getBoolean("detailhow", true)){
+            Intent i = new Intent(this, HowActivity.class);
+            i.putExtra("what", 1);
+            startActivity(i);
+        }
+
     }
 
     public void loadCompany(){
