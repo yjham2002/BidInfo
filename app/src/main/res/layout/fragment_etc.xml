@@ -56,20 +56,19 @@
                 />
 
         </RelativeLayout>
-
+        <android.support.v7.widget.AppCompatButton
+            android:theme="@style/BlueButton"
+            android:id="@+id/key_end"
+            
+            android:layout_width="match_parent"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:text="완료"
+            android:textSize="@dimen/default_text_mid"
+            android:background="@drawable/button_selector_blue"
+            android:layout_gravity="bottom" />
     </LinearLayout>
-    <android.support.v7.widget.AppCompatButton
-        android:theme="@style/BlueButton"
-        android:id="@+id/key_end"
-        android:layout_marginBottom="50dp"
-        android:layout_width="match_parent"
-        style="?android:attr/borderlessButtonStyle"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/default_margin"
-        android:layout_marginRight="@dimen/default_margin"
-        android:textColor="@color/white"
-        android:text="완료"
-        android:textSize="@dimen/default_text_mid"
-        android:background="@drawable/button_selector_blue"
-        android:layout_gravity="bottom" />
+
+
 </FrameLayout>
