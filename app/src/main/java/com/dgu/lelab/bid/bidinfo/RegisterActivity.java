@@ -62,7 +62,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     }
 
     public void onPost(){
-        if(_name.getText().length() < 2 || _rnum.getText().length() == 0 || _rprt.getText().length() < 2 || _charge.getText().length() < 2 || _addr.getText().length() ==0 || _phone.getText().length() < 10 || _email.getText().length() < 2){
+        if(_name.getText().length() < 2 || _rnum.getText().length() == 0 || _rprt.getText().length() < 2 || _charge.getText().length() < 2 || _addr.getText().length() ==0 || _phone.getText().length() < 8 || _email.getText().length() < 2){
             Toast.makeText(getApplicationContext(), "필수입력란을 모두 입력하세요", Toast.LENGTH_LONG).show();
             return;
         }

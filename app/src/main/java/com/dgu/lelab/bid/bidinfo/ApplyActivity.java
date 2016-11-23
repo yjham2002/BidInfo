@@ -96,7 +96,7 @@ public class ApplyActivity extends AppCompatActivity implements View.OnClickList
             Toast.makeText(getApplicationContext(), "올바른 성명을 입력하세요", Toast.LENGTH_LONG).show();
             return;
         }
-        if(_phone.getText().length() < 10){
+        if(_phone.getText().length() < 8){
             Toast.makeText(getApplicationContext(), "올바른 전화번호를 입력하세요", Toast.LENGTH_LONG).show();
             return;
         }

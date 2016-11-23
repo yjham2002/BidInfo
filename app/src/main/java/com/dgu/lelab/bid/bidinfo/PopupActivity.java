@@ -61,6 +61,7 @@ public class PopupActivity extends AppCompatActivity implements View.OnClickList
         webView.getSettings().setDomStorageEnabled(true);
         webView.getSettings().setJavaScriptEnabled(true);
         webView.getSettings().setAllowFileAccess(true);
+        webView.getSettings().setUseWideViewPort(true);
         webView.getSettings().setAllowContentAccess(true);
         webView.setDownloadListener(new DownloadListener() {
             public void onDownloadStart(String url, String userAgent,
