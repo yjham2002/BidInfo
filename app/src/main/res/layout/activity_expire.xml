@@ -1,100 +1,142 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:focusableInTouchMode="true"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/imageView"
-        android:layout_gravity="center"
-        android:src="@drawable/log_bg"
-        android:scaleType="centerCrop" />
-
-    <LinearLayout
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="top|center_horizontal"
-        android:gravity="center_horizontal"
-        android:paddingTop="90dp"
-        android:orientation="vertical">
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:layout_margin="20dp"
-            android:background="@color/monsoon"/>
+        android:background="@color/purple"
+        android:id="@+id/frameLayout"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <android.support.v7.widget.AppCompatButton
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:id="@+id/bt_exit"
+            android:layout_gravity="right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="@dimen/default_text"
+            android:text="닫기"
+            />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/monsoon"
-            android:gravity="center_horizontal"
+            android:text="결제요청"
+            android:id="@+id/titleText"
+            android:layout_gravity="center"
             android:textSize="@dimen/default_text_large"
-            android:text="@string/app_name"
-            />
+            android:textColor="@color/white" />
 
-    </LinearLayout>
-
+    </FrameLayout>
+    <ImageView
+        android:src="@drawable/exp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/frameLayout"
+        android:layout_above="@+id/linearLayout4" />
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_margin="@dimen/default_margin">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/monsoon"
-            android:gravity="center_horizontal"
-            android:layout_margin="@dimen/default_margin"
-            android:textSize="@dimen/default_text"
-            android:text="@string/expire_string"
-            />
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/monsoon"
-            android:layout_marginBottom="@dimen/default_margin"
-            android:background="@drawable/bg_edittext"
-            android:singleLine="true"
-            android:textSize="@dimen/default_text_large"
-            android:hint="입금자명"
-            android:id="@+id/expire_draw" />
+        android:layout_gravity="bottom"
+        android:id="@+id/linearLayout4"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/transparent_window">
-            <Spinner
+            android:padding="20dp"
+            android:orientation="vertical"
+            android:background="@color/colorPrimaryDark">
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/expr_spinner"
-                android:entries="@array/term"
-                android:layout_gravity="center_horizontal" />
+                android:orientation="horizontal"
+                android:layout_marginBottom="10dp"
+                android:gravity="top"
+                android:layout_height="match_parent">
+                <TextView
+                    android:textColor="@color/white"
+                    android:text="입금계좌"
+                    android:textSize="16dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:textColor="@color/white"
+                    android:text="기업은행 216-121727-04-010\n(주)경관공학연구소"
+                    android:layout_marginLeft="20dp"
+                    android:textIsSelectable="true"
+                    android:textSize="18dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_marginBottom="10dp"
+                android:gravity="top"
+                android:layout_height="match_parent">
+                <TextView
+                    android:textColor="@color/white"
+                    android:text="문의전화"
+                    android:textSize="16dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:textColor="@color/white"
+                    android:text="(주)경관공학연구소 02-582-8803"
+                    android:layout_marginLeft="20dp"
+                    android:textSize="17dp"
+                    android:autoLink="phone"
+                    android:textColorLink="@color/white"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:gravity="top"
+                android:layout_height="match_parent">
+                <TextView
+                    android:textColor="@color/white"
+                    android:text="입금자명"
+                    android:textSize="16dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/monsoon"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginBottom="@dimen/default_margin"
+                    android:background="@drawable/bg_edittext"
+                    android:singleLine="true"
+                    android:textSize="@dimen/default_text"
+                    android:hint="입금자명을 입력하세요"
+                    android:id="@+id/expire_draw" />
+            </LinearLayout>
 
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/amount"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/jet"
-            android:gravity="center_horizontal"
-            android:textSize="@dimen/default_text_large"
-            android:layout_margin="@dimen/default_margin"
-            android:text="입금할 금액 : 0원"
-            />
+
         <android.support.v7.widget.AppCompatButton
-            android:theme="@style/BlueButton"
+            android:background="@drawable/button_selector_gray"
             android:id="@+id/expr_submit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/white"
+            android:textColor="@color/jet"
             android:text="결제확인요청"
             android:layout_gravity="center" />
 
     </LinearLayout>
 
 
-</FrameLayout>
+</RelativeLayout>

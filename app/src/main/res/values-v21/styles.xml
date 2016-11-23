@@ -88,6 +88,21 @@
         <item name="android:colorControlHighlight">@color/cool</item>
     </style>
 
+    <style name="SimplePurple" parent="AppBaseTheme">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/purple</item>
+        <item name="colorAccent">@color/jet</item>
+        <item name="android:windowBackground">@color/white</item>
+        <item name="android:textColorHint">@color/white</item>
+        <item name="colorControlNormal">@color/aluminum</item>
+        <item name="colorControlActivated">@color/jet</item>
+        <item name="colorControlHighlight">@color/aluminum</item>
+        <item name="android:textColorPrimary">@android:color/white</item>
+        <item name="android:textColor">@color/jet</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
     <style name="SimpleBlack" parent="AppBaseTheme">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>

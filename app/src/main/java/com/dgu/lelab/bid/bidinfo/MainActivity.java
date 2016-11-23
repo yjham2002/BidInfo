@@ -41,7 +41,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.TimeZone;
 
 import util.Communicator;
 import util.URL;
@@ -86,6 +89,23 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         }
     }
 
+    public boolean isExpired(String date){
+        Date convertTime = new Date();
+        Date currentTime = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.sss'Z'");
+
+        sdf.setTimeZone(TimeZone.getTimeZone("GMT"));
+        try {
+            convertTime = sdf.parse(date);
+        }catch (Exception e){
+            e.printStackTrace();
+            Toast.makeText(getApplicationContext(), "계정 유효성 검사에 실패하였습니다.\n관리자에게 문의하세요.", Toast.LENGTH_LONG).show();
+            return true;
+        }
+        if(convertTime.after(currentTime)) return false;
+        else return true;
+    }
+
     @Override
     public void onClick(View v){
         switch (v.getId()){
@@ -124,9 +144,13 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
                 if(pref.getString("Uid", "#").equals("testmode@test.com")){
                     Toast.makeText(getApplicationContext(), "로그인이 필요한 서비스입니다", Toast.LENGTH_LONG).show();
                     break;
+                }else if(isExpired(pref.getString("expdate", "#"))){
+                    Intent i = new Intent(this, ExpireActivity.class);
+                    startActivity(i);
+                }else {
+                    Intent i = new Intent(this, PrivateActivity.class);
+                    startActivity(i);
                 }
-                Intent i = new Intent(this, PrivateActivity.class);
-                startActivity(i);
                 break;
             //case R.id.menu01:
                 //startActivity(new Intent(this, MypageActivity.class));

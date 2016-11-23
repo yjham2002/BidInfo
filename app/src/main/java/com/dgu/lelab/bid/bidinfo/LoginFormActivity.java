@@ -57,23 +57,6 @@ public class LoginFormActivity extends AppCompatActivity implements View.OnClick
         }
     }
 
-    public boolean isExpired(String date){
-        Date convertTime = new Date();
-        Date currentTime = new Date();
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.sss'Z'");
-
-        sdf.setTimeZone(TimeZone.getTimeZone("GMT"));
-        try {
-            convertTime = sdf.parse(date);
-        }catch (Exception e){
-            e.printStackTrace();
-            Toast.makeText(getApplicationContext(), "계정 유효성 검사에 실패하였습니다.\n관리자에게 문의하세요.", Toast.LENGTH_LONG).show();
-            return true;
-        }
-        if(convertTime.after(currentTime)) return false;
-        else return true;
-    }
-
     public void verifyLogin(String email, String password){
         final ProgressDialog progressDialog = new ProgressDialog(this, R.style.AppTheme_Dark_Dialog);
         progressDialog.setIndeterminate(true);
@@ -127,6 +110,7 @@ public class LoginFormActivity extends AppCompatActivity implements View.OnClick
                     prefEditor.putString("hid", json_list.getString("hid"));
                     prefEditor.putInt("cid", json_list.getInt("symbol"));
                     prefEditor.putInt("id", json_list.getInt("id"));
+                    prefEditor.putString("expdate", json_list.getString("ExpDate"));
                     prefEditor.putBoolean("auto", true);
                     prefEditor.commit();
                     Log.e("hid", pref.getString("hid", "#"));
