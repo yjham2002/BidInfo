@@ -24,6 +24,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -194,7 +195,13 @@ public class ApplyActivity extends AppCompatActivity implements View.OnClickList
         _picker.setOnClickListener(this);
         _exit.setOnClickListener(this);
 
-        datePicker = new DatePickerDialog(this, AlertDialog.THEME_DEVICE_DEFAULT_DARK, this, 1990, 1, 1);
+        Calendar c = Calendar.getInstance();
+        int mYear = c.get(Calendar.YEAR);
+        int mMonth = c.get(Calendar.MONTH);
+        int mDay = c.get(Calendar.DAY_OF_MONTH);
+
+        datePicker = new DatePickerDialog(this, AlertDialog.THEME_DEVICE_DEFAULT_DARK, this, mYear, mMonth, mDay);
+
 
         SpannableString content = new SpannableString("사용자 이용권 계약 전문 보기");
         content.setSpan(new UnderlineSpan(), 0, content.length(), 0);

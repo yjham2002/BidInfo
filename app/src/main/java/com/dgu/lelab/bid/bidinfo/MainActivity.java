@@ -109,6 +109,9 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     @Override
     public void onClick(View v){
         switch (v.getId()){
+            case R.id.sName:
+                if(pref.getString("Uid", "#").equals("admin@lelab.com")) startActivity(new Intent(this, AdminActivity.class));
+                break;
             case R.id.drawer_link:
                 callBrowser(URL.MAINWEB);
                 break;
@@ -226,6 +229,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         _noticemore = (Button)findViewById(R.id.notice_more);
         _noticemore.setOnClickListener(this);
         _username = (TextView)findViewById(R.id.sName);
+        _username.setOnClickListener(this);
         _useraccount = (TextView)findViewById(R.id.sID);
         _noticetext = (TextView)findViewById(R.id.notice_text);
 

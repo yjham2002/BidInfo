@@ -36,6 +36,8 @@ public class URL {
     public static final String REST_USER_CHECK = "/users/red";
     public static final String REST_USER_NEW = "/users/new";
     public static final String REST_USER_REQ = "/users/request";
+    public static final String REST_USER_REQS = "/users/reqsss";
+    public static final String REST_USER_PAID = "/users/paid/"; // with params request id
     public static final String REST_AGREEMENT_VIEW = "/web/agreement";
     public static final String REST_REMOVE_NOTICE = "/notice/removes/";
     public static final String REST_REMOVE_BOARD = "/board/removes/"; // with params

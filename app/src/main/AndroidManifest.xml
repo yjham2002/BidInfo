@@ -10,6 +10,7 @@
         android:name=".Yman"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
+        android:largeHeap="true"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
@@ -125,7 +126,13 @@
             android:hardwareAccelerated="true"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Transparent" />
-        <activity android:name=".HowActivity"></activity>
+        <activity android:name=".HowActivity"
+            android:screenOrientation="portrait"
+            />
+        <activity android:name=".AdminActivity"
+            android:theme="@style/SimpleBlack"
+            android:screenOrientation="portrait"
+            ></activity>
     </application>
 
 </manifest>
