@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "550191558110-3mlsvuml3sdr6f5mp4tilpoodmo9hhag.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.dgu.lelab.bid.bidinfo",
+            "certificate_hash": "C4C9456AC0D54FA316D5BD663DB6DBC2C309CFBB"
+          }
+        },
+        {
           "client_id": "550191558110-upr8a4u75p8fm7gu1r6i6iqt8g79a6ha.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
