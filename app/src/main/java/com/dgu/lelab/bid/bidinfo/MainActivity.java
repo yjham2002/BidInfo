@@ -147,9 +147,9 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
                 if(pref.getString("Uid", "#").equals("testmode@test.com")){
                     Toast.makeText(getApplicationContext(), "로그인이 필요한 서비스입니다", Toast.LENGTH_LONG).show();
                     break;
-                }else if(isExpired(pref.getString("expdate", "#"))){
-                    Intent i = new Intent(this, ExpireActivity.class);
-                    startActivity(i);
+                //}else if(isExpired(pref.getString("expdate", "#"))){
+                   // Intent i = new Intent(this, ExpireActivity.class);
+                    //startActivity(i);
                 }else {
                     Intent i = new Intent(this, PrivateActivity.class);
                     startActivity(i);
